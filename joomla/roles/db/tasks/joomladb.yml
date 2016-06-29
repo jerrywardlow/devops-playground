@@ -5,3 +5,9 @@
     name: "{{ db_name }}"
     state: present
   become_user: postgres
+
+- name: Create user {{ db_user }} and grant access to {{ db_name }}
+  postgresql_user:
+    db: "{{ db_name }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"

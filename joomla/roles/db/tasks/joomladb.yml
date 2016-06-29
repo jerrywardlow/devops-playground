@@ -1,1 +1,7 @@
 ---
+
+- name: Ensure {{ db_name }} is created
+  postgresql_db:
+    name: "{{ db_name }}"
+    state: present
+  become_user: postgres

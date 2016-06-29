@@ -1,0 +1,4 @@
+---
+
+- include: postgres.yml
+- include: joomladb.yml

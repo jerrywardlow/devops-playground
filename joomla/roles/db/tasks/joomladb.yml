@@ -12,3 +12,4 @@
     name: "{{ db_user }}"
     password: "{{ db_password }}"
     priv: ALL
+  become_user: postgres

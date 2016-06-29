@@ -1,9 +1,9 @@
 ---
 
-- name: Install apt packages
+- name: Install common packages
   apt:
     name: "{{ item }}"
     update_cache: yes
     cache_valid_time: 3600
     state: present
-  with_items: "{{ apt_packages }}"
+  with_items: "{{ common_packages }}"

@@ -1,5 +1,5 @@
 # Packages to be installed in the "common" role
-apt_packages:
+common_packages:
   - git
   - curl
   - tree

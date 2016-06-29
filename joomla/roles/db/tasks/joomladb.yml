@@ -11,3 +11,4 @@
     db: "{{ db_name }}"
     name: "{{ db_user }}"
     password: "{{ db_password }}"
+    priv

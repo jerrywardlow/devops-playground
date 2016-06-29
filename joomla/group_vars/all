@@ -1,0 +1,7 @@
+# Packages to be installed in the "common" role
+apt_packages:
+  - git
+  - curl
+  - tree
+  - ufw
+  - fail2ban

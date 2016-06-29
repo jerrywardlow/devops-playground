@@ -22,3 +22,9 @@
     - postgresql-client-9.4
     - postgresql-contrib-9.4
     - python-psycopg2
+
+- name: Ensure PostgreSQL service is up
+  service:
+    name: postgresql
+    state: started
+    enabled: yes

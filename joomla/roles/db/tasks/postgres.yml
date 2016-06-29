@@ -10,3 +10,15 @@
   apt_repository:
     repo: "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main"
     state: present
+
+- name: Install PostgreSQL packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - postgresql-9.4
+    - postgresql-client-9.4
+    - postgresql-contrib-9.4
+    - python-psycopg2

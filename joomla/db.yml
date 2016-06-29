@@ -1,6 +1,6 @@
 ---
 
-- hosts: web
+- hosts: db
   roles:
     - common
-    - joomla
+    - postgres

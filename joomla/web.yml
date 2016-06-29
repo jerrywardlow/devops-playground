@@ -3,4 +3,3 @@
 - hosts: web
   roles:
     - common
-    - joomla

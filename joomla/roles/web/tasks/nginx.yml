@@ -1,1 +1,6 @@
 ---
+
+- name: Ensure NGINX is started
+  service:
+    name: nginx
+    state: started

@@ -2,3 +2,11 @@ web_packages:
   - nginx
   - php5-fpm
   - php5-pgsql
+
+project:
+  name: joomla-example
+  web_root: /var/www
+  path: "{{ project.web_root }}/{{ project.name }}"
+  log_path: "{{ project.web_root }}/logs"
+  user: joomlauser
+  group: joomlagroup

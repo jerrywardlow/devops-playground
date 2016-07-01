@@ -1,2 +1,4 @@
 web_packages:
   - nginx
+  - php5-fpm
+  - php5-pgsql

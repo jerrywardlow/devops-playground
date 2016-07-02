@@ -1,0 +1,14 @@
+{{ ansible_managed }}
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=off;
+
+    root {{ project.path }};
+    index index.php index.html;
+
+    server_name {{ project.name }};
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+}

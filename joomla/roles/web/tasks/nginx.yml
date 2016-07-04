@@ -4,3 +4,8 @@
   service:
     name: nginx
     state: started
+
+- name: Create {{ project.name }} server block
+  template:
+    src: joomla.conf.j2
+    dest: /etc/nginx/sites-enabled/

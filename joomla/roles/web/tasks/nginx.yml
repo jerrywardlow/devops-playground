@@ -9,3 +9,9 @@
   template:
     src: joomla.conf.j2
     dest: /etc/nginx/sites-enabled/
+
+- name: Enable {{ project.name }} server block
+  file:
+    src: /etc/nginx/sites-available/joomla.conf
+    dest: /etc/nginx/sites-enabled/joomla.conf
+    state: link

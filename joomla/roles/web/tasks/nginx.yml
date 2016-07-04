@@ -8,7 +8,7 @@
 - name: Create {{ project.name }} server block
   template:
     src: joomla.conf.j2
-    dest: /etc/nginx/sites-enabled/
+    dest: /etc/nginx/sites-available/
 
 - name: Enable {{ project.name }} server block
   file:

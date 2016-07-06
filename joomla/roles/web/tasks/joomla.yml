@@ -2,6 +2,6 @@
 
 - name: Download {{ project_name }} archive
   get_url:
-    url: "{{ project_location }}"
+    url: "{{ project_download }}"
     dest: "{{ project_web_root }}/tmp"
     mode: 0755

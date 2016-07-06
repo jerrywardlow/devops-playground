@@ -4,10 +4,10 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=off;
 
-    root {{ project.path }};
+    root {{ project_path }};
     index index.php index.html;
 
-    server_name {{ project.name }};
+    server_name {{ project_name }};
 
     location / {
         try_files $uri $uri/ /index.php?$args;

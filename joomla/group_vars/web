@@ -3,11 +3,10 @@ web_packages:
   - php5-fpm
   - php5-pgsql
 
-project:
-  name: joomla-example
-  web_root: /var/www
-  path: "{{ project.web_root }}/{{ project.name }}"
-  log_path: "{{ project.web_root }}/logs"
-  user: joomlauser
-  group: joomlagroup
-  download: "https://github.com/joomla/joomla-cms/releases/download/3.5.1/Joomla_3.5.1-Stable-Full_Package.tar.gz"
+project_name: joomla-example
+project_web_root: /var/www
+project_path: "{{ project_web_root }}/{{ project_name }}"
+project_log_path: "{{ project_web_root }}/logs"
+project_user: joomlauser
+project_group: joomlagroup
+project_download: "https://github.com/joomla/joomla-cms/releases/download/3.5.1/Joomla_3.5.1-Stable-Full_Package.tar.gz"

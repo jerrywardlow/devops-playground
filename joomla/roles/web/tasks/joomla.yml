@@ -1,5 +1,10 @@
 ---
 
+- name: Check that project directory exists
+  file:
+    path: "{{ project_path }}"
+    state: directory
+
 - name: Download {{ project_name }} archive
   get_url:
     url: "{{ project_download }}"

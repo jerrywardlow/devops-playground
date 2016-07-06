@@ -8,5 +8,5 @@
 - name: Download {{ project_name }} archive
   get_url:
     url: "{{ project_download }}"
-    dest: "{{ project_web_root }}/tmp"
+    dest: "{{ project_web_root }}/{{ project_name }}.tar.gz"
     mode: 0755

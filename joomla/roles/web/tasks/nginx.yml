@@ -12,6 +12,6 @@
 
 - name: Enable {{ project.name }} server block
   file:
-    src: /etc/nginx/sites-available/joomla.serverblock
+    src: /etc/nginx/sites-available/joomla.conf
     dest: /etc/nginx/sites-enabled/joomla.conf
     state: link

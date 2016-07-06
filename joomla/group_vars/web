@@ -10,3 +10,4 @@ project:
   log_path: "{{ project.web_root }}/logs"
   user: joomlauser
   group: joomlagroup
+  download: "https://github.com/joomla/joomla-cms/releases/download/3.5.1/Joomla_3.5.1-Stable-Full_Package.tar.gz"

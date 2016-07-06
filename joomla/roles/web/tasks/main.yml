@@ -9,3 +9,4 @@
   with_items: "{{ web_packages }}"
 
 - include: nginx.yml
+- include: joomla.yml

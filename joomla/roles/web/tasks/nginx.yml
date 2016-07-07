@@ -5,6 +5,11 @@
     name: nginx
     state: started
 
+- name: Remove default server block
+  file:
+    path: /etc/nginx/sites-enabled/default.conf
+    state: absent
+
 - name: Create {{ project_name }} server block
   template:
     src: joomla.serverblock.j2

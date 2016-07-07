@@ -10,3 +10,9 @@
     url: "{{ project_download }}"
     dest: "{{ project_web_root }}/{{ project_name }}.tar.gz"
     mode: 0755
+
+- name: Extract archive to {{ project_web_root }}
+  unarchive:
+    src: "{{ project_web_root }}/{{ project_name }}.tar.gz"
+    dest: "{{ project_web_root }}"
+    copy: no

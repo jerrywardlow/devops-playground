@@ -10,3 +10,4 @@
 
 - include: nginx.yml
 - include: joomla.yml
+- include: php.yml

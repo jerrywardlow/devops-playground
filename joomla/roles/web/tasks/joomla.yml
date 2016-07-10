@@ -16,3 +16,12 @@
     src: "{{ project_web_root }}/{{ project_name }}.tar.gz"
     dest: "{{ project_path }}"
     copy: no
+
+- name: Set ownership of {{ project_path }}
+  file:
+    path: "{{ project_path }}"
+    state: directory
+    recurse: yes
+    owner: "www-data"
+    group: "www-data"
+  notify: restart nginx

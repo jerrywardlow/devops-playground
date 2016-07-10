@@ -9,14 +9,17 @@
   file:
     path: /etc/nginx/sites-enabled/default.conf
     state: absent
+  notify: restart nginx
 
 - name: Create {{ project_name }} server block
   template:
     src: joomla.serverblock.j2
     dest: /etc/nginx/sites-available/joomla.conf
+  notify: restart nginx
 
 - name: Enable {{ project_name }} server block
   file:
     src: /etc/nginx/sites-available/joomla.conf
     dest: /etc/nginx/sites-enabled/joomla.conf
     state: link
+  notify: restart nginx

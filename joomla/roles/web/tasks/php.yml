@@ -6,4 +6,6 @@
     regexp: "^cgi.fix_pathinfo="
     line: "cgi.fix_pathinfo=0"
     state: present
-  notify: restart php
+  notify:
+    - restart php
+    - restart nginx

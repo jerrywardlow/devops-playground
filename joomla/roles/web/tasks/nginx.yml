@@ -26,6 +26,6 @@
 
 - name: Disable default NGINX site
   file:
-    src: /etc/nginx/sites-available/default
+    path: /etc/nginx/sites-available/default
     state: absent
   notify: restart nginx

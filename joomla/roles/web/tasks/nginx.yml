@@ -23,3 +23,9 @@
     dest: /etc/nginx/sites-enabled/joomla.conf
     state: link
   notify: restart nginx
+
+- name: Disable default NGINX site
+  file:
+    src: /etc/nginx/sites-available/default
+    state: absent
+  notify: restart nginx

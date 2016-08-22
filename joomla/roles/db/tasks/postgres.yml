@@ -18,9 +18,9 @@
     update_cache: yes
     cache_valid_time: 3600
   with_items:
-    - postgresql-9.4
-    - postgresql-client-9.4
-    - postgresql-contrib-9.4
+    - postgresql-{{ pg_version }}
+    - postgresql-client-{{ pg_version }}
+    - postgresql-contrib-{{ pg_version }}
     - python-psycopg2
 
 - name: Ensure PostgreSQL service is up

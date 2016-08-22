@@ -28,3 +28,18 @@
     name: postgresql
     state: started
     enabled: yes
+
+- name: Allow remote connections to PostgreSQL from app server
+  lineinfile:
+    dest: /etc/postgresql/{{ pg_version }}/main/pg_hba.conf
+    line: "host all all {{ item }}/32 password"
+    state: present
+  with_items: "{{ hostvars[groups['web'][0]]['ansible_host'] }}"
+  notify: restart postgresql
+
+- name: PostgreSQL listen addresses
+  lineinfile:
+    dest: /etc/postgresql/{{ pg_version }}/main/postgresql.conf
+    line: "listen_addresses='{{ ansible_host }}'"
+    state: present
+  notify: restart postgresql

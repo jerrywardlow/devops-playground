@@ -7,12 +7,12 @@ variable "access_key" {
 variable "secret_key" {
     description = "AWS secret access key"
 }
+*/
 
 variable "region" {
     description = "AWS region"
     default     = "us-west-2"
 }
-*/
 
 variable "vpc_cidr" {
     description = "/16 CIDR for VPC"

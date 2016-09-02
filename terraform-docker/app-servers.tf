@@ -12,3 +12,17 @@ resource "aws_instance" "app" {
         Name = "airpair-example-app-${count.index}"
     }
 }
+
+# Load balancer
+resource "aws_elb" "app" {
+    name = "airpair-example-elb"
+    subnets = ["${aws_subnet.public.id}"]
+    security_groups = ["${aws_security_group.default.id}", "${aws_security_group.web.id}"]
+    listener {
+        instance_port = 80
+        instance_protocol = "http"
+        lb_port = 80
+        lb_protocol = "http"
+    }
+    instances = ["${aws_instance.app.*.id}"]
+}

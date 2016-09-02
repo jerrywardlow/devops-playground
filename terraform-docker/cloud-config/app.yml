@@ -1,0 +1,8 @@
+#cloud-config
+# Config for application servers
+
+runcmd:
+  # Install docker
+  - curl -sSL https://get.docker.com/ | sudo sh
+  # Run NGINX container
+  - docker run -d -p 80:80 nginx

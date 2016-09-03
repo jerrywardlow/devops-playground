@@ -1,0 +1,5 @@
+.gitattributes
+*.tfstate*
+ssh/*
+*.swp
+*.ovpn

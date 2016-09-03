@@ -3,7 +3,7 @@ output "app.0.ip" {
 }
 
 output "app.1.ip" {
-    value = "${aws_instance.app.0.private_ip}"
+    value = "${aws_instance.app.1.private_ip}"
 }
 
 output "nat.ip" {

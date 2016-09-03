@@ -7,7 +7,7 @@ resource "aws_instance" "nat" {
     key_name = "${aws_key_pair.deployer.key_name}"
     source_dest_check = false
     tags = {
-        Names = "nat"
+        Name = "nat"
     }
     connection {
         user = "ubuntu"

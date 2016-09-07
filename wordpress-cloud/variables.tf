@@ -4,6 +4,6 @@ variable "region" {
 }
 
 variable "ubuntu-ami" {
-    description = "Ubuntu AMI for us-west-2"
-    default = "ami-9ece19fe"
+    description = "Ubuntu 14.04 AMI for us-west-2"
+    default = "ami-d732f0b7"
 }

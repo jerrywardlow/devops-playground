@@ -80,3 +80,28 @@ resource "aws_security_group" "web_production" {
         Name = "wordpress-web-production"
     }
 }
+
+# Redis security group
+resource "aws_security_group" "redis" {
+    name = "wordpress-redis"
+    description = "Security group allowing port 6379 from web_staging and web_production"
+    vpc_id = "${aws_vpc.default.id}"
+
+    ingress {
+        from_port = 6379
+        to_port = 6379
+        protocol = "tcp"
+        security_groups = ["${aws_security_group.web_staging.id}", "${aws_security_group.web_production.id}"]
+    }
+
+    egress {
+        from_port = 6379
+        to_port = 6379
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    tags {
+        Name = "wordpress-redis"
+    }
+}

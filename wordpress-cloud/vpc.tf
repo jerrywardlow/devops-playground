@@ -1,10 +1,10 @@
 provider "aws" {
-    region = "us-west-2"
+    region = "${var.region}"
 }
 
 resource "aws_vpc" "default" {
     cidr_block = "10.10.0.0/16"
-    enable_dns_hostname = true
+    enable_dns_hostnames = true
     tags {
         Name = "wordpress-cloud"
     }

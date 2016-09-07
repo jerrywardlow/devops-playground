@@ -55,3 +55,28 @@ resource "aws_security_group" "web_staging" {
         Name = "wordpress-web-staging"
     }
 }
+
+# Web production security group
+resource "aws_security_group" "web_production" {
+    name = "wordpress-web-production"
+    description = "Security group allowing port 80 from ELB"
+    vpc_id = "${aws_vpc.default.id}"
+
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol  = "tcp"
+        security_groups = ["${aws_security_group.elb.id}"]
+    }
+
+    egress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"] # Could be limited to ELB group
+    }
+
+    tags {
+        Name = "wordpress-web-production"
+    }
+}

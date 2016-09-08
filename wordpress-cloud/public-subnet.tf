@@ -23,3 +23,9 @@ resource "aws_route_table" "public" {
         gateway_id = "${aws_internet_gateway.default.id}"
     }
 }
+
+# Associate routing table with public subnet
+resource "aws_route_table_association" "public" {
+    subnet_id = "${aws_subnet.public.id}"
+    route_table_id = "${aws_route_table.public.id}"
+}

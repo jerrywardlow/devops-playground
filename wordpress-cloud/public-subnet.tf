@@ -4,7 +4,7 @@ resource "aws_internet_gateway" "default" {
 }
 
 # Public subnet
-resource "aws_subnet" "default" {
+resource "aws_subnet" "public" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "10.10.0.0/24"
     availability_zone = "us-west-2a"

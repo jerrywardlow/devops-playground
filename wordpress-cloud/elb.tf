@@ -1,7 +1,7 @@
 # Load balancer
 resource "aws_elb" "app" {
     name = "wordpress-elb"
-    subnets = ["${aws_subnet.default.id}"]
+    subnets = ["${aws_subnet.public.id}"]
     security_groups = ["${aws_security_group.elb.id}"]
     listener {
         instance_port = 80

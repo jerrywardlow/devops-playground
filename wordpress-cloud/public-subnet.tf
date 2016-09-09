@@ -11,7 +11,7 @@ resource "aws_subnet" "public" {
     map_public_ip_on_launch = true
     depends_on = ["aws_internet_gateway.default"]
     tags {
-        Name = "default"
+        Name = "public"
     }
 }
 

@@ -1,7 +1,7 @@
 # Private subnet
 resource "aws_subnet" "private" {
     vpc_id = "${aws_vpc.default.id}"
-    cidr_block = "10.10.9.0/24"
+    cidr_block = "${var.private_subnet_cidr}"
     availability_zone = "us-west-2a"
     map_public_ip_on_launch = false
     tags {
@@ -15,7 +15,7 @@ resource "aws_route_table" "private" {
     route {
         cidr_block = "0.0.0.0/0"
         # nat_gateway_id = "${aws_nat_gateway.nat.id}" # Use with nat-gateway.tf.optional
-        instance_id = "${aws_instance.nat.id}"        
+        instance_id = "${aws_instance.nat.id}"
     }
 }
 

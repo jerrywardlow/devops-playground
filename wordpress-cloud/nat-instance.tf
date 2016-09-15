@@ -14,3 +14,9 @@ resource "aws_instance" "nat" {
         Name = "wordpress-nat"
     }
 }
+
+# Associate EIP with NAT
+resource "aws_eip_association" "eip_assoc" {
+    instance_id = "${aws_instance.nat.id}"
+    allocation_id = "${aws_eip.nat.id}"
+}

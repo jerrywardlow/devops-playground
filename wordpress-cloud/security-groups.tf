@@ -23,6 +23,40 @@ resource "aws_security_group" "elb" {
     }
 }
 
+# NAT instance security group
+resource "aws_security_group" "nat" {
+    name = "wordpress-nat"
+    description = "Security group for NAT instance"
+    vpc_id = "${aws_vpc.default.id}"
+
+    ingress {
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["10.10.9.0/24"] # Private subnet CIDR
+    }
+
+    ingress {
+        from_port = 443
+        to_port = 443
+        protocol = "tcp"
+        cidr_blocks = ["10.10.9.0/24"] # Private subnet CIDR
+    }
+
+    egress {
+        from_port = 0
+        to_port = 0
+        protocol = -1
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+}
 
 # Web staging secuity group
 resource "aws_security_group" "web_staging" {

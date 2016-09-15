@@ -12,3 +12,13 @@ variable "nat-ami" {
     description = "Amazon Linux AMI VPC NAT x86_64 HVM GP2"
     default = "ami-69ae8259"
 }
+
+variable "public_subnet_cidr" {
+    description = "CIDR block for public subnet"
+    default = "10.10.0.0/24"
+}
+
+variable "private_subnet_cidr" {
+    description = "CIDR block for public subnet"
+    default = "10.10.9.0/24"
+}

@@ -9,6 +9,7 @@ resource "aws_instance" "nat" {
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.public.id}"
     security_groups = ["${aws_security_group.nat.id}"]
+    source_dest_check = false
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
         Name = "wordpress-nat"

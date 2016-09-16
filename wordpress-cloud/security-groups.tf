@@ -111,7 +111,10 @@ resource "aws_security_group" "web_production" {
         from_port = 0
         to_port = 0
         protocol = -1
-        security_groups = ["${aws_security_group.elb.id}"]
+        security_groups = ["${aws_security_group.elb.id}",
+                           "${aws_security_group.nat.id}",
+                           "${aws_security_group.redis.id}",
+                           "${aws_security_group.mysql.id}"]
     }
 
     tags {

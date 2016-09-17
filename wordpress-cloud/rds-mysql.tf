@@ -4,4 +4,7 @@ resource "aws_db_instance" "mysql" {
     allocated_storage = 5
     storage_type = "gp2"
     engine = "mysql"
+    name = "wordpressdb"
+    username = "dbuser"
+    password = "dbpassword"
 }

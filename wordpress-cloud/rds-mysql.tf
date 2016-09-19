@@ -4,7 +4,10 @@ resource "aws_db_instance" "mysql" {
     allocated_storage = 5
     storage_type = "gp2"
     engine = "mysql"
+
     name = "wordpressdb"
     username = "dbuser"
     password = "dbpassword"
+
+    vpc_security_group_ids = ["${aws_security_group.mysql.id}"]
 }

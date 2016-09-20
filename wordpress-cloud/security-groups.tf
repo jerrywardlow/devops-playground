@@ -107,6 +107,14 @@ resource "aws_security_group" "web_production" {
         security_groups = ["${aws_security_group.elb.id}"]
     }
 
+    # Use NAT instance as SSH jump box:
+    ingress {
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        security_groups = ["${aws_security_group.nat.id}"]
+    }
+
     egress {
         from_port = 0
         to_port = 0

@@ -5,6 +5,7 @@ resource "aws_db_instance" "mysql" {
     allocated_storage = 5
     storage_type = "gp2"
     engine = "mysql"
+    multi_az = false
 
     name = "wordpressdb"
     username = "dbuser"
@@ -18,7 +19,7 @@ resource "aws_db_instance" "mysql" {
 resource "aws_db_subnet_group" "default" {
     name = "main"
     description = "Subnet group for RDS/MySQL - Zones 2b and 2c"
-    subnet_ids = ["${aws_subnet.rds1.id}", "${aws_subnet.rds1.id}"]
+    subnet_ids = ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}"]
     tags {
         Name = "wordpress-db-subnet-group"
     }

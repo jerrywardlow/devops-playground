@@ -8,3 +8,9 @@ resource "aws_elasticache_cluster" "redis" {
     parameter_group_name = "wordpress.redis2.8"
     security_group_ids = ["${aws_security_group.redis.id}"]
 }
+
+resource "aws_elasticache_subnet_group" "default" {
+    name = "wordpress-redis-subnet-group"
+    description = "Subnet group for ElastiCache/Redis - Zones 2b and 2c"
+    subnet_ids - ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}"]
+}

@@ -14,5 +14,5 @@ resource "aws_elasticache_cluster" "redis" {
 resource "aws_elasticache_subnet_group" "default" {
     name = "wordpress-redis-subnet-group"
     description = "Subnet group for ElastiCache/Redis - Zones 2b and 2c"
-    subnet_ids - ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}"]
+    subnet_ids = ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}"]
 }

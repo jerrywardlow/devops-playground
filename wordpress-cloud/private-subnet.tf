@@ -12,7 +12,7 @@ resource "aws_subnet" "private" {
 # RDS private subnet 1
 resource "aws_subnet" "rds1" {
     vpc_id = "${aws_vpc.default.id}"
-    cidr_block = "10.10.20.0/24"
+    cidr_block = "${var.rds1_subnet_cidr}"
     availability_zone = "us-west-2b"
     map_public_ip_on_launch = false
     tags {
@@ -23,7 +23,7 @@ resource "aws_subnet" "rds1" {
 # RDS private subnet 2
 resource "aws_subnet" "rds2" {
     vpc_id = "${aws_vpc.default.id}"
-    cidr_block = "10.10.30.0/24"
+    cidr_block = "${var.rds2_subnet_cidr}"
     availability_zone = "us-west-2c"
     map_public_ip_on_launch = false
     tags {

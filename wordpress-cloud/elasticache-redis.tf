@@ -6,4 +6,5 @@ resource "aws_elasticache_cluster" "redis" {
     port = 6379
     num_cache_nodes = 1
     parameter_group_name = "wordpress.redis2.8"
+    security_group_ids = ["${aws_security_group.redis.id}"]
 }

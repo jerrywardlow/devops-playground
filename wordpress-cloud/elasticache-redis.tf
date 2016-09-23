@@ -16,3 +16,9 @@ resource "aws_elasticache_subnet_group" "default" {
     description = "Subnet group for ElastiCache/Redis - Zones 2b and 2c"
     subnet_ids = ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}"]
 }
+
+# ElastiCache parameter group
+resource "aws_elasticache_parameter_group" "wordpress" {
+    name = "wordpress.redis2.8"
+    family = "redis2.8"
+}

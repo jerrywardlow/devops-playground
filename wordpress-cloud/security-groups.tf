@@ -78,7 +78,7 @@ resource "aws_security_group" "web_staging" {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"] # Eventually limit this
+        cidr_blocks = ["0.0.0.0/0"]
     }
 
     ingress {
@@ -143,7 +143,9 @@ resource "aws_security_group" "redis" {
         from_port = 6379
         to_port = 6379
         protocol = "tcp"
-        security_groups = ["${aws_security_group.web_staging.id}", "${aws_security_group.web_production.id}"]
+        security_groups = ["${aws_security_group.web_staging.id}",
+                           "${aws_security_group.web_production.id}"
+                          ]
     }
 
     egress {
@@ -168,7 +170,9 @@ resource "aws_security_group" "mysql" {
         from_port = 3306
         to_port = 3306
         protocol = "tcp"
-        security_groups = ["${aws_security_group.web_staging.id}", "${aws_security_group.web_production.id}"]
+        security_groups = ["${aws_security_group.web_staging.id}",
+                           "${aws_security_group.web_production.id}"
+                          ]
     }
 
     egress {

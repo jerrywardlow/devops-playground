@@ -1,6 +1,10 @@
 # Update apt cache
 sudo apt-get update
 
+# Set debconf for postfix
+echo "postfix postfix/mailname string test.wordpress.cloud" | debconf-set-selections
+echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+
 # Install packages
 sudo apt-get install apache2 \
                      php5 \

@@ -1,4 +1,7 @@
+# Update apt cache
 sudo apt-get update
+
+# Install packages
 sudo apt-get install apache2 \
                      php5 \
                      php5-cli \

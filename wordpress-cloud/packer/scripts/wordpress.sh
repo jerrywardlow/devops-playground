@@ -6,7 +6,8 @@ echo "postfix postfix/mailname string test.wordpress.cloud" | debconf-set-select
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 
 # Install packages
-sudo apt-get install apache2 \
+sudo apt-get install -y \
+                     apache2 \
                      php5 \
                      php5-cli \
                      php5-fpm \

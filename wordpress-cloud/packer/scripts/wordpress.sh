@@ -26,3 +26,9 @@ apt-get install -y \
                      php5-curl \
                      mailutils \
                      php5-json 
+
+# Enable mod_rewrite and mod_headers
+a2enmod rewrite headers
+
+# Enable mcrypt
+php5enmod mcrypt

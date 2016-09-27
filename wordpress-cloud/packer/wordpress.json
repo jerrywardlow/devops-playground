@@ -13,5 +13,15 @@
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
         "ami_name": "wordpress-cloud {{timestamp}}"
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "inline": ["sleep 30"]
+    },
+    {
+        "type": "shell",
+        "scripts": [
+            "scripts/wordpress.sh"
+        ]
     }]
 }

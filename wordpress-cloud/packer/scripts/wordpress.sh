@@ -1,12 +1,15 @@
+# Become root
+sudo su
+
 # Update apt cache
-sudo apt-get update
+apt-get update
 
 # Set debconf for postfix
 echo "postfix postfix/mailname string test.wordpress.cloud" | debconf-set-selections
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
 
 # Install packages
-sudo apt-get install -y \
+apt-get install -y \
                      apache2 \
                      php5 \
                      php5-cli \
@@ -22,4 +25,4 @@ sudo apt-get install -y \
                      postfix \
                      php5-curl \
                      mailutils \
-                     php5-json
+                     php5-json 

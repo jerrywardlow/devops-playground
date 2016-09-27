@@ -5,6 +5,10 @@
 
 The goal of this project is to use Terraform to deploy a scalable Wordpress cloud application across Amazon Web Services products. The core application servers are launched on EC2 t2.micro services, balanced behind Elastic Load Balancer. A NAT instance provides connectivity to these instances from their private subnet. Data is stored on a Relational Database Service MySQL instance and cached on ElastiCache/Redis. CloudFront is used as a content delivery network (CDN) and storage is facilitated with S3.
 
+### Wordpress AMI
+
+Packer is used in conjunction with Ansible to build an AMI for deployment to our web servers.
+
 ### Deployment
 
 Terraform, a HashiCorp product, is used as an Infrastructure as Code solution and allows for version control of the state of the architecture. Changes are tracked in a .tfstate file to accurately account for created resources. Incremental changes to the Terraform configuration can be easily tracked to see what has been updated and when. Disasters can be avoided; if a component is accidentally destroyed, Terraform brings us back to the desired state.

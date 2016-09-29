@@ -1,12 +1,12 @@
 # Update apt cache
-apt-get update
+sudo apt-get update
 
 # Set debconf for postfix
-echo "postfix postfix/mailname string test.wordpress.cloud" | debconf-set-selections
-echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
+echo "postfix postfix/mailname string test.wordpress.cloud" | sudo debconf-set-selections
+echo "postfix postfix/main_mailer_type string 'Internet Site'" | sudo debconf-set-selections
 
 # Install packages
-apt-get install -y \
+sudo apt-get install -y \
                      apache2 \
                      php5 \
                      php5-cli \
@@ -25,7 +25,7 @@ apt-get install -y \
                      php5-json 
 
 # Enable mod_rewrite and mod_headers
-a2enmod rewrite headers
+sudo a2enmod rewrite headers
 
 # Enable mcrypt
-php5enmod mcrypt
+sudo php5enmod mcrypt

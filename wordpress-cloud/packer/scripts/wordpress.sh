@@ -34,6 +34,10 @@ sudo php5enmod mcrypt
 sudo a2dissite 000-default.conf
 sudo rm -rf /var/www/html
 
+# Install Wordpress
+wget https://wordpress.org/latest.tar.gz
+sudo tar -xzvf latest.tar.gz -C /var/www/
+
 # Enable Wordpress virtual host
-sudo mv /tmp/wordpress.conf /etc/apache2/sites-avilable/wordpress.conf
+sudo mv /tmp/wordpress.conf /etc/apache2/sites-available/wordpress.conf
 sudo a2ensite wordpress.conf

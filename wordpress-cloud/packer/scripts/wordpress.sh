@@ -38,6 +38,16 @@ sudo rm -rf /var/www/html
 wget https://wordpress.org/latest.tar.gz
 sudo tar -xzvf latest.tar.gz -C /var/www/
 
+# Install Wordpress CLI tool
+sudo curl -o /usr/local/bin/wpcli https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+sudo chmod+x /usr/local/bin/wpcli
+
+# Install Wordpress plugins
+sudo wpcli plugin install --allow-root --path=/var/www/wordpress/ --activate \
+                          amazon-web-services \
+                          amazon-s3-and-cloudfront \
+                          redis-cache
+
 # Enable Wordpress virtual host
 sudo mv /tmp/wordpress.conf /etc/apache2/sites-available/wordpress.conf
 sudo a2ensite wordpress.conf

@@ -16,12 +16,12 @@
     }],
     "provisioners": [{
         "type": "shell",
-        "inline": ["sleep 30"]
+        "inline": ["sleep 10"]
     },
     {
         "type": "file",
         "source": "scripts/wordpress.conf",
-        "destination": "/etc/apache2/sites-available/wordpress.conf"
+        "destination": "/tmp/wordpress.conf"
 
     },
     {

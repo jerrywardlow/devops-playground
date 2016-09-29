@@ -29,3 +29,7 @@ sudo a2enmod rewrite headers
 
 # Enable mcrypt
 sudo php5enmod mcrypt
+
+# Disable default Apache site
+sudo a2dissite 000-default.conf
+sudo rm -rf /var/www/html

@@ -41,3 +41,6 @@ sudo tar -xzvf latest.tar.gz -C /var/www/
 # Enable Wordpress virtual host
 sudo mv /tmp/wordpress.conf /etc/apache2/sites-available/wordpress.conf
 sudo a2ensite wordpress.conf
+
+# Restart Apache
+sudo service apache2 reload

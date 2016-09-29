@@ -33,3 +33,7 @@ sudo php5enmod mcrypt
 # Disable default Apache site
 sudo a2dissite 000-default.conf
 sudo rm -rf /var/www/html
+
+# Enable Wordpress virtual host
+sudo mv /tmp/wordpress.conf /etc/apache2/sites-avilable/wordpress.conf
+sudo a2ensite wordpress.conf

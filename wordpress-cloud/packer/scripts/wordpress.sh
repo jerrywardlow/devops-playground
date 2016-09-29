@@ -1,6 +1,3 @@
-# Become root
-sudo su
-
 # Update apt cache
 apt-get update
 

@@ -19,6 +19,12 @@
         "inline": ["sleep 30"]
     },
     {
+        "type": "file",
+        "source": "scripts/wordpress.conf",
+        "destination": "/etc/apache2/sites-available/wordpress.conf"
+
+    },
+    {
         "type": "shell",
         "scripts": [
             "scripts/wordpress.sh"

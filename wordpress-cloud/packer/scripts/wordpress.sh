@@ -37,10 +37,12 @@ sudo rm -rf /var/www/html
 # Install Wordpress
 wget https://wordpress.org/latest.tar.gz
 sudo tar -xzvf latest.tar.gz -C /var/www/
+sudo chmod -R 744 /var/www/wordpress/
+sudo chown -R www-data:www-data /var/www/wordpress/
 
 # Install Wordpress CLI tool
 sudo curl -o /usr/local/bin/wpcli https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-sudo chmod+x /usr/local/bin/wpcli
+sudo chmod +x /usr/local/bin/wpcli
 
 # Install Wordpress plugins
 sudo wpcli plugin install --allow-root --path=/var/www/wordpress/ --activate \

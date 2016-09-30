@@ -25,6 +25,11 @@
 
     },
     {
+        "type": "file",
+        "source": "scripts/wp-config.php",
+        "destination": "/tmp/wp-config.php"
+    },
+    {
         "type": "shell",
         "scripts": [
             "scripts/wordpress.sh"

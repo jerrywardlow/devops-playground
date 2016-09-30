@@ -39,6 +39,7 @@ wget https://wordpress.org/latest.tar.gz
 sudo tar -xzvf latest.tar.gz -C /var/www/
 sudo chmod -R 744 /var/www/wordpress/
 sudo chown -R www-data:www-data /var/www/wordpress/
+sudo mv /tmp/wp-config.php /var/www/wordpress/wp-config.php
 
 # Install Wordpress CLI tool
 sudo curl -o /usr/local/bin/wpcli https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar

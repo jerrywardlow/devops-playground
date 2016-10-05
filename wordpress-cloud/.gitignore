@@ -1,0 +1,4 @@
+TODO.txt
+*.tfstate*
+terraform/ssh/wordpress-key*
+*.swp

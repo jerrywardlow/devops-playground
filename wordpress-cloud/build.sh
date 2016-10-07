@@ -6,7 +6,11 @@
 # Terraform is run with this AMI ID as an agrument against a variable
 
 # Generate UUID
-UUID=$(uuid -v4)
+if hash uuid 2>/dev/null; then
+    UUID=$(uuid -v4)
+else
+    UUID=$(date +"%Y%m%d%H%M%S")
+fi
 
 # Pass UUID to Packer when building image, overriding `packer_uuid` variable
 (cd packer/ && exec packer build -var packer_uuid=${UUID} wordpress.json)

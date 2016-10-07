@@ -18,8 +18,13 @@ fi
 # Query AWS for image with same UUID tag
 AMI_ID=$(aws ec2 describe-images --filters Name=tag:packer_uuid,Values=${UUID} --output text --query 'Images[0].ImageId')
 
-# Log generated AMI
+# Log generated AMI, including failure to query
 echo $(date) ${AMI_ID} >> ami_log
+
+# Ditch out if there was a problem querying for the AMI
+if [ "$AMI_ID" == "None" ]; then
+    exit 1
+fi
 
 # Run Terraform with new AMI ID
 (cd terraform/ && exec terraform apply -var ubuntu-ami=${AMI_ID})

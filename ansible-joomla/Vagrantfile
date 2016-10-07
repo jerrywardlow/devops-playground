@@ -5,10 +5,10 @@ ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
 
 nodes = [
   { hostname:  "web",
-    ip:        "172.22.22.180"
+    ip:        "192.168.56..180"
   },
   { hostname:  "db",
-    ip:        "172.22.22.181"
+    ip:        "192.168.56..181"
   }
 ]
 

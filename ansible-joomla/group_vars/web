@@ -9,4 +9,4 @@ project_path: "{{ project_web_root }}/{{ project_name }}"
 project_log_path: "{{ project_web_root }}/logs"
 project_user: joomlauser
 project_group: joomlagroup
-project_download: "https://github.com/joomla/joomla-cms/releases/download/3.5.1/Joomla_3.5.1-Stable-Full_Package.tar.gz"
+project_download: "https://github.com/joomla/joomla-cms/releases/download/3.6.2/Joomla_3.6.2-Stable-Full_Package.tar.gz"

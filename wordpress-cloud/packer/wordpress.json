@@ -1,7 +1,8 @@
 {
     "variables" : {
         "aws_access_key" : "{{env `AWS_ACCESS_KEY_ID`}}",
-        "aws_Secret_key" : "{{env `AWS_SECRET_ACCESS_KEY`}}"
+        "aws_Secret_key" : "{{env `AWS_SECRET_ACCESS_KEY`}}",
+        "packer_uuid" : "default"
     },
     "builders": [{
         "name": "aws",
@@ -12,7 +13,10 @@
         "source_ami": "ami-d732f0b7",
         "instance_type": "t2.micro",
         "ssh_username": "ubuntu",
-        "ami_name": "wordpress-{{timestamp}}"
+        "ami_name": "wordpress-{{timestamp}}",
+        "tags": {
+            "packer_uuid" : "{{user `packer_uuid`}}"
+        }
     }],
     "provisioners": [{
         "type": "shell",

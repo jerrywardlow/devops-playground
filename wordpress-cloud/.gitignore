@@ -2,3 +2,4 @@ TODO.txt
 *.tfstate*
 terraform/ssh/wordpress-key*
 *.swp
+ami_log

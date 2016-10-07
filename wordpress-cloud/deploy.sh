@@ -5,7 +5,7 @@
 # AWS is queried for this tag, returning the AMI ID
 # Terraform is run with this AMI ID as an agrument against a variable
 
-# Generate UUID
+# Generate UUID. Uses timestamp if uuid is unavailable.
 if hash uuid 2>/dev/null; then
     UUID=$(uuid -v4)
 else

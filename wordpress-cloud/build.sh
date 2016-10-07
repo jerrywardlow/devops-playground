@@ -9,7 +9,7 @@
 UUID=$(uuid -v4)
 
 # Pass UUID to Packer when building image, overriding `packer_uuid` variable
-(cd packer/ && exec packer build wordpress.json -var packer_uuid=${UUID})
+(cd packer/ && exec packer build -var packer_uuid=${UUID} wordpress.json)
 
 # Query AWS for image with same UUID tag
 AMI_ID=$(aws ec2 describe-images --filters Name=tag:packer_uuid,Values=${UUID} --output text --query 'Images[0].ImageId')

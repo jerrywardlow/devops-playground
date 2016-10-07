@@ -9,10 +9,10 @@
 UUID=$(uuid -v4)
 
 # Pass UUID to Packer when building image, overriding `packer_uuid` variable
-packer build wordpress.json -var packer_uuid=${UUID}
+(cd packer/ && exec packer build wordpress.json -var packer_uuid=${UUID})
 
 # Query AWS for image with same UUID tag
 AMI_ID=$(aws ec2 describe-images --filters Name=tag:packer_uuid,Values=${UUID} --output text --query 'Images[0].ImageId')
 
 # Run Terraform with new AMI ID
-terraform apply -var ubuntu-ami=${AMI_ID}
+(cd terraform/ && exec terraform apply -var ubuntu-ami=${AMI_ID})

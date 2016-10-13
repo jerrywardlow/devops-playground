@@ -7,7 +7,7 @@ The goal of this project is to use Terraform to deploy a scalable Wordpress clou
 
 ### Wordpress AMI
 
-Packer is used in conjunction with Ansible to build an AMI for deployment to our web servers.
+Packer is used in conjunction with shell scripting to build an AMI for deployment to our web servers.
 
 ### Deployment
 

@@ -1,3 +1,12 @@
+##########################################
+#              OPTIONAL!                 #
+# Defines three private subnets in the   #
+# default VPC. This file is reliant on   #
+# hypothetical variables to define the   #
+# CIDR block for each subnet:            #
+# variable "private_{a,b,c}_subnet_cidr" #
+##########################################
+
 # Private subnet
 resource "aws_subnet" "private-a" {
     vpc_id = "${aws_vpc.default.id}"

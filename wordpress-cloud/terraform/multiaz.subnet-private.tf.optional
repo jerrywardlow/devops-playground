@@ -7,7 +7,7 @@
 # variable "private_{a,b,c}_subnet_cidr" #
 ##########################################
 
-# Private subnet
+# Private subnet A
 resource "aws_subnet" "private-a" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "${var.private_a_subnet_cidr}"
@@ -18,7 +18,7 @@ resource "aws_subnet" "private-a" {
     }
 }
 
-# RDS private subnet 1
+# Private subnet B
 resource "aws_subnet" "private-b" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "${var.private_b_subnet_cidr}"
@@ -29,7 +29,7 @@ resource "aws_subnet" "private-b" {
     }
 }
 
-# RDS private subnet 2
+# Private subnet C
 resource "aws_subnet" "private-c" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "${var.private_c_subnet_cidr}"

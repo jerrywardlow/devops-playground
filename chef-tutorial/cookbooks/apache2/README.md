@@ -1,4 +1,4 @@
-# apache2
+### Apache2
 
-TODO: Enter the cookbook description here.
+Generated cookbook
 

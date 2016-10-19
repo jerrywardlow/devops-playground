@@ -3,3 +3,6 @@ TODO.txt
 terraform/ssh/wordpress-key*
 *.swp
 ami_log
+
+# Ansible
+ansible/cache/*

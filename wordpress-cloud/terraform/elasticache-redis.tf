@@ -20,5 +20,5 @@ resource "aws_elasticache_subnet_group" "default" {
 # ElastiCache parameter group
 resource "aws_elasticache_parameter_group" "wordpress" {
     name = "wordpress-redis"
-    family = "redis2.8"
+    family = "redis3.2"
 }

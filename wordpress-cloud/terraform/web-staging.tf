@@ -7,5 +7,6 @@ resource "aws_instance" "web-staging" {
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
         Name = "wordpress-web-staging"
+        Group = "staging"        
     }
 }

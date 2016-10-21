@@ -8,5 +8,6 @@ resource "aws_instance" "web-production" {
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
         Name = "wordpress-web-production-${count.index}"
+        Group = "production"
     }
 }

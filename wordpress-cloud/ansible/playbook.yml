@@ -1,4 +1,3 @@
 ---
 
 - hosts: tag_group_production
-  remote_user: ubuntu

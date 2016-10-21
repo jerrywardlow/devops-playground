@@ -6,7 +6,7 @@ resource "aws_instance" "web-staging" {
     vpc_security_group_ids = ["${aws_security_group.web_staging.id}"]
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
-        Name = "wordpress-web-staging"
-        Group = "staging"        
+        name = "wordpress-web-staging"
+        group = "staging"        
     }
 }

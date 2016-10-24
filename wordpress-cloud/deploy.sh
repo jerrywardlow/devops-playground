@@ -28,3 +28,6 @@ fi
 
 # Run Terraform with new AMI ID
 (cd terraform/ && exec terraform apply -var ubuntu-ami=${AMI_ID})
+
+# Query AWS for RDS endpoint
+RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier wordpress-mysql --output text --query 'DBInstances[0].Endpoint.Address')

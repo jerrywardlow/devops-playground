@@ -1,4 +1,5 @@
 from chalice import Chalice, BadRequestError, NotFoundError
+import urlparse
 
 app = Chalice(app_name='hellochalice')
 app.debug = True
@@ -40,3 +41,8 @@ def myobject(key):
 @app.route('/introspect')
 def introspect():
     return app.current_request.to_dict()
+
+@app.route('/content', methods=['POST'], content_types=['application/x-www-form-urlencoded'])
+def content():
+    parsed = urlparse.parse_qs(app.current_request.raw_body)
+    return { 'states': parsed.get('states', []) }

@@ -1,4 +1,4 @@
-from chalice import Chalice, BadRequestError
+from chalice import Chalice, BadRequestError, NotFoundError
 
 app = Chalice(app_name='hellochalice')
 app.debug = True
@@ -8,6 +8,8 @@ CITIES_TO_STATE = {
         'portland': 'OR',
         }
 
+OBJECTS = {}
+ 
 @app.route('/')
 def index():
     return {'hello': 'world'}
@@ -23,3 +25,14 @@ def state_of_city(city):
 @app.route('/resource/{value}', methods=['PUT'])
 def put_test(value):
     return {"value": value}
+
+@app.route('/objects/{key}', methods=['GET', 'PUT'])
+def myobject(key):
+    request = app.current_request
+    if request.method == 'PUT':
+        OBJECTS[key] = request.json_body
+    elif request.method == 'GET':
+        try:
+            return {key: OBJECTS[key]}
+        except KeyError:
+            raise NotFoundError(key)

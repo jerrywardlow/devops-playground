@@ -1,6 +1,7 @@
 from chalice import Chalice
 
 app = Chalice(app_name='hellochalice')
+app.debug = True
 
 CITIES_TO_STATE = {
         'seattle': 'WA',

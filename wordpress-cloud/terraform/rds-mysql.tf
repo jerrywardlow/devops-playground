@@ -13,10 +13,6 @@ resource "aws_db_instance" "mysql" {
 
     vpc_security_group_ids = ["${aws_security_group.mysql.id}"]
     db_subnet_group_name = "${aws_db_subnet_group.default.name}"
-
-    tags {
-        uuid = "${var.rds_uuid_tag}"
-    }
 }
 
 # RDS subnet group

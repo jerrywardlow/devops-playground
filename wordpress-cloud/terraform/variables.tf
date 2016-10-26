@@ -32,8 +32,3 @@ variable "rds2_subnet_cidr" {
     description = "CIDR block for RDS2 subnet"
     default = "10.10.30.0/24"
 }
-
-variable "rds_uuid_tag" {
-    description = "UUID tag for RDS endpoint search"
-    default = "none"
-}

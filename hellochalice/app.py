@@ -46,3 +46,7 @@ def introspect():
 def content():
     parsed = urlparse.parse_qs(app.current_request.raw_body)
     return { 'states': parsed.get('states', []) }
+
+@app.route('/supports-cors', methods=['PUT'], cors=True)
+def supports_cors():
+    return {'cors': 'true'}

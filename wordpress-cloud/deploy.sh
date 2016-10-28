@@ -34,3 +34,11 @@ fi
 
 # Query AWS for RDS endpoint
 RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier wordpress-mysql --output text --query 'DBInstances[0].Endpoint.Address')
+
+# Query AWS for jump box IP
+
+# Generate SSH forwarding config file
+
+# Check that SSH Agent has key loaded
+
+# Execute Ansible playbook on jump box against production instances

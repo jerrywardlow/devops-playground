@@ -13,6 +13,11 @@ variable "nat-ami" {
     default = "ami-69ae8259"
 }
 
+variable "jump-ami" {
+    description = "AMI for SSH bastion"
+    default = "ami-d732f0b7"
+}
+
 variable "public_subnet_cidr" {
     description = "CIDR block for public subnet"
     default = "10.10.0.0/24"

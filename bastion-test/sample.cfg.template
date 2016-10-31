@@ -2,7 +2,7 @@ Host bastion
     User                    ubuntu
     HostName                HOST_NAME
     ProxyCommand            none
-    IdentityFile           ~/.ssh/id_rsa
+    IdentityFile            ~/.ssh/id_rsa
     BatchMode               yes
     PasswordAuthentication  no
     StrictHostKeyChecking   no
@@ -12,7 +12,7 @@ Host *
     TCPKeepAlive            yes
     ProxyCommand            ssh -q -A ubuntu@HOST_NAME nc %h %p
     ControlMaster           auto
-    ControlPath             ~/.ssh/mux-%r@%h:%p
-    ControlPersist          10m
+    ControlPath             ./mux-%r@%h:%p
+    ControlPersist          5m
     User                    ubuntu
     IdentityFile            ~/.ssh/id_rsa

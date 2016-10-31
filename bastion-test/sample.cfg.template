@@ -13,6 +13,6 @@ Host *
     ProxyCommand            ssh -q -A ubuntu@HOST_NAME nc %h %p
     ControlMaster           auto
     ControlPath             ~/.ssh/mux-%r@%h:%p
-    ControlPersist          8h
+    ControlPersist          10m
     User                    ubuntu
     IdentityFile            ~/.ssh/id_rsa

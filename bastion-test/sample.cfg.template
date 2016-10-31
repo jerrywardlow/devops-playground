@@ -1,0 +1,17 @@
+Host bastion
+    User                    ubuntu
+    HostName                HOST_NAME
+    ProxyCommand            none
+    IdentitiyFile           /path/to/key
+    BatchMode               yes
+    PasswordAuthentication  no
+
+Host *
+    ServerAliveInterval     60
+    TCPKeepAlive            yes
+    ProxyCommand            ssh -q -A ubuntu@HOST_NAME nc %h %p
+    ControlMaster           auto
+    ControlPath             ~/.ssh/mux-%r@%h:%p
+    ControlPersist          8h
+    User                    ansible
+    IdentityFile            /path/to/key

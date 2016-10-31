@@ -2,9 +2,10 @@ Host bastion
     User                    ubuntu
     HostName                HOST_NAME
     ProxyCommand            none
-    IdentitiyFile           /path/to/key
+    IdentityFile           ~/.ssh/id_rsa
     BatchMode               yes
     PasswordAuthentication  no
+    StrictHostKeyChecking   no
 
 Host *
     ServerAliveInterval     60
@@ -13,5 +14,5 @@ Host *
     ControlMaster           auto
     ControlPath             ~/.ssh/mux-%r@%h:%p
     ControlPersist          8h
-    User                    ansible
-    IdentityFile            /path/to/key
+    User                    ubuntu
+    IdentityFile            ~/.ssh/id_rsa

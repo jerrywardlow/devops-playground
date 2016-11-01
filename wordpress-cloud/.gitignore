@@ -6,3 +6,6 @@ ami_log
 
 # Ansible
 ansible/cache/ansible-ec2*
+
+# SSH Config
+ssh.cfg

@@ -5,4 +5,4 @@ terraform/ssh/wordpress-key*
 ami_log
 
 # Ansible
-ansible/cache/ansible-ec2-*
+ansible/cache/ansible-ec2*

@@ -8,6 +8,15 @@
 set -u
 set -e
 
+# Make sure Packer and Terraform are installed
+if ! hash packer 2>/dev/null; then
+    echo "Missing dependency: Packer"
+fi
+
+if ! hash terraform 2>/dev/null; then
+    echo "Missing dependency: Terraform"
+fi
+
 # Generate UUID. Uses timestamp if uuid is unavailable.
 if hash uuid 2>/dev/null; then
     UUID=$(uuid -v4)

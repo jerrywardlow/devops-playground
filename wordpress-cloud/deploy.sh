@@ -36,7 +36,7 @@ fi
 RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier wordpress-mysql --output text --query 'DBInstances[0].Endpoint.Address')
 
 # Query AWS for jump box IP
-JUMP_BOX_IP=$(aws ec2 describe-instances --filters Name=tag:name,Values=jump-box --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
+JUMP_BOX_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=jump-box --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
 
 # Generate SSH forwarding config file
 

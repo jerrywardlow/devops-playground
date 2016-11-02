@@ -21,6 +21,6 @@ resource "aws_db_subnet_group" "default" {
     description = "Subnet group for RDS/MySQL - Zones 2b and 2c"
     subnet_ids = ["${aws_subnet.rds1.id}", "${aws_subnet.rds2.id}"]
     tags {
-        name = "wordpress-db-subnet-group"
+        Name = "wordpress-db-subnet-group"
     }
 }

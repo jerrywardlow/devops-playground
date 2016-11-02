@@ -89,7 +89,7 @@ resource "aws_security_group" "jump" {
     }
 
     tags {
-        name = "wordpress-jump"
+        Name = "wordpress-jump"
     }
 }
 

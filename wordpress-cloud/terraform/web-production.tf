@@ -7,7 +7,7 @@ resource "aws_instance" "web-production" {
     vpc_security_group_ids = ["${aws_security_group.web_production.id}"]
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
-        name = "wordpress-web-production-${count.index}"
+        Name = "wordpress-web-production-${count.index}"
         group = "production"
     }
 }

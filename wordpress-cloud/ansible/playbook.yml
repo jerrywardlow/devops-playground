@@ -8,4 +8,4 @@
       replace:
         dest: /var/www/wordpress/wp-config.php
         regexp: "RDS_ENDPOINT"
-        replace: {{ rds_endpoint }}
+        replace: "{{ rds_endpoint }}"

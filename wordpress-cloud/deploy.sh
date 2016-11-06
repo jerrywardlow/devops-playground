@@ -8,7 +8,7 @@
 set -u
 set -e
 
-# Make sure Packer and Terraform are installed
+# Make sure Packer, Terraform, and Ansible are installed
 if ! hash packer 2>/dev/null; then
     echo "Missing dependency: Packer"
     exit 1
@@ -16,6 +16,11 @@ fi
 
 if ! hash terraform 2>/dev/null; then
     echo "Missing dependency: Terraform"
+    exit 1
+fi
+
+if ! hash ansible 2>/dev/null; then
+    echo "Missing dependency: Ansible"
     exit 1
 fi
 

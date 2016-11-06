@@ -1,3 +1,5 @@
 ---
 
 - hosts: tag_group_production
+  vars:
+    rds_endpoint: "none"

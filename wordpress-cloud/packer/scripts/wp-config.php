@@ -2,7 +2,7 @@
 define('DB_NAME', 'wordpressdb');
 define('DB_USER', 'dbuser');
 define('DB_PASSWORD', 'dbpassword');
-define('DB_HOST', ''); /** RDS host */
+define('DB_HOST', 'RDS_ENDPOINT'); /** RDS host */
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', '');
 

@@ -54,4 +54,5 @@ sed "s/BASTION_HOST/${BASTION_IP}/g" ansible/ssh/ssh.cfg.template >> ansible/ssh
 
 # Check that SSH Agent has key loaded
 
-# Execute Ansible playbook on jump box against production instances
+# Execute Ansible playbook against production instances
+(cd ansible/ && ansible-playbook playbook.yml --extra-vars "rds_endpoint=${RDS_ENDPOINT}")

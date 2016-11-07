@@ -24,13 +24,13 @@
     },
     {
         "type": "file",
-        "source": "scripts/wordpress.conf",
+        "source": "files/wordpress.conf",
         "destination": "/tmp/wordpress.conf"
 
     },
     {
         "type": "file",
-        "source": "scripts/wp-config.php",
+        "source": "files/wp-config.php",
         "destination": "/tmp/wp-config.php"
     },
     {

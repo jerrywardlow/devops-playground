@@ -69,8 +69,8 @@ resource "aws_security_group" "nat" {
 }
 
 # SSH bastion security group
-resource "aws_security_group" "jump" {
-    name = "wordpress-jump"
+resource "aws_security_group" "bastion" {
+    name = "wordpress-bastion"
     description = "SSH bastion"
     vpc_id = "${aws_vpc.default.id}"
 
@@ -89,7 +89,7 @@ resource "aws_security_group" "jump" {
     }
 
     tags {
-        Name = "wordpress-jump"
+        Name = "wordpress-bastion"
     }
 }
 
@@ -138,12 +138,12 @@ resource "aws_security_group" "web_production" {
         security_groups = ["${aws_security_group.elb.id}"]
     }
 
-    # Allow SSH traffic from jump box
+    # Allow SSH traffic from bastion
     ingress {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        security_groups = ["${aws_security_group.jump.id}"]
+        security_groups = ["${aws_security_group.bastion.id}"]
     }
 
     egress {

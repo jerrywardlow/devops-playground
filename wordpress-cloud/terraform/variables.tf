@@ -13,7 +13,7 @@ variable "nat-ami" {
     default = "ami-69ae8259"
 }
 
-variable "jump-ami" {
+variable "bastion-ami" {
     description = "AMI for SSH bastion"
     default = "ami-d732f0b7"
 }

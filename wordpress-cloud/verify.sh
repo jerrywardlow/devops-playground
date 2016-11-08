@@ -24,12 +24,12 @@ fi
 
 # Check environment variables
 
-if [ -z ${AWS_ACCESS_KEY_ID+x} ];
+if [ -z ${AWS_ACCESS_KEY_ID+x} ]; then
     echo "AWS_ACCESS_KEY_ID is unset"
     exit 1
 fi
 
-if [ -z ${AWS_SECRET_ACCESS_KEY+x} ];
+if [ -z ${AWS_SECRET_ACCESS_KEY+x} ]; then
     echo "AWS_SECRET_ACCESS_KEY is unset"
     exit 1
 fi

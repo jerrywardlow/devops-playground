@@ -5,4 +5,11 @@ resource "digitalocean_droplet" "haproxy-web" {
     size = "512mb"
     private_networking = true
     ssh_keys = ["${var.ssh_id}"]
+
+    connection {
+        user = "root"
+        type = "ssh"
+        key_file = "~/.ssh/id_rsa"
+        timeout = "2m"
+    }
 }

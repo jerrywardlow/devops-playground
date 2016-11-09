@@ -25,9 +25,9 @@ resource "digitalocean_droplet" "haproxy-web" {
             "sudo apt -y install haproxy",
 
             # Update /etc/haproxy/haproxy.cfg
-            "sudo sed -i '/s/HAPROXY_PUBLIC_IP/${digitalocean_droplet.haproxy-web.ipv4_address}/g' /etc/haproxy/haproxy.cfg",
-            "sudo sed -i '/s/WEB_1_PRIVATE_IP/${digitalocean_droplet.web-1.ipv4_address_private}/g' /etc/haproxy/haproxy.cfg",
-            "sudo sed -i '/s/WEB_2_PRIVATE_IP/${digitalocean_droplet.web-2.ipv4_address_private}/g' /etc/haproxy/haproxy.cfg",
+            "sudo sed -i 's/HAPROXY_PUBLIC_IP/${digitalocean_droplet.haproxy-web.ipv4_address}/g' /etc/haproxy/haproxy.cfg",
+            "sudo sed -i 's/WEB_1_PRIVATE_IP/${digitalocean_droplet.web-1.ipv4_address_private}/g' /etc/haproxy/haproxy.cfg",
+            "sudo sed -i 's/WEB_2_PRIVATE_IP/${digitalocean_droplet.web-2.ipv4_address_private}/g' /etc/haproxy/haproxy.cfg",
 
             # Restart haproxy
             "sudo systemctl restart haproxy"

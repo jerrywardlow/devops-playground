@@ -14,6 +14,10 @@ resource "digitalocean_droplet" "haproxy-web" {
     }
     
     provisioner "remote-exec" {
-        script = "scripts/haproxy.sh"
+        inline = [
+            # Install HAProxy
+            "sudo apt update"
+            "sudo apt -y install haproxy"
+        ]
     }
 }

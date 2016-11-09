@@ -12,4 +12,8 @@ resource "digitalocean_droplet" "haproxy-web" {
         key_file = "~/.ssh/id_rsa"
         timeout = "2m"
     }
+    
+    provisioner "remote-exec" {
+        script = "scripts/haproxy.sh"
+    }
 }

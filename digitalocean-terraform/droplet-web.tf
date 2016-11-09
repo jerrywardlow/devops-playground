@@ -1,5 +1,5 @@
 resource "digitalocean_droplet" "web-1" {
-    image = "ubuntu-14-04-x64"
+    image = "ubuntu-16-04-x64"
     name = "web-1"
     region = "sfo1"
     size = "512mb"

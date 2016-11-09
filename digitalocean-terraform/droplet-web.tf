@@ -9,7 +9,7 @@ resource "digitalocean_droplet" "web-1" {
     connection {
         user = "root"
         type = "ssh"
-        key_file = "~/.ssh/id_rsa"
+        private_key = "${file("~/.ssh/id_rsa")}"
         timeout = "2m"
     }
 
@@ -32,7 +32,7 @@ resource "digitalocean_droplet" "web-2" {
     connection {
         user = "root"
         type = "ssh"
-        key_file = "~/.ssh/id_rsa"
+        private_key = "${file("~/.ssh/id_rsa")}"
         timeout = "2m"
     }
 

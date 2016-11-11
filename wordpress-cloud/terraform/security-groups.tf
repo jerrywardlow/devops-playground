@@ -93,7 +93,7 @@ resource "aws_security_group" "bastion" {
     }
 }
 
-# Web staging secuity group
+# Web staging security group
 resource "aws_security_group" "web_staging" {
     name = "wordpress-web-staging"
     description = "Security group allowing ports 80 and 22 inbound"

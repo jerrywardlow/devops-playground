@@ -1,8 +1,12 @@
+# Pull availability zones
+data "aws_availability_zones" "available" {}
+
+
 # Private subnet
 resource "aws_subnet" "private" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "${var.private_subnet_cidr}"
-    availability_zone = "us-west-2a"
+    availability_zone = "${data.aws_availability_zones.available.names[0]}"
     map_public_ip_on_launch = false
     tags {
         Name = "private"
@@ -13,7 +17,7 @@ resource "aws_subnet" "private" {
 resource "aws_subnet" "rds1" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "${var.rds1_subnet_cidr}"
-    availability_zone = "us-west-2b"
+    availability_zone = "${data.aws_availability_zones.available.names[1]}"
     map_public_ip_on_launch = false
     tags {
         Name = "rds1"
@@ -24,7 +28,7 @@ resource "aws_subnet" "rds1" {
 resource "aws_subnet" "rds2" {
     vpc_id = "${aws_vpc.default.id}"
     cidr_block = "${var.rds2_subnet_cidr}"
-    availability_zone = "us-west-2c"
+    availability_zone = "${data.aws_availability_zones.available.names[2]}"
     map_public_ip_on_launch = false
     tags {
         Name = "rds2"

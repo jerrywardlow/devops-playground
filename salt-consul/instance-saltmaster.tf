@@ -1,9 +1,9 @@
 # Salt master
 resource "aws_instance" "master" {
     ami = "${var.centos-ami}"
-    isntance_type = "t2.micro"
+    instance_type = "t2.micro"
     subnet_id = "pass"
-    vpc_security_group_ids = ["pass"]
+    vpc_security_group_ids = ["${aws_security_group.salt_master.id}"]
     key_name = "pass"
     tags = {
         Name = "salt-master"

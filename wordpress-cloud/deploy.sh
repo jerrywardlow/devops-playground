@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Shell script to chain Packer output into Terraform
+# Shell script to chain Packer output into Terraform before Ansible config
 # Packer builds image against wordpress.json, tagging AMI artifact with a UUID
 # AWS is queried for this tag, returning the AMI ID
 # Terraform is run with this AMI ID as an agrument against a variable
+# Finally, Ansible is run to update web servers with RDS endpoint
 
 set -u
 set -e

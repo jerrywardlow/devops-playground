@@ -56,7 +56,7 @@ RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier wordpress-
 BASTION_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=bastion --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
 
 # Generate SSH forwarding config file
-sed "s/BASTION_HOST/${BASTION_IP}/g" ansible/ssh/ssh.cfg.template >> ansible/ssh/ssh.cfg
+sed "s/BASTION_HOST/${BASTION_IP}/g" ansible/ssh/ssh.cfg.template > ansible/ssh/ssh.cfg
 
 # Spawn ssh-agent and load wordpress-key
 eval `ssh-agent`

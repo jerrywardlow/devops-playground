@@ -58,7 +58,12 @@ BASTION_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=bastion -
 # Generate SSH forwarding config file
 sed "s/BASTION_HOST/${BASTION_IP}/g" ansible/ssh/ssh.cfg.template >> ansible/ssh/ssh.cfg
 
-# Check that SSH Agent has key loaded
+# Spawn ssh-agent and load wordpress-key
+eval `ssh-agent`
+ssh-add terraform/ssh/wordpress-key
 
 # Execute Ansible playbook against production instances
 (cd ansible/ && ansible-playbook playbook.yml --extra-vars "rds_endpoint=${RDS_ENDPOINT}")
+
+# Kill ssh-agent
+ssh-agent -k

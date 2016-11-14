@@ -24,16 +24,10 @@ variable "public_subnet_cidr" {
 }
 
 variable "private_subnet_cidr" {
-    description = "CIDR block for private subnet"
-    default = "10.10.10.0/24"
-}
-
-variable "rds1_subnet_cidr" {
-    description = "CIDR block for RDS1 subnet"
-    default = "10.10.20.0/24"
-}
-
-variable "rds2_subnet_cidr" {
-    description = "CIDR block for RDS2 subnet"
-    default = "10.10.30.0/24"
+    description = "CIDR blocks for private subnets"
+    default = [
+        "10.10.10.0/24",
+        "10.10.20.0/24",
+        "10.10.30.0/24"
+    ]
 }

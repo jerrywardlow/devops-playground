@@ -6,11 +6,11 @@ Host bastion
     BatchMode               yes
     PasswordAuthentication  no
     StrictHostKeyChecking   no
+    ForwardAgent            yes
 
 Host *
     ServerAliveInterval     60
     TCPKeepAlive            yes
-    ProxyCommand            ssh -q -A ubuntu@BASTION_HOST nc %h %p
-    User                    ubuntu
+    ProxyCommand            ssh -F ssh/ssh.cfg ubuntu@bastion nc %h %p
 
 # TODO: symlink IdentityFile

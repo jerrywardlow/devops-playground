@@ -12,6 +12,5 @@ Host *
     TCPKeepAlive            yes
     ProxyCommand            ssh -q -A ubuntu@BASTION_HOST nc %h %p
     User                    ubuntu
-    IdentityFile            ../terraform/ssh/wordpress-key
 
 # TODO: symlink IdentityFile

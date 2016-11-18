@@ -43,6 +43,7 @@ echo $(date) ${AMI_ID} >> ami_log
 
 # Ditch out if there was a problem querying for the AMI
 if [ "$AMI_ID" == "None" ]; then
+    echo "Error retrieving AMI ID"
     exit 1
 fi
 

@@ -1,6 +1,7 @@
-resource "template_file" "user_data" {
-    template = "templates/user_data"
+data "template_file" "user_data" {
+    template = "${file("templates/user_data.tpl")}"
+
     vars {
-        rds_endpoint = ${"aws_db_instance.mysql.address"}
+        rds_endpoint = "${aws_db_instance.mysql.address}"
     }
 }

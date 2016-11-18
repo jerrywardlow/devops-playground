@@ -7,7 +7,7 @@ resource "aws_instance" "web-production" {
     vpc_security_group_ids = ["${aws_security_group.web_production.id}"]
     key_name = "${aws_key_pair.wordpress.key_name}"
 
-    user_data = "${template_file.user_data.rendered}"
+    user_data = "${data.template_file.user_data.rendered}"
 
     tags = {
         Name = "wordpress-web-production-${count.index}"

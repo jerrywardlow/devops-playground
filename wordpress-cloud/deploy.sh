@@ -51,10 +51,12 @@ fi
 (cd terraform/ && exec terraform apply -var ubuntu-ami=${AMI_ID})
 
 # Query AWS for RDS endpoint
-RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier wordpress-mysql --output text --query 'DBInstances[0].Endpoint.Address')
+# RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier wordpress-mysql --output text --query 'DBInstances[0].Endpoint.Address')
+RDS_ENDPOINT=$(cd terraform/ && exec terraform output rds_endpoint)
 
 # Query AWS for bastion IP
-BASTION_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=bastion --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
+# BASTION_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=bastion --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
+BASTION_IP=$(cd terraform/ && exec terraform output bastion_ip)
 
 # Generate SSH forwarding config file
 sed "s/BASTION_HOST/${BASTION_IP}/g" ansible/ssh/ssh.cfg.template > ansible/ssh/ssh.cfg

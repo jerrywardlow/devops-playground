@@ -9,6 +9,10 @@ resource "aws_instance" "web-production" {
 
     user_data = "${data.template_file.user_data.rendered}"
 
+    lifecycle {
+        create_before_destroy = true
+    }
+
     tags = {
         Name = "wordpress-web-production-${count.index}"
         group = "production"

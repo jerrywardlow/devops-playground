@@ -1,3 +1,12 @@
+data "aws_ami" "ubuntu" {
+    most_recent = true
+    filter {
+        name = "name"
+        values = ["wordpress-*"]
+    }
+    owners = ["self"]
+}
+
 variable "region" {
     description = "AWS region"
     default = "us-west-2"

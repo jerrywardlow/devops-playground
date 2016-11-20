@@ -1,7 +1,7 @@
 # Production web servers
 resource "aws_instance" "web-production" {
     count = 3
-    ami = "${var.ubuntu-ami}"
+    ami = "${data.aws_ami.ubuntu.id}"
     instance_type = "t2.micro"
     subnet_id = "${element(aws_subnet.private.*.id, count.index)}"
     vpc_security_group_ids = ["${aws_security_group.web_production.id}"]

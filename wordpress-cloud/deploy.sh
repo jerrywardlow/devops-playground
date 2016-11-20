@@ -42,4 +42,4 @@ if [ "$AMI_ID" == "None" ]; then
 fi
 
 # Run Terraform with new AMI ID
-(cd terraform/ && exec terraform apply -var ubuntu-ami=${AMI_ID})
+(cd terraform/ && exec terraform apply)

@@ -3,13 +3,13 @@
 all: bake plan apply
 
 bake:
-	packer build packer.json
+	(cd packer/ && packer build packer.json)
 
 plan:
-	terraform plan
+	(cd terraform/ && terraform plan)
 
 apply:
-	terraform apply
+	(cd terraform/ && terraform apply)
 
 break:
-	terraform destroy
+	(cd terraform/ && terraform destroy)

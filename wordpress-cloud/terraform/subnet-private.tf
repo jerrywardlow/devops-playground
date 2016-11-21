@@ -1,6 +1,3 @@
-# Pull availability zones
-data "aws_availability_zones" "available" {}
-
 # Private subnet
 resource "aws_subnet" "private" {
     count = 3

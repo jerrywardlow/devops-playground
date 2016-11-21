@@ -7,6 +7,9 @@ data "aws_ami" "ubuntu" {
     owners = ["self"]
 }
 
+# Pull availability zones
+data "aws_availability_zones" "available" {}
+
 variable "region" {
     description = "AWS region"
     default = "us-west-2"

@@ -2,8 +2,10 @@
 
 # RHEL/CentOS 7
 
-rpm -Uvh http://yum.spacewalkproject.org/2.5/RHEL/7/x86_64/spacewalk-repo-2.5-3.el7.noarch.rpm
+# Spacewalk repo
+rpm -U http://yum.spacewalkproject.org/2.5/RHEL/7/x86_64/spacewalk-repo-2.5-3.el7.noarch.rpm
 
+# JPackage repo
 cat > /etc/yum.repos.d/jpackage-generic.repo << EOF
 [jpackage-generic]
 name=JPackage generic
@@ -14,7 +16,8 @@ gpgcheck=1
 gpgkey=http://www.jpackage.org/jpackage.asc
 EOF
 
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# EPEL repo
+rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 yum install spacewalk-setup-postgresql
 

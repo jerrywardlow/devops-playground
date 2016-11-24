@@ -18,14 +18,12 @@
             "packer_uuid" : "{{user `packer_uuid`}}"
         }
     }],
-    "provisioners": [{
-        "type": "shell",
-        "inline": ["sleep 10"]
-    },
+    "provisioners": [
     {
         "type": "file",
         "source": "files/wordpress.conf",
-        "destination": "/tmp/wordpress.conf"
+        "destination": "/tmp/wordpress.conf",
+        "pause_before": "10s"
 
     },
     {

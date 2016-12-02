@@ -19,6 +19,6 @@ EOF
 # EPEL repo
 rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-yum install spacewalk-setup-postgresql
+yum install -y spacewalk-setup-postgresql
 
-yum install spacewalk-postgresql
+yum install -y spacewalk-postgresql

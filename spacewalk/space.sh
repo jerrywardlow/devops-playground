@@ -16,6 +16,26 @@ gpgcheck=1
 gpgkey=http://www.jpackage.org/jpackage.asc
 EOF
 
+# Spacewalk answers
+cat > /root/spacewalk_answers.txt << EOF
+admin-email = admin@localhost
+ssl-set-org = Vagrant Spacebox
+ssl-set-org-unit = spacebox
+ssl-set-city = PDX
+ssl-set-state = OR
+ssl-set-country = US
+ssl-password = spacewalk
+ssl-set-email = admin@localhost
+ssl-config-sslvhost = Y
+db-backend=postgresql
+db-name=spaceboxdb
+db-user=spacedbuser
+db-password=spacedbpw
+db-host=localhost
+db-port=5432
+enable-tftp=Y
+EOF
+
 # EPEL repo
 rpm -U https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 

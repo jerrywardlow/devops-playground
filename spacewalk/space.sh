@@ -3,7 +3,7 @@
 # RHEL/CentOS 7
 
 # Spacewalk repo
-rpm -U http://yum.spacewalkproject.org/2.5/RHEL/7/x86_64/spacewalk-repo-2.5-3.el7.noarch.rpm
+rpm -U http://yum.spacewalkproject.org/2.6/RHEL/7/x86_64/spacewalk-repo-2.6-0.el7.noarch.rpm
 
 # JPackage repo
 cat > /etc/yum.repos.d/jpackage-generic.repo << EOF

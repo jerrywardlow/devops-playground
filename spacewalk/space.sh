@@ -9,7 +9,7 @@ rpm -U http://yum.spacewalkproject.org/2.6/RHEL/7/x86_64/spacewalk-repo-2.6-0.el
 cat > /etc/yum.repos.d/jpackage-generic.repo << EOF
 [jpackage-generic]
 name=JPackage generic
-baseurl=http://mirrors.dotsrc.org/jpackage/5.0/generic/free/
+#baseurl=http://mirrors.dotsrc.org/jpackage/5.0/generic/free/
 mirrorlist=http://www.jpackage.org/mirrorlist.php?dist=generic&type=free&release=5.0
 enabled=1
 gpgcheck=1

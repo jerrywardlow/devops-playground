@@ -26,6 +26,12 @@ resource "aws_cloudfront_distribution" "wordpress_cdn" {
         max_ttl                = 86400
     }
 
+    restrictions {
+        geo_restriction {
+            restriction_type = "none"
+        }
+    }
+    
     viewer_certificate {
         cloudfront_default_certificate = true
     }

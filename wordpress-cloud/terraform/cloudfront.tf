@@ -14,7 +14,7 @@ resource "aws_cloudfront_distribution" "wordpress_cdn" {
         target_origin_id = "S3-${aws_s3_bucket.wordpress.id}"
 
         forwarded_values {
-            query_string = true
+            query_string = false
             cookies {
                 forward = "none"
             }
@@ -31,7 +31,7 @@ resource "aws_cloudfront_distribution" "wordpress_cdn" {
             restriction_type = "none"
         }
     }
-    
+
     viewer_certificate {
         cloudfront_default_certificate = true
     }

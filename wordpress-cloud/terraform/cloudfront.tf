@@ -1,6 +1,7 @@
 # CloudFront CDN Distribution
 resource "aws_cloudfront_distribution" "wordpress_cdn" {
     enabled = true
+    price_class = "PriceClass_100"
 
     origin {
         domain_name = "${aws_s3_bucket.wordpress.id}.s3.amazonaws.com"

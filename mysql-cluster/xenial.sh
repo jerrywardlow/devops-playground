@@ -9,7 +9,7 @@ sudo dpkg -i mysql-cluster*.deb
 
 sudo mkdir -p /var/lib/mysql-cluster
 
-cat > /var/lib/mysql-cluster << EOF
+cat > /var/lib/mysql-cluster/config.ini << EOF
 [ndb_mgmd]
 hostname=master.sql.cluster
 datadir=/var/lib/mysql-cluster
@@ -26,3 +26,4 @@ datadir=/usr/local/mysql/data
 hostname=master.sql.cluster
 EOF
 
+sudo /opt/mysql/server-5.7/bin/ndb_mgmd -f /var/lib/mysql-cluster/config.ini

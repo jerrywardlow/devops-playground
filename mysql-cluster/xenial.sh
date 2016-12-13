@@ -39,3 +39,5 @@ sudo cp /opt/mysql/server-5.7/support-files/mysql.server /etc/init.d/mysqld
 
 sudo systemctl enable mysqld.service
 sudo systemctl start mysqld.service
+
+sudo ln /opt/mysql/server-5.7/bin/mysql /usr/bin/

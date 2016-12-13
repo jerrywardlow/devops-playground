@@ -27,3 +27,6 @@ hostname=master.sql.cluster
 EOF
 
 sudo /opt/mysql/server-5.7/bin/ndb_mgmd -f /var/lib/mysql-cluster/config.ini
+
+sudo groupadd mysql
+sudo useradd -r -g mysql -s /bin/false mysql

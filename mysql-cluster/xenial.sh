@@ -30,3 +30,12 @@ sudo /opt/mysql/server-5.7/bin/ndb_mgmd -f /var/lib/mysql-cluster/config.ini
 
 sudo groupadd mysql
 sudo useradd -r -g mysql -s /bin/false mysql
+
+sudo /opt/mysql/server-5.7/bin/mysqld --initialize-insecure # TODO
+
+sudo chown -R mysql:mysql /var/lib/mysql # TODO
+
+sudo cp /opt/mysql/server-5.7/support-files/mysql.server /etc/init.d/mysqld
+
+sudo systemctl enable mysqld.service
+sudo systemctl start mysqld.service

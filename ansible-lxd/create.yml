@@ -1,0 +1,18 @@
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create LXD container
+      lxd_container:
+        name: alpine_test_1
+        state: started
+        source:
+          type: image
+          mode: pull
+          server: https://images.linuxcontainers.org
+          protocol: lxd
+          alias: alpine/edge
+        profiles: ["default"]
+        wait_for_ipv4_addresses: true
+        timeout: 100

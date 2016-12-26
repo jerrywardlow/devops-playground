@@ -1,0 +1,9 @@
+---
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Destroy container
+      lxd_container:
+        name: alpine-test
+        state: absent

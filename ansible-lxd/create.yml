@@ -5,14 +5,14 @@
   tasks:
     - name: Create LXD container
       lxd_container:
-        name: alpine_test_1
+        name: alpine-test
         state: started
         source:
           type: image
           mode: pull
           server: https://images.linuxcontainers.org
           protocol: lxd
-          alias: alpine/edge
+          alias: alpine/edge/amd64
         profiles: ["default"]
         wait_for_ipv4_addresses: true
         timeout: 100

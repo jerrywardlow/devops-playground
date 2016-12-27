@@ -1,0 +1,9 @@
+---
+
+- host: localhost
+  connection: local
+  tasks:
+    - name: Restart test container
+      lxd_container:
+        name: alpine-test
+        state: restarted

@@ -31,6 +31,7 @@ resource "aws_security_group" "cluster" {
 resource "aws_instance" "management-server" {
     ami = "ami-b7a114d7"
     instance_type = "t2.micro"
+    vpc_security_group_ids = ["${aws_security_group.cluster.id}"]
     key_name = "jerry-executor"
 
     tags = {
@@ -43,6 +44,7 @@ resource "aws_instance" "node" {
     count = 2
     ami = "ami-b7a114d7"
     instance_type = "t2.micro"
+    vpc_security_group_ids = ["${aws_security_group.cluster.id}"]
     key_name = "jerry-executor"
 
     tags = {

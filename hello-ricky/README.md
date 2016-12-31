@@ -1,4 +1,9 @@
-* Ubuntu 16.04.1
+# WordPress from scratch
+
+* Linux - Ubuntu 16.04.1
+* Apache HTTP Server
+* MySQL RDBMS
+* PHP Hypertext Preprocessor (if we're going to sound official)
 
 1. Install Wordpress on web.wolfdrama.com
 2. Install MySQL on db.wolfdrama.com

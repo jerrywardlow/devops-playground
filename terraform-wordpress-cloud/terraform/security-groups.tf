@@ -20,6 +20,7 @@ resource "aws_security_group" "elb" {
 
     tags {
         Name = "wordpress-elb"
+        group = "twc-sg"
     }
 }
 
@@ -59,6 +60,7 @@ resource "aws_security_group" "nat" {
 
     tags {
         Name = "wordpress-nat"
+        group = "twc-sg"
     }
 }
 
@@ -84,6 +86,7 @@ resource "aws_security_group" "bastion" {
 
     tags {
         Name = "wordpress-bastion"
+        group = "twc-sg"
     }
 }
 
@@ -116,6 +119,7 @@ resource "aws_security_group" "web_staging" {
 
     tags {
         Name = "wordpress-web-staging"
+        group = "twc-sg"
     }
 }
 
@@ -149,6 +153,7 @@ resource "aws_security_group" "web_production" {
 
     tags {
         Name = "wordpress-web-production"
+        group = "twc-sg"
     }
 }
 
@@ -176,6 +181,7 @@ resource "aws_security_group" "redis" {
 
     tags {
         Name = "wordpress-redis"
+        group = "twc-sg"
     }
 }
 
@@ -203,5 +209,6 @@ resource "aws_security_group" "mysql" {
 
     tags {
         Name = "wordpress-mysql"
+        group = "twc-sg"
     }
 }

@@ -7,5 +7,6 @@ resource "aws_instance" "bastion" {
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
         Name = "bastion"
+        group = "twc-ec2"
     }
 }

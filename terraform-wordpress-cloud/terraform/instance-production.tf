@@ -11,6 +11,6 @@ resource "aws_instance" "web-production" {
 
     tags = {
         Name = "wordpress-web-production-${count.index}"
-        group = "production"
+        group = "twc-ec2"
     }
 }

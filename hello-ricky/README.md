@@ -10,3 +10,8 @@ Resources:
     <summary>PHP 5 Packages</summary>
     <p>cli fpm gd mcrypt mysql curl json</p>
 </details>
+
+<details>
+    <summary>Web Packages</summary>
+    <p>apache2 libssh2-php libapache2-mod-php5 git zip unzip postfix mailutils</p>
+</details>

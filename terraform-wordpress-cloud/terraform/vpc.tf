@@ -7,5 +7,6 @@ resource "aws_vpc" "default" {
     enable_dns_hostnames = true
     tags {
         Name = "wordpress-cloud"
+        group = "twc-vpc"
     }
 }

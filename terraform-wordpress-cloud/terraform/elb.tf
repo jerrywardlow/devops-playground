@@ -20,4 +20,8 @@ resource "aws_elb" "app" {
     }
 
     instances = ["${aws_instance.web-production.*.id}"]
+
+    tags {
+      group = "twc-elb"
+    }
 }

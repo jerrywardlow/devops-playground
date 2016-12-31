@@ -8,6 +8,10 @@ resource "aws_elasticache_cluster" "redis" {
     parameter_group_name = "${aws_elasticache_parameter_group.wordpress.name}"
     security_group_ids = ["${aws_security_group.redis.id}"]
     subnet_group_name = "${aws_elasticache_subnet_group.default.name}"
+
+    tags {
+      group = "twc-redis"
+    }
 }
 
 # ElastiCache subnet group

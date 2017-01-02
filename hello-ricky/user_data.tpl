@@ -15,6 +15,7 @@ packages:
   - htop
   - tmux
   - tree
+  - unzip
   - vim
 
 runcmd:

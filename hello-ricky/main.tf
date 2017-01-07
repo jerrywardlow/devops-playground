@@ -57,3 +57,11 @@ resource "aws_instance" "db" {
         group = "hello-ricky"
     }
 }
+
+output "web.ip" {
+    value = "{aws_instance.web.public_ip}"
+}
+
+output "db.ip" {
+    value = "{aws_instance.db.public_ip}"
+}

@@ -13,6 +13,10 @@ if ! hash terraform 2>/dev/null; then
     exit 1
 fi
 
+# Make sure AWS specific environment variables are set
+: "${AWS_ACCESS_KEY_ID:?Need to set AWS Access Key}"
+: "${AWS_SECRET_ACCESS_KEY:?Need to set AWS Secret Key}"
+
 # Run Terraform to generate the infrastructure
 exec terraform apply
 

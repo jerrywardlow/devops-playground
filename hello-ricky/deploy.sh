@@ -21,10 +21,10 @@ fi
 terraform apply
 
 # Query AWS for some information
-WEB_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=web --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
-DB_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=db --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
+WEB_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=web Name=instance-state-name,Values=running --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
+DB_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=db Name=instance-state-name,Values=running --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
 
 # Provide the user with some information about the environment
-echo $'Web and database servers accessible via SSH.\n'
-echo "ssh deploy@$WEB_IP"
-echo "ssh deploy@$DB_IP"
+echo $'\n\nWeb and database servers accessible via SSH.\n'
+echo "ssh web@$WEB_IP"
+echo "ssh db@$DB_IP"

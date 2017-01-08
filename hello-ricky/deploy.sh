@@ -18,8 +18,13 @@ fi
 : "${AWS_SECRET_ACCESS_KEY:?Need to set AWS Secret Key}"
 
 # Run Terraform to generate the infrastructure
-exec terraform apply
+terraform apply
+
+# Query AWS for some information
+WEB_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=web --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
+DB_IP=$(aws ec2 describe-instances --filters Name=tag:Name,Values=db --output text --query 'Reservations[0].Instances[0].PublicIpAddress')
 
 # Provide the user with some information about the environment
-echo "Login to the web and database servers with user 'deploy'" 
-
+echo $'Web and database servers accessible via SSH.\n'
+echo "ssh deploy@$WEB_IP"
+echo "ssh deploy@$DB_IP"

@@ -1,8 +1,8 @@
 #cloud-config
 
 users:
-  - name: deploy
-    gecos: Deploy User
+  - name: ${username}
+    gecos: ${username} User
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     shell: /bin/bash
     lock-passwd: false
@@ -20,10 +20,10 @@ packages:
   - vim
 
 runcmd:
-  - wget https://github.com/jerrywardlow/dotfiles/archive/master.zip -P /home/deploy/
-  - unzip /home/deploy/master.zip -d /home/deploy
-  - chown -R deploy:deploy /home/deploy/
+  - wget https://github.com/jerrywardlow/dotfiles/archive/master.zip -P /home/${username}/
+  - unzip /home/${username}/master.zip -d /home/${username}
+  - chown -R ${username}:${username} /home/${username}/
   - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
   - sed -i -e '/^PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
-  - echo "\nAllowUsers deploy" >> /etc/ssh/sshd_config
+  - echo "\nAllowUsers ${username}" >> /etc/ssh/sshd_config
   - service ssh restart

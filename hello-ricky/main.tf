@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_security_group" "main" {
     name = "instance"
     description = "Insecure security group for hello-ricky"
-    
+
     ingress {
         from_port = 0
         to_port = 0
@@ -26,8 +26,20 @@ resource "aws_security_group" "main" {
     }
 }
 
-data "template_file" "user_data" {
+data "template_file" "web" {
     template = "${file("user_data.tpl")}"
+
+    vars {
+        username = "web"
+    }
+}
+
+data "template_file" "db" {
+    template = "${file("user_data.tpl")}"
+
+    vars {
+        username = "db"
+    }
 }
 
 resource "aws_instance" "web" {
@@ -36,7 +48,7 @@ resource "aws_instance" "web" {
     vpc_security_group_ids = ["${aws_security_group.main.id}"]
     key_name = "jerry-executor"
 
-    user_data = "${data.template_file.user_data.rendered}"
+    user_data = "${data.template_file.web.rendered}"
 
     tags = {
         Name = "web"
@@ -50,18 +62,10 @@ resource "aws_instance" "db" {
     vpc_security_group_ids = ["${aws_security_group.main.id}"]
     key_name = "jerry-executor"
 
-    user_data = "${data.template_file.user_data.rendered}"
+    user_data = "${data.template_file.db.rendered}"
 
     tags = {
         Name = "db"
         group = "hello-ricky"
     }
-}
-
-output "web.ip" {
-    value = "${aws_instance.web.public_ip}"
-}
-
-output "db.ip" {
-    value = "${aws_instance.db.public_ip}"
 }

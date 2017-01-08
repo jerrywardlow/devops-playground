@@ -59,9 +59,9 @@ resource "aws_instance" "db" {
 }
 
 output "web.ip" {
-    value = "{aws_instance.web.public_ip}"
+    value = "${aws_instance.web.public_ip}"
 }
 
 output "db.ip" {
-    value = "{aws_instance.db.public_ip}"
+    value = "${aws_instance.db.public_ip}"
 }

@@ -15,6 +15,9 @@
 2. Install Wordpress on web.wolfdrama.com
 3. Create S3 bucket for use with [WP Offload S3](https://wordpress.org/plugins/amazon-s3-and-cloudfront/)
 
+### Prep
+
+Taken care of entirely by Terraform.
 
 ### Resources:
 

@@ -1,0 +1,4 @@
+data/*
+web/*
+!data/.gitkeep
+!web/.gitkeep

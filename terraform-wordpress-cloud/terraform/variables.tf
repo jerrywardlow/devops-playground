@@ -15,9 +15,18 @@ variable "region" {
     default = "us-west-2"
 }
 
+data "aws_ami" "nat" {
+    most_recent = true
+    filter {
+        name = "name"
+        values = ["amzn-ami-vpc-nat-hvm*"]
+    }
+    owners = ["amazon"]
+}
+
 variable "nat-ami" {
-    description = "Amazon Linux AMI VPC NAT x86_64 HVM GP2"
-    default = "ami-69ae8259"
+    description = "AMI for NAT instance"
+    default = "${data.aws_ami.nat.id}"
 }
 
 variable "bastion-ami" {

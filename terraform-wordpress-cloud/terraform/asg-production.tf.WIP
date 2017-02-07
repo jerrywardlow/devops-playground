@@ -4,6 +4,8 @@ resource "aws_autoscaling_group" "production" {
     launch_configuration = "${aws_launch_configuration.production.id}"
     availability_zones = ["${data.aws_availability_zones.available.names}"]
 
+    vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
+
     load_balancers = ["${aws_elb.app.name}"]
     health_check_type = "ELB"
 

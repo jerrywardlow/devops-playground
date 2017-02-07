@@ -24,11 +24,6 @@ data "aws_ami" "nat" {
     owners = ["amazon"]
 }
 
-variable "nat-ami" {
-    description = "AMI for NAT instance"
-    default = "${data.aws_ami.nat.id}"
-}
-
 variable "bastion-ami" {
     description = "AMI for SSH bastion"
     default = "ami-d732f0b7"

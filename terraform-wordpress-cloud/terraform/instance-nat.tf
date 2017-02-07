@@ -5,7 +5,7 @@ resource "aws_eip" "nat" {
 
 # NAT Instance
 resource "aws_instance" "nat" {
-    ami = "${var.nat-ami}"
+    ami = "${data.aws_ami.nat.id}"
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.public.id}"
     vpc_security_group_ids = ["${aws_security_group.nat.id}"]

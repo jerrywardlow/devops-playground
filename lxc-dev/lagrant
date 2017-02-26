@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+container_check() {
+    pass
+}
+
+config_check() {
+    pass
+}
+
 up() {
     lxc init ubuntu: $1
     lxc config set $1 user.user-data - < "$1.yaml"

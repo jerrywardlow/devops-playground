@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
-init() {
-    pass
+up() {
+    lxc init ubuntu: $1
+    lxc config set $1 user.user-data - < "$1.yaml"
+    lxc start $1
 }
 
-up() {
-    pass
+ssh() {
+    lxc exec $1 bash
 }
 
 halt() {
-    pass
+    lxc stop $1
 }
 
 destroy() {
-    pass
+    lxc delete $1
 }

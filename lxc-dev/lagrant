@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-lxc_init () {
+init() {
     pass
 }
 
-lxc_start () {
+up() {
     pass
 }
 
-lxc_halt () {
+halt() {
     pass
 }
 
-lxc_destroy () {
+destroy() {
     pass
 }

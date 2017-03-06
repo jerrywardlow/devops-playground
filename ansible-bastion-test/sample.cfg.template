@@ -4,7 +4,6 @@ Host bastion
     IdentityFile            ~/.ssh/id_rsa
     BatchMode               yes
     PasswordAuthentication  no
-    StrictHostKeyChecking   no
 
 Host 10.10.*
     ProxyCommand            ssh -F ./sample.cfg bastion nc %h %p
@@ -12,3 +11,4 @@ Host 10.10.*
     IdentityFile            ~/.ssh/id_rsa
     ServerAliveInterval     60
     TCPKeepAlive            yes
+    StrictHostKeyChecking   no

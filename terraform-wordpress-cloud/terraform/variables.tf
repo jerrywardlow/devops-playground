@@ -31,7 +31,7 @@ variable "bastion-ami" {
 
 variable "public_subnet_cidr" {
     description = "CIDR block for public subnet"
-    default = "10.10.0.0/24"
+    default = "10.5.0.0/24"
 }
 
 variable "private_subnet_cidr" {

@@ -1,7 +1,7 @@
 # RDS instance
 resource "aws_db_instance" "mysql" {
     identifier = "${var.rds-identifier}"
-    instance_class = "db.t2.micro"
+    instance_class = "${var.rds-instance-class}"
     allocated_storage = 5
     storage_type = "gp2"
     engine = "mysql"

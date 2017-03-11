@@ -8,7 +8,7 @@ resource "aws_db_instance" "mysql" {
     multi_az = "${var.rds-multi-az}"
 
     name = "${var.rds-db-name}"
-    username = "dbuser"
+    username = "${var.rds-db-username}"
     password = "dbpassword"
 
     vpc_security_group_ids = ["${aws_security_group.mysql.id}"]

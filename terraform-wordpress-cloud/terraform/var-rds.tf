@@ -23,3 +23,8 @@ variable "rds-db-name" {
     description = "Database name for RDS"
     default = "wordpressdb"
 }
+
+variable "rds-db-username" {
+    description = "User name for RDS"
+    default = "dbuser"
+}

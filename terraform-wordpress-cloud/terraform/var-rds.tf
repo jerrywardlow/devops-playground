@@ -18,3 +18,8 @@ variable "rds-multi-az" {
     description = "Multi-AZ selection for RDS"
     default = false
 }
+
+variable "rds-db-name" {
+    description = "Database name for RDS"
+    default = "wordpressdb"
+}

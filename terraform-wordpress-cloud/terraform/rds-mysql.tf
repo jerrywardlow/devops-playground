@@ -7,7 +7,7 @@ resource "aws_db_instance" "mysql" {
     engine = "mysql"
     multi_az = "${var.rds-multi-az}"
 
-    name = "wordpressdb"
+    name = "${var.rds-db-name}"
     username = "dbuser"
     password = "dbpassword"
 

@@ -8,3 +8,8 @@ variable "rds-instance-class" {
     description = "Instance class for RDS"
     default = "db.t2.micro"
 }
+
+variable "rds-allocated-storage" {
+    description = "Allocated storage for RDS"
+    default = 5
+}

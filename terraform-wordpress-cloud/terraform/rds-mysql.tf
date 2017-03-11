@@ -5,7 +5,7 @@ resource "aws_db_instance" "mysql" {
     allocated_storage = "${var.rds-allocated-storage}"
     storage_type = "gp2"
     engine = "mysql"
-    multi_az = false
+    multi_az = "${var.rds-multi-az}"
 
     name = "wordpressdb"
     username = "dbuser"

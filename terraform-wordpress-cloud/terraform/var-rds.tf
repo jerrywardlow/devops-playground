@@ -13,3 +13,8 @@ variable "rds-allocated-storage" {
     description = "Allocated storage for RDS"
     default = 5
 }
+
+variable "rds-multi-az" {
+    description = "Multi-AZ selection for RDS"
+    default = false
+}

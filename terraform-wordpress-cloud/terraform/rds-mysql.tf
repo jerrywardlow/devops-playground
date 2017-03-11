@@ -1,6 +1,6 @@
 # RDS instance
 resource "aws_db_instance" "mysql" {
-    identifier = "wordpress-mysql"
+    identifier = "${var.rds-identifier}"
     instance_class = "db.t2.micro"
     allocated_storage = 5
     storage_type = "gp2"

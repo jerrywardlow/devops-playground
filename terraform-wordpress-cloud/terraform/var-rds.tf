@@ -28,3 +28,8 @@ variable "rds-db-username" {
     description = "User name for RDS"
     default = "dbuser"
 }
+
+variable "rds-db-password" {
+    description = "Password for RDS"
+    default = "dbpassword"
+}

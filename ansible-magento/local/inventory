@@ -1,2 +1,5 @@
 [web]
-192.168.203.10
+192.168.203.10 ansible_user=vagrant 
+
+[data]
+192.168.203.20 ansible_user=vagrant

@@ -1,5 +1,5 @@
 [web]
-10.0.10.0
+10.0.10.0 ansible_user=deploy
 
 [data]
-10.0.20.0
+10.0.20.0 ansible_user=deploy

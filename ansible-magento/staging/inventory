@@ -1,2 +1,5 @@
 [web]
-google.com
+257.023.310.36 ansible_user=ec2-user
+
+[data]
+360.24.35.46 ansible_user=ec2-user

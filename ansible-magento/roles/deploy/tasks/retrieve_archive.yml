@@ -5,19 +5,8 @@
     md5_checksum: "{{ item }}"
   with_url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/checksum.md5?circle-token={{ circle_token }}'
 
-- name: Check if archive exists
-  stat:
-    path: '/tmp/artifacts/magento.tar.gz'
-  register: existing_archive
-
-- name: Validate existing archive
-  set_fact:
-    force_new_download: "{{ existing_archive.stat.md5 != md5_checksum }}"
-  when: existing_archive.stat.exists
-
 - name: Pull archive if necessary
   get_url:
     url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/{{ item }}?circle-token={{ circle_token }}'
     dest: '/tmp/artifacts/magento.tar.gz'
     checksum: "md5:{{ md5_checksum }}"
-    force: "{{ force_new_download | default ('false') }}"

@@ -9,3 +9,8 @@
   command: bin/magento deploy:mode:set production
   args:
     chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
+
+- name: Magento cache:flush
+  command: bin/magento cache:flush
+  args:
+    chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'

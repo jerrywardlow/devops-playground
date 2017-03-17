@@ -2,3 +2,4 @@
 
 - include: retrieve_archive.yml
 - include: filesystem.yml
+- include: magento.yml

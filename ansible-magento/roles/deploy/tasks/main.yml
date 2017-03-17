@@ -14,8 +14,8 @@
 
 - name: Symlink shared assets
   file:
-    src: '/var/www/{{ domain }}/shared/{{ item.src }}'
-    dest: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/{{ item.dest }}'
+    src: '/var/www/{{ domain }}/shared/{{ item }}'
+    dest: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/{{ item }}'
     state: link
     with_items:
       - 'app/etc/env.php'

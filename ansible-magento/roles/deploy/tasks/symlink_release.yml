@@ -1,0 +1,7 @@
+---
+
+- name: Symlink deployed release
+  file:
+    src: '/var/www/{{ domain }}/release/{{ build_number }}/'
+    dest: '/var/www/{{ domain }}/current'
+    state: link

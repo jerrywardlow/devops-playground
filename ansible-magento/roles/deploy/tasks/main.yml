@@ -33,3 +33,9 @@
       - 'generation'
       - 'page_cache'
       - 'view_preprocessed'
+
+- name: Extract archive
+  unarchive:
+    remote_src: true
+    src: '/tmp/magento.tar.gz'
+    dest: '/var/www/{{ domain }}/releases/{{ build_number }}/'

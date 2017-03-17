@@ -1,3 +1,11 @@
 ---
 
+- name: Magento setup:upgrade
+  command: bin/magento setup:upgrade
+  args:
+    chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
 
+- name: Magento deploy:mode:set
+  command: bin/magento deploy:mode:set production
+  args:
+    chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'

@@ -1,3 +1,4 @@
 ---
 
+- include: retrieve_archive.yml
 - include: filesystem.yml

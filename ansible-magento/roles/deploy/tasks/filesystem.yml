@@ -1,9 +1,5 @@
 ---
 
-# - name: Pull build {{ build_number }} artifacts
-
-# - name: Validate artifact
-
 - name: Create release directory
   file:
     path: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/{{ item }}'

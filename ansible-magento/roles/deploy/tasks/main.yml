@@ -63,3 +63,10 @@
       - 'pub/static'
       - 'pub/media'
       - 'app/etc'
+
+- name: Set ownership
+  file:
+    path: '/var/www/{{ domain }}/releases/{{ build_number }}/'
+    owner: '{{ user }}'
+    group: '{{ web_server_group }}'
+    recurse: yes  

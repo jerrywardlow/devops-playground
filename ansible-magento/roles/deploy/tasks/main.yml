@@ -39,3 +39,27 @@
     remote_src: true
     src: '/tmp/magento.tar.gz'
     dest: '/var/www/{{ domain }}/releases/{{ build_number }}/'
+
+- name: Set file permissions
+  file:
+    path: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/{{ item }}'
+    state: file
+    mode: 'g+w'
+    with_items:
+      - 'var'
+      - 'vendor'
+      - 'pub/static'
+      - 'pub/media'
+      - 'app/etc'
+
+- name: Set directory permissions
+  file:
+    path: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/{{ item }}'
+    state: directory
+    mode: 'g+ws'
+    with_items:
+      - 'var'
+      - 'vendor'
+      - 'pub/static'
+      - 'pub/media'
+      - 'app/etc'

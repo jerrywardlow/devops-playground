@@ -7,6 +7,6 @@
 
 - name: Pull archive if necessary
   get_url:
-    url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/{{ item }}?circle-token={{ circle_token }}'
+    url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/magento.tar.gz?circle-token={{ circle_token }}'
     dest: '/tmp/artifacts/magento.tar.gz'
     checksum: "md5:{{ md5_checksum }}"

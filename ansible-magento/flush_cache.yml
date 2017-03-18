@@ -1,5 +1,0 @@
----
-
-- hosts: web
-  roles:
-    - flush_cache

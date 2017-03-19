@@ -30,7 +30,11 @@ fi
 (cd packer/ && exec packer build -var packer_uuid=${UUID} wordpress.json)
 
 # Query AWS for image with same UUID tag
-AMI_ID=$(aws ec2 describe-images --owners self --filters Name=tag:packer_uuid,Values=${UUID} --output text --query 'Images[0].ImageId')
+AMI_ID=$(aws ec2 describe-images \
+             --owners self \
+             --filters Name=tag:packer_uuid,Values=${UUID} \
+             --output text \
+             --query 'Images[0].ImageId')
 
 # Log generated AMI, including failure to query
 echo $(date) ${AMI_ID} >> ami_log

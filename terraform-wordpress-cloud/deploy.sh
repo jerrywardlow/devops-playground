@@ -8,7 +8,7 @@
 set -u
 set -e
 
-# Make sure Packer, Terraform, and Ansible are installed
+# Make sure Packer and Terraform are installed
 if ! hash packer 2>/dev/null; then
     echo "Missing dependency: Packer"
     exit 1

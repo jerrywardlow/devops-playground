@@ -25,3 +25,5 @@ halt() {
 destroy() {
     lxc delete $1
 }
+
+$@

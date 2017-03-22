@@ -1,0 +1,14 @@
+---
+
+- hosts: web
+  tasks:
+    - name: Fetch MD5 artifact
+      set_fact:
+        md5_checksum: "{{ item }}"
+      with_url:
+
+    - name: Pull Magento artifact if necessary
+      get_url:
+        url:
+        dest: '/tmp/arifacts/magento.tar.gz'
+        checksum: "md5:{{ md5_checksum }}"

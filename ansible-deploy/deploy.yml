@@ -20,3 +20,14 @@
         with_items:
           - 'app/etc/'
           - 'pub'
+            
+    - name: Symlink shared assets
+      file:
+        src: '/var/www/{{ domain }}/shared/{{ item }}'
+        dest: '/var/wwww/{{ domain }}/releases/{{ build_number }}/magento/{{ item }}'
+        state: link
+        with_items:
+          - 'app/etc/env.php'
+          - 'pub/media'
+          - 'pub/static'
+          - 'var'

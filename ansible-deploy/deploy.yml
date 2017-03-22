@@ -80,3 +80,14 @@
         owner: '{{ user }}'
         group: '{{ web_server_group }}'
         recurse: yes
+    
+    - name: Execute Magento setup:upgrade
+      command: bin/magento setup:upgrade --keep-generated
+      args:
+        chdir: '/var/www/{{ domain }}/releases/{{ build_numer }}/magento/'
+
+    - name: Execute Magento cache:flush
+      command: bin/magento cache:flush
+      args:
+        chdir: '/var/www/{{ domain }}/releases/{{ build_numer }}/magento/'
+

@@ -5,10 +5,10 @@
     - name: Fetch MD5 artifact
       set_fact:
         md5_checksum: "{{ item }}"
-      with_url:
+      with_url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/checksum.md5?circle-token={{ circle_token }}'
 
     - name: Pull Magento artifact if necessary
       get_url:
-        url:
+        url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/magento.tar.gz?circle-token={{ circle_token }}'
         dest: '/tmp/arifacts/magento.tar.gz'
         checksum: "md5:{{ md5_checksum }}"

@@ -1,7 +1,7 @@
 ---
 
 - name: Magento setup:upgrade
-  command: bin/magento setup:upgrade
+  command: bin/magento setup:upgrade --keep-generated
   args:
     chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
 

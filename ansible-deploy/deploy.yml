@@ -31,3 +31,15 @@
           - 'pub/media'
           - 'pub/static'
           - 'var'
+
+    - name: Clean shared caches
+      file:
+        path: '/var/www/{{ domain }}/shared/var/{{ item }}'
+        state: absent
+        recurse: yes
+        with_items:
+          - 'cache'
+          - 'di'
+          - 'generation'
+          - 'page_cache'
+          - 'view_preprocessed'

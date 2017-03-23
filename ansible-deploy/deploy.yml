@@ -86,8 +86,13 @@
       args:
         chdir: '/var/www/{{ domain }}/releases/{{ build_numer }}/magento/'
 
+    - name: Symlink deployed release
+      file:
+        src: '/var/www/{{ domain }}/release/{{ build_number }}/'
+        dest: '/var/www/{{ domain }}/current'
+        state: link
+
     - name: Execute Magento cache:flush
       command: bin/magento cache:flush
       args:
         chdir: '/var/www/{{ domain }}/releases/{{ build_numer }}/magento/'
-

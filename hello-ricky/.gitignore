@@ -6,3 +6,6 @@ web/*
 
 !data/data.sh
 !web/web.sh
+
+!data/README.md
+!web/README.md

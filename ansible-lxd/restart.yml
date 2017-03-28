@@ -1,6 +1,6 @@
 ---
 
-- host: localhost
+- hosts: localhost
   connection: local
   tasks:
     - name: Restart test container

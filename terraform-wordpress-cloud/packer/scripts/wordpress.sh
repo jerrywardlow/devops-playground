@@ -8,21 +8,21 @@ echo "postfix postfix/main_mailer_type string 'Internet Site'" | sudo debconf-se
 # Install packages
 sudo apt-get install -y \
                      apache2 \
+                     git \
+                     libapache2-mod-php5 \
+                     libssh2-php \
+                     mailutils \
                      php5 \
                      php5-cli \
+                     php5-curl \
                      php5-fpm \
                      php5-gd \
-                     libssh2-php \
-                     libapache2-mod-php5 \
+                     php5-json \
                      php5-mcrypt \
                      php5-mysql \
-                     git \
-                     unzip \
-                     zip \
                      postfix \
-                     php5-curl \
-                     mailutils \
-                     php5-json 
+                     unzip \
+                     zip
 
 # Enable mod_rewrite and mod_headers
 sudo a2enmod rewrite headers

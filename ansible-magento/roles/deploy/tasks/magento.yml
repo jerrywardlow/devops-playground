@@ -6,7 +6,7 @@
     chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
 
 - name: Magento deploy:mode:set
-  command: bin/magento deploy:mode:set production
+  command: bin/magento deploy:mode:set production --skip-compilation
   args:
     chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
 

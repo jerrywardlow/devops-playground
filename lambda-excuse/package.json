@@ -17,6 +17,7 @@
   "author": "Jerry Wardlow",
   "license": "MIT",
   "dependencies": {
-    "claudia-bot-builder": "^2.15.0"
+    "claudia-bot-builder": "^2.15.0",
+    "huh": "^2.0.1"
   }
 }

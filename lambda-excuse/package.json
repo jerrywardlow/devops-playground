@@ -1,0 +1,19 @@
+{
+  "name": "lambda-excuse",
+  "version": "0.0.0",
+  "description": "A Claudia excuse bot on Lambda",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"SHIP IT.\" && exit 1"
+  },
+  "keywords": [
+    "bot",
+    "lambda",
+    "claudia",
+    "huh",
+    "excuse",
+    "slack"
+  ],
+  "author": "Jerry Wardlow",
+  "license": "MIT"
+}

@@ -15,5 +15,8 @@
     "slack"
   ],
   "author": "Jerry Wardlow",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "claudia-bot-builder": "^2.15.0"
+  }
 }

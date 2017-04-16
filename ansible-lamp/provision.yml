@@ -1,0 +1,11 @@
+---
+
+- hosts: web
+  roles:
+    - common
+    - web
+
+- hosts: data
+  roles:
+    - common
+    - data

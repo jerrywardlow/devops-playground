@@ -1,3 +1,9 @@
 mysql_db_user: "dbuser"
 mysql_db_name: "dbname"
 mysql_db_password: "password123#@!"
+
+common_packages:
+  - fail2ban
+  - git
+  - htop
+  - tree

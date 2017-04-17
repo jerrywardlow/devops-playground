@@ -1,0 +1,7 @@
+---
+
+- name: Install web packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ web_packages }}"

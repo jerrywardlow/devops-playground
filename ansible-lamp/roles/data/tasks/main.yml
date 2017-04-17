@@ -1,0 +1,7 @@
+---
+
+- name: Install data packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ data_packages }}"

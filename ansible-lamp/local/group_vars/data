@@ -1,2 +1,2 @@
-data_packages:
+packages:
   - mysql-server

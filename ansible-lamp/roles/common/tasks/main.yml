@@ -5,3 +5,9 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ common_packages }}"
+
+- name: Install group packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ packages }}"

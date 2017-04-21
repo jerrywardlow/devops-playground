@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled     = true
+  end
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.define :web, primary: true do |web|
+    web.vm.box = "ubuntu/xenial64"
+    web.vm.hostname = "web.ttyjs"
+    web.vm.network :private_network, ip: "192.168.56.78"
+
+    web.vm.synced_folder ".tty.js/", "/home/ubuntu/.tty.js/"
+
+    web.vm.provision :shell, path: "ttyjs.sh", privileged: false
+
+    web.vm.provider :virtualbox do |v|
+      v.name = "web.ttyjs"
+      v.memory = "2048"
+    end
+  end
+end

@@ -3,3 +3,14 @@
 
 - hosts: web
   tasks:
+    - name: Create directory structure
+      file:
+        path: '{{ docroot }}/{{ item }}'
+        state: directory
+        with_items:
+          - 'shared'
+          - 'shared/app'
+          - 'shared/app/etc'
+          - 'shared/pub'
+          - 'shared/pub/media'
+          - 'shared/pub/static'

@@ -11,6 +11,8 @@
           - 'shared'
           - 'shared/app'
           - 'shared/app/etc'
+          - 'shared/composer'
           - 'shared/pub'
           - 'shared/pub/media'
           - 'shared/pub/static'
+          - 'shared/var'

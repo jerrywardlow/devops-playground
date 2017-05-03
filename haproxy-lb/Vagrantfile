@@ -2,18 +2,6 @@ Vagrant.configure(2) do |config|
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
-  # HAProxy box
-  config.vm.define "lb" do |lb|
-    lb.vm.box = "ubuntu/xenial64"
-    lb.vm.hostname = "lb.local"
-    lb.hostmanager.aliases = %w(shop.example.com blog.example.com)
-    lb.vm.network :private_network, ip: "192.168.56.70"
-    lb.vm.provider :virtualbox do |v|
-      v.name = "haproxy.lb"
-      v.memory = 1024
-    end
-  end
-
   # Shop box
   config.vm.define "shop" do |shop|
     shop.vm.box = "ubuntu/xenial64"
@@ -23,6 +11,8 @@ Vagrant.configure(2) do |config|
       v.name = "haproxy.shop"
       v.memory = 1024
     end
+
+    shop.vm.provision :shell, inline: "apt update && apt install -y nginx && echo 'shop' > /var/www/html/index.nginx-debian.html"
   end
 
   # Blog box
@@ -34,5 +24,22 @@ Vagrant.configure(2) do |config|
       v.name = "haproxy.blog"
       v.memory = 1024
     end
+
+    blog.vm.provision :shell, inline: "apt update && apt install -y nginx && echo 'blog' > /var/www/html/index.nginx-debian.html"
   end
+
+  # HAProxy box
+  config.vm.define "lb" do |lb|
+    lb.vm.box = "ubuntu/xenial64"
+    lb.vm.hostname = "lb.local"
+    lb.hostmanager.aliases = %w(shop.example.com blog.example.com)
+    lb.vm.network :private_network, ip: "192.168.56.70"
+    lb.vm.provider :virtualbox do |v|
+      v.name = "haproxy.lb"
+      v.memory = 1024
+    end
+
+    lb.vm.provision :shell, inline: "apt update && apt install -y haproxy && cp /vagrant/haproxy.cfg /etc/haproxy/haproxy.cfg && systemctl restart haproxy.service"
+  end
+
 end

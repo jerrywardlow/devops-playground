@@ -28,7 +28,8 @@ curl --data-urlencode "weblog_title=DREADNOUGHT" \
      --data-urlencode "admin_password2=complexpassword123#@!" \
      --data-urlencode "admin_email=admin@example.com" \
      --data-urlencode "Submit=Install+WordPress" \
-     http://blog.example.com/wp-admin/install.php?step=2
+     --header "Host: blog.example.com" \
+     http://localhost/wp-admin/install.php?step=2
 
 #Shop
 wget --quiet -P /tmp https://github.com/magento-2/magento-2-community-sample-data/archive/master.tar.gz

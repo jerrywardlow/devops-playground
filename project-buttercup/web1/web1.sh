@@ -13,6 +13,9 @@ a2ensite blog.conf shop.conf
 #PHP
 apt install -y php libapache2-mod-php php-mcrypt php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-intl php-zip
 
+# Restart Apache
+systemctl restart apache2.service
+
 #Blog
 wget --quiet -P /tmp https://wordpress.org/latest.tar.gz 
 tar xzf /tmp/latest.tar.gz -C /var/www/blog.example.com/ --strip 1

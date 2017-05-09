@@ -1,2 +1,5 @@
 [web]
-192.168.56.10 ansible_user=vagrant
+local_web ansible_host=192.168.56.10
+
+[db]
+local_db ansible_host=192.168.56.20

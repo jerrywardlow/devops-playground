@@ -7,13 +7,13 @@
         md5_checksum: "{{ item }}"
       with_url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/checksum.md5?circle-token={{ circle_token }}'
 
-    - name: Pull Magento artifact if necessary
+    - name: Pull Magento artifact # Only pulls if 'dest' doest not exists or if 'dest' fails MD5 check
       get_url:
         url: 'https://{{ build_number }}-{{ project_number }}-gh.circle-artifacts.com/0/tmp/magento.tar.gz?circle-token={{ circle_token }}'
         dest: '/tmp/arifacts/magento.tar.gz'
         checksum: "md5:{{ md5_checksum }}"
 
-    - name: Create release directory
+    - name: Create release directory structure
       file:
         path: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/{{ item }}'
         state: directory

@@ -1,0 +1,5 @@
+[web]
+staging_web ansible_host=192.168.56.66
+
+[db]
+staging_db ansible_host=192.168.56.77

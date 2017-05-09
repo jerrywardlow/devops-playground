@@ -1,0 +1,9 @@
+domain: "example.com"
+docroot: "/var/www/example.com"
+
+mysql_db_user: "db_user"
+mysql_db_name: "db_name"
+mysql_db_password: "password123#@!"
+
+project_number: "pass"
+circle_token: "pass"

@@ -1,0 +1,25 @@
+---
+
+- name: Get name of project user
+  local_action: command whoami
+  become: false
+  register: project_user
+  changed_when: false
+
+- name: Create user account
+  user:
+    name: "{{ project_user.stdout }}"
+    comment: "Project User"
+    groups: sudo
+
+- name: Fetch and set user authorized key
+  authorized_key:
+    user: "{{ project_user.stdout }}"
+    state: present
+    key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub') }}"
+
+- name: Enable passwordless sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: "{{ project_user.stdout }} ALL = (ALL) NOPASSWD: ALL"

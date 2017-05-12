@@ -5,3 +5,16 @@
     url: "https://wordpress.org/wordpress-{{ wp_version }}.tar.gz"
     dest: /tmp/wordpress.tar.gz
     checksum: "md5:{{ wp_checksum }}"
+
+- name: Ensure directory strucutre is present
+  file:
+    path: /var/www/blog.example.com
+    owner: www-data
+    group: www-data
+    state: directory
+
+- name: Extract archive
+  unarchive:
+    remote_src: true
+    src: /tmp/wordpress.tar.gz
+    dest: /var/www/blog.example.com/

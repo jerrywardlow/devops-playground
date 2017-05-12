@@ -1,0 +1,7 @@
+---
+
+- name: Fetch WordPress archive
+  get_url:
+    url: "https://wordpress.org/wordpress-{{ wp_version }}.tar.gz"
+    dest: /tmp/wordpress.tar.gz
+    checksum: "md5:{{ wp_checksum }}"

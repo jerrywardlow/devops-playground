@@ -6,7 +6,7 @@ wp_checksum: eefcac6dcb954183fff27e5998d62b5f
 apache_vhosts:
   blog:
     domain: blog.example.com
-    docroot: /var/www/blog.example.com
+    docroot: /var/www/blog.example.com/wordpress
   shop:
     domain: shop.example.com
     docroot: /var/www/shop.example.com/pub

@@ -1,0 +1,6 @@
+---
+
+- hosts: lb
+  roles:
+    - common
+    - haproxy

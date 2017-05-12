@@ -1,0 +1,11 @@
+---
+
+- name: restart haproxy
+  systemd:
+    name: haproxy
+    state: restarted
+
+- name: restart networking
+  systemd:
+    name: networking
+    state: restarted

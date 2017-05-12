@@ -1,0 +1,7 @@
+---
+
+- name: Install PHP and dependencies
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ php_packages }}"

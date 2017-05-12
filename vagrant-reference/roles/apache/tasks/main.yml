@@ -1,0 +1,14 @@
+---
+
+- name: Install Apache2
+  package:
+    name: apache2
+    state: latest
+
+- name: Configure Apache2
+  template:
+    src: vhost.conf.j2
+    dest: "/etc/apache2/sites-available/{{ item.key }}.conf"
+  with_dict: "{{ apache_vhosts }}"
+  notify:
+    -restart apache

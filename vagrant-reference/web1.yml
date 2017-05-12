@@ -1,0 +1,9 @@
+---
+
+- hosts: web1
+  roles:
+    - common
+    - apache
+    - php
+    - blog
+    - shop

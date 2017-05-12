@@ -1,0 +1,7 @@
+---
+
+- hosts: web2
+  roles:
+    - common
+    - nodejs
+    - forum

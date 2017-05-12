@@ -1,0 +1,7 @@
+---
+
+- hosts: data
+  roles:
+    - common
+    - mongo
+    - mysql

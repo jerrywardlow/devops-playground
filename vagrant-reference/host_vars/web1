@@ -1,0 +1,9 @@
+---
+
+apache_vhosts:
+  blog:
+    domain: blog.example.com
+    docroot: /var/www/blog.example.com
+  shop:
+    domain: shop.example.com
+    docroot: /var/www/shop.example.com/pub

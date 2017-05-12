@@ -7,3 +7,16 @@ apache_vhosts:
   shop:
     domain: shop.example.com
     docroot: /var/www/shop.example.com/pub
+
+php_packages:
+  - php
+  - libapache2-mod-php
+  - php-mcrypt
+  - php-mysql
+  - php-curl
+  - php-gd
+  - php-mbstring
+  - php-xml
+  - php-xmlrpc
+  - php-intl
+  - php-zip

@@ -11,4 +11,22 @@
     dest: "/etc/apache2/sites-available/{{ item.key }}.conf"
   with_dict: "{{ apache_vhosts }}"
   notify:
-    -restart apache
+    - restart apache
+
+- name: Disable Apache 000-default.conf
+  file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+  notify:
+    - restart apache
+
+- name: Enable vhosts
+  file:
+    src: "/etc/apache2/sites-available/{{ item.key }}.conf"
+    dest: "/etc/apache2/sites-enabled/{{ item.key }}.conf"
+    owner: root
+    group: root
+    state: link
+  with_dict: "{{ apache_vhosts }}"
+  notify:
+    - restart apache

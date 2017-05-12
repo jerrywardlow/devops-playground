@@ -1,0 +1,17 @@
+---
+
+- name: Install HAProxy
+  package:
+    name: haproxy
+    state: latest
+
+- name: Configure HAProxy
+  copy:
+    src: ../files/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart haproxy
+    - restart networking

@@ -1,6 +1,5 @@
 require 'etc'
 
-project_name = "dreadnought"
 username     = Etc.getlogin
 ssh_pub_key  = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
 

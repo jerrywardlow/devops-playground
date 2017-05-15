@@ -1,0 +1,6 @@
+---
+
+- name: remove lock
+  file:
+    path: /tmp/deploy.lock
+    state: absent

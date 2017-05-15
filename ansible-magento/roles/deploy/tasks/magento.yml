@@ -14,3 +14,4 @@
   command: bin/magento cache:flush
   args:
     chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
+  notify: restart php-fpm

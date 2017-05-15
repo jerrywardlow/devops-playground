@@ -10,8 +10,6 @@
   args:
     chdir: '/var/www/{{ domain }}/releases/{{ build_number }}/magento/'
 
-- include: symlnk_release.yml
-
 - name: Magento cache:flush
   command: bin/magento cache:flush
   args:

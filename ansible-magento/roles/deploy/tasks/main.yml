@@ -8,7 +8,8 @@
     changed_when: false
 
   - include: retrieve_archive.yml
-  - include: filesystem.yml
+  - include: prepare_filesystem.yml
+  - include: symlnk_release.yml
   - include: magento.yml
 
   rescue:
@@ -16,4 +17,4 @@
         deploy_failure: "FAILED!"
 
   always:
-    - include: notify-slack.yml
+    - include: notify_slack.yml

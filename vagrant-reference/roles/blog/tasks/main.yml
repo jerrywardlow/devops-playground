@@ -1,5 +1,10 @@
 ---
 
+- name: Get MD5 checksum
+  set_fact:
+    md5_checksum: "{{ item }}"
+  with_url: 'https://wordpress.org/latest.tar.gz.md5'
+
 - name: Fetch WordPress archive
   get_url:
     url: "https://wordpress.org/wordpress-{{ wp_version }}.tar.gz"

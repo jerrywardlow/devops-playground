@@ -4,3 +4,8 @@
   file:
     path: /tmp/deploy.lock
     state: absent
+
+- name: restart php-fpm
+  systemd:
+    name: php-fpm
+    state: restarted

@@ -31,7 +31,7 @@ Vagrant.configure(2) do |config|
       end
 
       nodeconf.vm.provider :virtualbox do |vbox|
-        vbox.name   = "#{project_name}.#{node}"
+        vbox.name   = "vagrant.#{node}"
         vbox.memory = 1024
       end
     end

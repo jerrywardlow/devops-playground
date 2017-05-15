@@ -18,3 +18,5 @@
 
   always:
     - include: notify_slack.yml
+    - notify: restart php-fpm
+    - notify: remove lock

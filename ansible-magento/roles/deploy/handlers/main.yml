@@ -9,3 +9,8 @@
   systemd:
     name: php-fpm
     state: restarted
+
+- name: log build
+  lineinfile:
+    path: '/var/www/{{ domain }}/deployed_builds'
+    line: '{{ build_number }}'

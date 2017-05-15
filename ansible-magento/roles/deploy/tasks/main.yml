@@ -1,5 +1,11 @@
 ---
 
+- name: Get name of project user
+  local_action: command whoami
+  become: false
+  register: project_user
+  changed_when: false
+
 - include: retrieve_archive.yml
 - include: filesystem.yml
 - include: magento.yml

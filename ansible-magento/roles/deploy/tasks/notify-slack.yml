@@ -1,0 +1,8 @@
+---
+
+- name: Send notification via Slack
+  slack:
+    token: "{{ slack_token }}"
+    msg: "Deployment to {{ inventory_dir }} by {{ project_user }} {{ deploy_failure | default(completed) }}!"
+    username: '' # Username set when generating Slack token
+    icon_url: '' # Same as above

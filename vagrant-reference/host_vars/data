@@ -3,3 +3,17 @@
 mysql_packages:
   - mysql-server
   - python-mysqldb
+
+mysql_databases:
+  - magento
+  - wordpress
+
+mysql_users:
+  magentouser:
+    password: 'password'
+    host: 'web1'
+    priv: 'magento.*:ALL'
+  wordpressuser:
+    password: 'password'
+    host: 'web1'
+    priv: 'wordpress.*:ALL'

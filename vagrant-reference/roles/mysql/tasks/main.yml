@@ -5,3 +5,18 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ mysql_packages }}"
+
+- name: Create MySQL databases
+  mysql_db:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ mysql_databases }}"
+
+- name: Create MySQL users
+  mysql_user:
+    name: "{{ item.key }}"
+    password: "{{ item.value.password }}"
+    host: "{{ item.value.host }}"
+    priv: "{{ item.value.priv }}"
+    state: present
+  with_dict: "{{ mysql_users }}"

@@ -5,12 +5,14 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ mysql_packages }}"
+  notify: restart mysql
 
 - name: Create MySQL databases
   mysql_db:
     name: "{{ item }}"
     state: present
   with_items: "{{ mysql_databases }}"
+  notify: restart mysql
 
 - name: Create MySQL users
   mysql_user:
@@ -20,9 +22,11 @@
     priv: "{{ item.value.priv }}"
     state: present
   with_dict: "{{ mysql_users }}"
+  notify: restart mysql
 
 - name: Listen on all interfaces
   lineinfile:
     path: '/etc/mysql/mysql.conf.d/mysqld.cnf'
     regexp: '^bind-address.*[^\*]'
     line: 'bind-address = *'
+  notify: restart mysql

@@ -17,3 +17,4 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ mongo_packages }}"
+  notify: restart mongod

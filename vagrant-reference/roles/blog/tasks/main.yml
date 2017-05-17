@@ -11,7 +11,7 @@
     dest: /tmp/wordpress.tar.gz
     checksum: "md5:{{ md5_checksum }}"
 
-- name: Ensure directory strucutre is present
+- name: Ensure directory structre is present
   file:
     path: /var/www/blog.example.com
     owner: www-data
@@ -23,3 +23,5 @@
     remote_src: true
     src: /tmp/wordpress.tar.gz
     dest: /var/www/blog.example.com/
+    owner: www-data
+    group: www-data

@@ -17,3 +17,6 @@ mysql_users:
     password: 'password'
     host: 'web1'
     priv: 'wordpress.*:ALL'
+
+mongo_packages:
+  - mongodb-org-server

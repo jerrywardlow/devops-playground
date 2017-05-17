@@ -1,0 +1,19 @@
+---
+
+- name: Install MongoDB apt key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 0C49F3730359A14518585931BC711F9BA15703C6
+    state: present
+
+- name: Add Mongo repository
+  apt_repository:
+    repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+    filename: 'mongodb-org-3.4'
+    state: present
+
+- name: Install MongoDB server
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ mongo_packages }}"

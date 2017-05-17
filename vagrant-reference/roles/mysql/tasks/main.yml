@@ -20,3 +20,9 @@
     priv: "{{ item.value.priv }}"
     state: present
   with_dict: "{{ mysql_users }}"
+
+- name: Listen on all interfaces
+  lineinfile:
+    path: '/etc/mysql/mysql.conf.d/mysqld.cnf'
+    regexp: '^bind-address.*[^\*]'
+    line: 'bind-address = *'

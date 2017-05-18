@@ -36,3 +36,11 @@
     group: www-data
     mode: 0644
   notify: restart apache
+
+- name: Install Wordpress
+  uri:
+    url: "http://localhost/wp-admin/install.php?step=2"
+    method: POST
+    body: "weblog_title=DREADNOUGHT&user_name=user&admin_password=password123#@!&admin_password2=password123#@!&admin_email=admin@example.com&Submit=Install+Wordpress"
+    headers:
+      Host: "blog.example.com"

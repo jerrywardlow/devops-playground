@@ -25,3 +25,12 @@
     dest: /var/www/blog.example.com/
     owner: www-data
     group: www-data
+
+- name: Set Wordpress config
+  copy:
+    src: wp-config.php
+    dest: /var/www/blog.example.com/wordpress/
+    owner: www-data
+    group: www-data
+    mode: 0644
+  notify: restart apache

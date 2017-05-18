@@ -2,7 +2,7 @@
 
 - name: Ensure Magento directory structure
   file:
-    path: /var/www/shop.example.com
+    path: /var/www/shop.example.com/magento/
     owner: www-data
     group: www-data
     state: directory
@@ -18,6 +18,7 @@
   unarchive:
     remote_src: true
     src: /var/www/shop.example.com/magento.tar.gz
-    dest: /var/www/shop.example.com/
+    dest: /var/www/shop.example.com/magento/
     owner: www-data
     group: www-data
+    extra_opts: ["--strip-components=1"]

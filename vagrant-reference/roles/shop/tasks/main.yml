@@ -22,3 +22,8 @@
     owner: www-data
     group: www-data
     extra_opts: ["--strip-components=1"]
+
+- name: Check for Magento app/etc/env.php
+  stat:
+    path: /var/www/shop.example.com/magento/app/etc/env.php
+  register: app_etc_env

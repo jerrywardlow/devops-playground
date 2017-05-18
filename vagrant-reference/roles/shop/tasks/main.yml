@@ -1,0 +1,23 @@
+---
+
+- name: Ensure Magento directory structure
+  file:
+    path: /var/www/shop.example.com
+    owner: www-data
+    group: www-data
+    state: directory
+
+- name: Fetch Magento 2 archive
+  get_url:
+    url: "https://github.com/magento-2/magento-2-community-sample-data/archive/master.tar.gz"
+    dest: /var/www/shop.example.com/magento.tar.gz
+    owner: www-data
+    group: www-data
+
+- name: Extract Magento archive
+  unarchive:
+    remote_src: true
+    src: /var/www/shop.example.com/magento.tar.gz
+    dest: /var/www/shop.example.com/
+    owner: www-data
+    group: www-data

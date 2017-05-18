@@ -20,3 +20,16 @@ mysql_users:
 
 mongo_packages:
   - mongodb-org-server
+  - python-pymongo
+
+mongo_admin:
+  admin:
+    database: 'admin'
+    password: 'admin'
+    roles: 'root'
+
+mongo_users:
+  nodeuser:
+    database: 'nodedb'
+    password: 'password'
+    roles: 'readWrite'

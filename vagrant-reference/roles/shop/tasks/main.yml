@@ -14,11 +14,6 @@
     owner: www-data
     group: www-data
 
-- name: Check for Magento index.php
-  stat:
-    path: /var/www/shop.example.com/magento/index.php
-  register: magento_index
-
 - name: Extract Magento archive
   unarchive:
     remote_src: true
@@ -27,4 +22,4 @@
     owner: www-data
     group: www-data
     extra_opts: ["--strip-components=1"]
-  when: not magento_index.stat.exists # Hack to save time by skipping large archive search
+    creates: /var/www/shop.example.com/magento/index.php

@@ -44,3 +44,10 @@
     update_password: on_create
   with_dict: "{{ mongo_users }}"
   notify: restart mongod
+
+- name: Listen on all interfaces
+  lineinfile:
+    path: '/etc/mongod.conf'
+    regexp: '\s\sbindIp.*[^\0]'
+    line: '  bindIp: 0.0.0.0'
+  notify: restart mongod

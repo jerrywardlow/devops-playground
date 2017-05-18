@@ -12,9 +12,35 @@
     filename: 'mongodb-org-3.4'
     state: present
 
-- name: Install MongoDB server
+- name: Install MongoDB packages
   package:
     name: "{{ item }}"
     state: latest
   with_items: "{{ mongo_packages }}"
+  notify: restart mongod
+
+- meta: flush_handlers
+
+- name: Configure MongoDB admin
+  mongodb_user:
+    database: "{{ item.value.database }}"
+    name: "{{ item.key }}"
+    password: "{{ item.value.password }}"
+    roles: "{{ item.value.roles }}"
+    state: present
+    update_password: on_create
+  with_dict: "{{ mongo_admin }}"
+  notify: restart mongod
+
+- name: Configure MongoDB user/database
+  mongodb_user:
+    login_user: admin
+    login_password: admin
+    database: "{{ item.value.database }}"
+    name: "{{ item.key }}"
+    password: "{{ item.value.password }}"
+    roles: "{{ item.value.roles }}"
+    state: present
+    update_password: on_create
+  with_dict: "{{ mongo_users }}"
   notify: restart mongod

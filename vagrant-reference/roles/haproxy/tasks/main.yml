@@ -7,7 +7,7 @@
 
 - name: Configure HAProxy
   copy:
-    src: ../files/haproxy.cfg
+    src: haproxy.cfg
     dest: /etc/haproxy/haproxy.cfg
     owner: root
     group: root

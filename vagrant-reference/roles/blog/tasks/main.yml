@@ -37,6 +37,8 @@
     mode: 0644
   notify: restart apache
 
+- meta: flush_handlers
+
 - name: Install Wordpress
   uri:
     url: "http://localhost/wp-admin/install.php?step=2"
@@ -44,3 +46,5 @@
     body: "weblog_title=DREADNOUGHT&user_name=user&admin_password=password123#@!&admin_password2=password123#@!&admin_email=admin@example.com&Submit=Install+Wordpress"
     headers:
       Host: "blog.example.com"
+
+      # NOT IDEMPOTENT REALLY

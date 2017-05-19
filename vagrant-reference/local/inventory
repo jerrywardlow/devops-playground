@@ -1,11 +1,9 @@
-[data]
+[database]
 data
 
-[web1]
+[webserver]
 web1
-
-[web2]
 web2
 
-[lb]
+[loadbalancer]
 lb

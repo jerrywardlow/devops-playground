@@ -1,0 +1,6 @@
+---
+
+- include: data.yml
+- include: web1.yml
+- include: web2.yml
+- include: lb.yml

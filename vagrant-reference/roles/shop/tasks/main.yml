@@ -23,3 +23,32 @@
     group: www-data
     extra_opts: ["--strip-components=1"]
     creates: /var/www/shop.example.com/magento/index.php
+
+- name: Set permission on 'bin/magento'
+  file:
+    path: /var/www/shop.example.com/magento/bin/magento
+    mode: a+x
+
+- name: Install Magento
+  shell: |
+    /var/www/shop.example.com/magento/bin/magento setup:install \
+    --admin-firstname admin \
+    --admin-lastname lastname \
+    --admin-email admin@example.com \
+    --admin-user user \
+    --admin-password password123 \
+    --db-host data \
+    --db-name magento \
+    --db-user magentouser \
+    --db-password password
+  args:
+    chdir: /var/www/shop.example.com/magento/
+    creates: /var/www/shop.example.com/magento/app/etc/env.php
+
+- name: Set ownership of Magento docroot
+  file:
+    path: /var/www/shop.example.com/
+    owner: www-data
+    group: www-data
+    recurse: yes
+    state: directory

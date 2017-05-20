@@ -1,0 +1,21 @@
+---
+
+- name: Add Node.js apt-key
+  apt_key:
+    url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+    state: present
+
+- name: Add Node.js repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "deb https://deb.nodesource.com/node_6.x xenial main"
+    - "deb-src https://deb.nodesource.com/node_6.x xenial main"
+
+- name: Install Node.js packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - nodejs

@@ -1,0 +1,7 @@
+---
+
+- name: Pull NodeBB repo
+  git:
+    repo: https://github.com/NodeBB/NodeBB.git
+    dest: /var/www/forum.example.com
+    version: "{{ nodebb.version }}"

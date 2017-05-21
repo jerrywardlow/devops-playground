@@ -15,3 +15,9 @@
   npm:
     path: /var/www/forum.example.com/
     production: yes
+
+- name: Setup NodeBB
+  command: ./nodebb setup
+  args:
+    chdir: /var/www/forum.example.com
+    creates: build/

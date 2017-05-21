@@ -26,6 +26,10 @@ Vagrant.configure(2) do |config|
         ansible.playbook = "#{node}.yml"
       end
 
+      # Optional shell provisioner
+      #nodeconf.vm.synced_folder "shell/#{node}", "/#{node}"
+      #nodeconf.vm.provision :shell, path: "shell/#{node}/#{node}.sh"
+
       if node == "lb"
         nodeconf.hostmanager.aliases = %w(blog.example.com shop.example.com forum.example.com)
       end

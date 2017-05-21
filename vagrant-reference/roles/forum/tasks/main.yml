@@ -21,3 +21,9 @@
   args:
     chdir: /var/www/forum.example.com
     creates: build/
+
+- name: Start NodeBB
+  command: ./nodebb start
+  args:
+    chdir: /var/www/forum.example.com
+  changed_when: false

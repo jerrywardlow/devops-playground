@@ -10,3 +10,9 @@
   template:
     src: config.json.j2
     dest: /var/www/forum.example.com/config.json
+
+- name: Install NodeBB
+  npm:
+    path: /var/www/forum.example.com/
+    state: latest
+    production: yes

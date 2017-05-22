@@ -46,5 +46,3 @@
     body: "weblog_title=DREADNOUGHT&user_name=user&admin_password=password123#@!&admin_password2=password123#@!&admin_email=admin@example.com&Submit=Install+Wordpress"
     headers:
       Host: "blog.example.com"
-
-      # NOT IDEMPOTENT REALLY

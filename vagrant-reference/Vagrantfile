@@ -30,8 +30,8 @@ Vagrant.configure(2) do |config|
 
       nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
 
-      nodeconf.vm.provision :ansible do |ansible|
-        ansible.playbook = "#{node}.yml"
+      nodeconf.vm.provision :ansible do |a|
+        a.playbook = "#{node}.yml"
       end
 
       # Optional shell provisioner

@@ -8,8 +8,12 @@ nodes = %w(
 )
 
 Vagrant.configure(2) do |config|
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
+
   config.vbguest.auto_update = false
 
   nodes.each_with_index do |node, index|

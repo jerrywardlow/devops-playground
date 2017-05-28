@@ -1,24 +1,18 @@
-nodes = [
-  {
-    hostname: "web",
-    ip:       "192.168.56.15",
-  },
-  {
-    hostname: "data",
-    ip:       "192.168.56.25",
-  }
-]
+nodes = %w(
+  web
+  data
+)
 
 Vagrant.configure(2) do |config|
   if Vagrant.has_plugin?("vagrant-vbguest")
     config.vbguest.auto_update = false
   end
 
-  nodes.each do |node|
-    config.vm.define node[:hostname] do |nodeconfig|
+  nodes.each_with_index do |node, index|
+    config.vm.define node do |nodeconfig|
       nodeconfig.vm.box = "ubuntu/xenial64"
-      nodeconfig.vm.hostname = node[:hostname]
-      nodeconfig.vm.network :private_network, ip: node[:ip]
+      nodeconfig.vm.hostname = node
+      nodeconfig.vm.network :private_network, ip: "192.168.56.22#{index}"
       nodeconfig.vm.synced_folder ".", "/vagrant", disabled: true
     end
   end

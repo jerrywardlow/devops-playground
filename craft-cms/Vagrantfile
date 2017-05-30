@@ -1,0 +1,40 @@
+vagrant_box = "centos/7"
+
+nodes = %w(
+    data
+    web
+)
+
+Vagrant.configure(2) do |config|
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  else
+    abort("Vagrant Hostmanager required")
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  nodes.each_with_index do |node, index|
+    config.vm.define node do |nodeconf|
+      nodeconf.vm.hostname = "craft.#{node}"
+      nodeconf.vm.box = vagrant_box
+      nodeconf.vm.network :private_network, ip: "192.168.220.23#{index}"
+
+      nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
+
+      # Optional shell provisioner
+      nodeconf.vm.synced_folder "#{node}", "/#{node}"
+      nodeconf.vm.provision :shell, path: "#{node}/#{node}.sh"
+
+      nodeconf.vm.provider :virtualbox do |vbox|
+        vbox.name   = "craft.#{node}"
+        vbox.memory = 512
+        vbox.cpus = 1
+      end
+    end
+  end
+end

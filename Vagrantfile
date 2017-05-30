@@ -71,6 +71,9 @@ Vagrant.configure(2) do |config|
       # Run a shell provisioner named after the node
       nodeconf.vm.provision :shell, path: "path/#{node}.sh"
 
+      # Run a shell provisioner with args
+      nodeconf.vm.provision :shell, path: "scripts/common.sh", args: [user, key]
+
       # Run a shell one-liner (installing Python for example)
       nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
 

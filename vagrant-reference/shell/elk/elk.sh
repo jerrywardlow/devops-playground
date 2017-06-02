@@ -1,4 +1,4 @@
-yum install java-1.8.0-openjdk
+yum -y install java-1.8.0-openjdk
 
 # Elasticsearch
 rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch

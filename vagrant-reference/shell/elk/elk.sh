@@ -21,5 +21,7 @@ systemctl start elasticsearch
 # Kibana
 yum -y install kibana
 
+echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
+
 systemctl enable kibana
 systemctl start kibana

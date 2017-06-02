@@ -17,3 +17,9 @@ echo "network.host: localhost" >> /etc/elasticsearch/elasticsearch.yml
 
 systemctl enable elasticsearch
 systemctl start elasticsearch
+
+# Kibana
+yum -y install kibana
+
+systemctl enable kibana
+systemctl start kibana

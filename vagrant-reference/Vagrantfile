@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
 
       nodeconf.vm.hostname = node
 
-      if node = "log"
+      if node == "log"
         nodeconf.vm.box = centos_box
       else
         nodeconf.vm.box = ubuntu_box

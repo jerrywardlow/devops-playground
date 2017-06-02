@@ -8,8 +8,8 @@ web2
 [loadbalancer]
 lb
 
-[elk]
-log
+[elasticsearch]
+elk
 
 [logged:children]
 database

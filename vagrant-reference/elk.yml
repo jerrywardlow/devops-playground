@@ -1,5 +1,5 @@
 ---
 
-- hosts: log
+- hosts: elk
   roles:
     - common

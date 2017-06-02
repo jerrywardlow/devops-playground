@@ -6,7 +6,7 @@ nodes = %w(
     web1
     web2
     lb
-    log
+    elk
 )
 
 Vagrant.configure(2) do |config|
@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
 
       nodeconf.vm.hostname = node
 
-      if node == "log"
+      if node == "elk"
         nodeconf.vm.box = centos_box
       else
         nodeconf.vm.box = ubuntu_box
@@ -52,7 +52,7 @@ Vagrant.configure(2) do |config|
           blog.example.com
           shop.example.com
           forum.example.com
-          log.example.com
+          elk.example.com
         )
       end
 

@@ -25,3 +25,6 @@ echo "server.host: 0.0.0.0" >> /etc/kibana/kibana.yml
 
 systemctl enable kibana
 systemctl start kibana
+
+# Logstash
+yum -y install logstash

@@ -28,3 +28,6 @@ systemctl start kibana
 
 # Logstash
 yum -y install logstash
+
+systemctl enable logstash
+systemctl start logstash

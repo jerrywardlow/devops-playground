@@ -5,8 +5,8 @@ nodes = %w(
     data
     web1
     web2
-    lb
     elk
+    lb
 )
 
 Vagrant.configure(2) do |config|

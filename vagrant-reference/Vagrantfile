@@ -57,7 +57,10 @@ Vagrant.configure(2) do |config|
       end
 
       nodeconf.vm.provider :virtualbox do |vbox|
-        vbox.name   = "vagrant.#{node}"
+        if node == "elk"
+            vbox.memory = 2048
+        end
+        vbox.name = "vagrant.#{node}"
       end
     end
   end

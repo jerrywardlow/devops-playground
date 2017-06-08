@@ -37,7 +37,9 @@ Vagrant.configure(2) do |config|
 
       nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
 
-      nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
+      unless node == "elk"
+        nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
+      end
 
       nodeconf.vm.provision :ansible do |a|
         a.playbook = "#{node}.yml"

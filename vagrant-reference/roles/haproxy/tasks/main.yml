@@ -6,8 +6,8 @@
     state: latest
 
 - name: Configure HAProxy
-  copy:
-    src: haproxy.cfg
+  template:
+    src: haproxy.cfg.j2
     dest: /etc/haproxy/haproxy.cfg
     owner: root
     group: root

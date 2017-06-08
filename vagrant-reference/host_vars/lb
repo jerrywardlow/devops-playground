@@ -1,0 +1,18 @@
+---
+
+stats: true
+
+targets:
+  web1:
+    domains:
+      - "blog.example.com"
+      - "shop.example.com"
+    port: 80
+  web2:
+    domains:
+      - "forum.example.com"
+    port: 4567
+  elk:
+    domains:
+      - "elk.example.com"
+    port: 5601

@@ -34,26 +34,28 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
+{% if stats %}
 listen stats
-	    bind :9001
-	    mode http
-	    stats enable
-	    stats hide-version
-	    stats realm HAproxy-Statistics
-	    stats uri /haproxy_stats
-	    stats auth username:password
+        bind :9001
+        mode http
+        stats enable
+        stats hide-version
+        stats realm HAproxy-Statistics
+        stats uri /haproxy_stats
+        stats auth username:password
+{% endif %}
 
 frontend main_frontend
         bind *:80
-        acl host_web1 hdr(host) -i blog.example.com shop.example.com
-        acl host_web2 hdr(host) -i forum.example.com
-        use_backend web1 if host_web1
-        use_backend web2 if host_web2
+{% for server, item in targets.iteritems()  %}
+        acl host_{{ server }} hdr(host) -i {% for domain in item.domains %}{{ domain }} {% endfor %}
 
-backend web1
-        http-request set-header X-Client-IP %[src]
-        server web1 web1:80 check
+        use_backend {{ server }} if host_{{ server }}
+{% endfor %}
 
-backend web2
+{% for server, item in targets.iteritems()  %}
+backend {{ server }}
         http-request set-header X-Client-IP %[src]
-        server web2 web2:4567 check
+        server {{ server }} {{ server }}:{{ item.port }} check
+
+{% endfor %}

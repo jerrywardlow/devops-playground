@@ -6,6 +6,11 @@
   register: project_user
   changed_when: false
 
+- name: Ensure group sudo is present
+  group:
+    name: sudo
+    state: present
+
 - name: Create user account
   user:
     name: "{{ project_user.stdout }}"

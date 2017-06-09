@@ -45,7 +45,7 @@ listen stats
         stats auth username:password
 {% endif %}
 
-frontend main_frontend
+frontend http
         bind *:80
 {% for server, item in targets.iteritems()  %}
         acl host_{{ server }} hdr(host) -i {% for domain in item.domains %}{{ domain }} {% endfor %}

@@ -1,0 +1,6 @@
+---
+
+- name: Install Logstash
+  package:
+    name: logstash
+    state: latest

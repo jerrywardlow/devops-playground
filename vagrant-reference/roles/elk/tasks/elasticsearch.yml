@@ -1,0 +1,6 @@
+---
+
+- name: Install Elasticsearch
+  package:
+    name: elasticsearch
+    state: latest

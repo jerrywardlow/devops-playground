@@ -4,3 +4,9 @@
   package:
     name: logstash
     state: latest
+
+- name: Enable/start Logstash service
+  systemd:
+    name: logstash
+    enabled: yes
+    state: started

@@ -4,3 +4,9 @@
   package:
     name: kibana
     state: latest
+
+- name: Configure Kibana
+  lineinfile:
+    path: /etc/kibana/kibana.yml
+    line: "server.host: 0.0.0.0"
+    state: present

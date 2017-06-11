@@ -4,3 +4,9 @@
   package:
     name: elasticsearch
     state: latest
+
+- name: Configure Elasticsearch
+  lineinfile:
+    path: /etc/elasticsearch/elasticsearch.yml
+    line: "network.host: localhost"
+    state: present

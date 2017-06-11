@@ -10,3 +10,9 @@
     path: /etc/kibana/kibana.yml
     line: "server.host: 0.0.0.0"
     state: present
+
+- name: Enable/start Kibana service
+  systemd:
+    name: kibana
+    enabled: yes
+    state: started

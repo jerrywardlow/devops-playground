@@ -10,3 +10,9 @@
     path: /etc/elasticsearch/elasticsearch.yml
     line: "network.host: localhost"
     state: present
+
+- name: Enable/start Elasticsearch service
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    state: started

@@ -1,0 +1,6 @@
+---
+
+- name: Install Kibana
+  package:
+    name: kibana
+    state: latest

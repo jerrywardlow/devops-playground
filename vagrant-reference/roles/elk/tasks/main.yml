@@ -1,0 +1,10 @@
+---
+
+- name: Install Elasticsearch repo
+  yum_repository:
+    name: elasticsearch
+    description: Elasticsearch 5.x
+    baseurl: https://artifacts.elastic.co/packages/5.x/yum
+    gpgcheck: yes
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    enabled: yes

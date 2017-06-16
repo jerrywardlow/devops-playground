@@ -100,7 +100,10 @@ Vagrant.configure(2) do |config|
       # Do something to a specific node
       if node == "database"
         # Assign more hostmanager entries
-        nodeconf.hostmanager.aliases = %w(data.example.com database.local)
+        nodeconf.hostmanager.aliases = %w(
+          data.example.com
+          database.local
+        )
       end
 
       # Do VirtualBox things

@@ -106,6 +106,11 @@ Vagrant.configure(2) do |config|
         )
       end
 
+      # Do something to every other node
+      unless node == "node1"
+        nodeconf.vm.provision :shell, path: "path/exclusive.sh"
+      end
+
       # Do VirtualBox things
       nodeconf.vm.provider :virtualbox do |vbox|
         # Assign a name to the VM

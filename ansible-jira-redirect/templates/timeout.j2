@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+server {
+    listen 80;
+    listen 443;
+    server_name {{ server_name }};
+   
+    root /tmp;
+    index timeout.html;
+
+    location / {
+        try_files /timeout.html =404;
+    }
+}

@@ -1,0 +1,45 @@
+---
+
+- hosts: web
+  tasks:
+    - name: Transfer timeout.html
+      copy:
+        src: files/timeout.html
+        dest: /tmp/timeout.html
+        mode: 0644
+
+    - name: Configure timeout NGINX vhost
+      template:
+        src: templates/timeout.j2
+        dest: /etc/nginx/sites-available/timeout
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Enable timeout vhost
+      file:
+        src: /etc/nginx/sites-available/timeout
+        dest: /etc/nginx/sites-enabled/timeout
+        state: link
+      notify:
+        - restart nginx
+
+    - name: Disable local JIRA vhost
+      file:
+        path: /etc/nginx/sites-enabled/jira
+        state: absent
+      notify:
+        - restart nginx
+
+    - name: Disable JIRA cloud redirect vhost if present
+      file:
+        path: /etc/nginx/sites-enabled/jira-cloud-redirect
+        state: absent
+      notify:
+        - restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: reloaded

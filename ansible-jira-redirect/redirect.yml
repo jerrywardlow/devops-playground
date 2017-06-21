@@ -1,0 +1,39 @@
+---
+
+- hosts: web
+  tasks:
+    - name: Configure NGINX vhost
+      template:
+        src: templates/jira-cloud-redirect.j2
+        dest: /etc/nginx/sites-available/jira-cloud-redirect
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Enable JIRA Cloud redirect vhost
+      file:
+        src: /etc/nginx/sites-available/jira-cloud-redirect
+        dest: /etc/nginx/sites-enabled/jira-cloud-redirect
+        state: link
+      notify:
+        - restart nginx
+
+    - name: Disable local JIRA vhost
+      file:
+        path: /etc/nginx/sites-enabled/jira
+        state: absent
+      notify:
+        - restart nginx
+
+    - name: Disable timeout vhost if present
+      file:
+        path: /etc/nginx/sites-enabled/timeout
+        state: absent
+      notify:
+        - restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: reloaded

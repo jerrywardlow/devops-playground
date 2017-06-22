@@ -1,1 +1,7 @@
 server_name: jira.example.com
+
+cert_path: /etc/ssl/certs/_.yolo.chained.crt
+cert_key: /etc/ssl/private/_.yolo.key
+dhparam_path: /etc/ssl/private/dh_yolo.pem
+
+redirect_url: https://redirect.example.com

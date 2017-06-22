@@ -1,1 +1,7 @@
 server_name: sandbox-jira.example.com
+
+cert_path: /etc/ssl/certs/_.fake.chained.crt
+cert_key: /etc/ssl/private/_.fake.key
+dhparam_path: /etc/ssl/private/dh_yolo.pem
+
+redirect_url: http://sandbox-redirect.example.com

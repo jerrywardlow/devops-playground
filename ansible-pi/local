@@ -1,0 +1,2 @@
+[pi]
+raspberry ansible_ssh_pass=raspberry ansible_become_pass=raspberry

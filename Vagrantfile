@@ -16,6 +16,18 @@ nodes = %w(
     database
 )
 
+# Alternative format
+alt_nodes = [
+  {
+    hostname: "alt_node1",
+    box:      "centos/7"
+  },
+  {
+    hostname: "alt_node2",
+    box:      "ubuntu/xenial64"
+  }
+]
+
 # Beginning of Vagrant configuration
 
 Vagrant.configure(2) do |config|

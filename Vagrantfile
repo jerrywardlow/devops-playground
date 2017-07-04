@@ -28,6 +28,12 @@ alt_nodes = [
   }
 ]
 
+# Do Ruby things
+require 'etc'
+
+username  = Etc.getlogin
+some_file = File.readlines("#{Dir.home}/some/file/").strip
+
 # Beginning of Vagrant configuration
 
 Vagrant.configure(2) do |config|

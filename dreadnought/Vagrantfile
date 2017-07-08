@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
     config.vbguest.auto_update = false
   end
 
-  nodes.each_with_index do |node, index|
+  nodes.each do |node|
     config.vm.define node do |nodeconf|
 
       nodeconf.vm.hostname = node

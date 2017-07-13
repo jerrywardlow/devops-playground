@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
       nodeconf.vm.hostname = node
       nodeconf.vm.box = vagrant_box
 
-      nodeconf.vm.network :private_network
+      nodeconf.vm.network :private_network, type: "dhcp"
 
       nodeconf.vm.provision :shell, path: "#{node}.sh"
 

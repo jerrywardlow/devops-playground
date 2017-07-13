@@ -1,0 +1,38 @@
+vagrant_box = "centos/7"
+
+# List of nodes to create
+nodes = %w(
+    node1
+    node2
+    client
+)
+
+
+Vagrant.configure(2) do |config|
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  nodes.each do |node|
+    config.vm.define node do |nodeconf|
+      nodeconf.vm.hostname = node
+      nodeconf.vm.box = vagrant_box
+
+      nodeconf.vm.network :private_network
+
+      nodeconf.vm.provision :shell, path: "#{node}.sh"
+
+      nodeconf.vm.provider :virtualbox do |vbox|
+        vbox.name   = "glusterfs.#{node}"
+        vbox.memory = 512
+        vbox.cpus = 1
+      end
+    end
+  end
+end

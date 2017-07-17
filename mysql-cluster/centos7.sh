@@ -1,9 +1,9 @@
 #!/bin/bash
 
 yum -y install \
-    wget \
     nmap \
-    perl-Data-Dumper
+    perl-Data-Dumper \
+    wget \
 
 yum -y remove \
     mariadb-libs

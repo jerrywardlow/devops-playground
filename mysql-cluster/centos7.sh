@@ -1,6 +1,7 @@
 #!/bin/bash
 
 yum -y install \
+    htop \
     nmap \
     perl-Data-Dumper \
     wget \

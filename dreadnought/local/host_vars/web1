@@ -20,3 +20,6 @@ php_packages:
   - php-xmlrpc
   - php-intl
   - php-zip
+
+varnish_packages:
+  - varnish

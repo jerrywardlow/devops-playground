@@ -1,0 +1,7 @@
+---
+
+- name: Install Varnish and dependencies
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ varnish_packages }}"

@@ -8,7 +8,7 @@ The basic premise of the project is the proxying of requests by HAProxy based on
 The project consists of multiple virtual machines with the following structure:
 
 * `lb` - Routes requests with HAProxy
-* `web1` - Runs Wordpress (blog.example.com) and Magento 2 (shop.example.com)
+* `web1` - Runs Wordpress (blog.example.com) and Magento 2 (shop.example.com), both of which are cached behind Varnish
 * `web2` - Runs NodeBB (forum.example.com)
 * `data` - MongoDB and MySQL database server
 * `elk` - ELK stack: Elasticsearch, Logstash, Kibana (elk.example.com)

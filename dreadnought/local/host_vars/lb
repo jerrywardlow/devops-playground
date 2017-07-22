@@ -7,7 +7,7 @@ targets:
     domains:
       - "blog.example.com"
       - "shop.example.com"
-    port: 80
+    port: 8080
   web2:
     domains:
       - "forum.example.com"

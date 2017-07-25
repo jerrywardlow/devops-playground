@@ -3,7 +3,7 @@
 stats: true
 
 targets:
-  web1:
+  lb:
     domains:
       - "blog.example.com"
       - "shop.example.com"

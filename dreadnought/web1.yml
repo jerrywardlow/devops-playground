@@ -3,7 +3,6 @@
 - hosts: web1
   roles:
     - common
-    - varnish
     - apache
     - php
     - blog

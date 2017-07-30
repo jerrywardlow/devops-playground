@@ -1,9 +1,5 @@
 ---
 
-mysql_packages:
-  - mysql-server
-  - python-mysqldb
-
 mysql_databases:
   - magento
   - wordpress

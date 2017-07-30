@@ -3,6 +3,8 @@ centos_box = "centos/7"
 
 nodes = %w(
     data
+    slave1
+    slave2
     web1
     web2
     elk

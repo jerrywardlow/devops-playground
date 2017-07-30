@@ -5,3 +5,11 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ varnish_packages }}"
+
+- name: Configure Varnish
+  template: 
+    src: default.vcl.j2
+    dest: /etc/varnish/default.vcl
+    owner: root
+    group: root
+    mode: 0644

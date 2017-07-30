@@ -1,0 +1,9 @@
+---
+
+- name: Fetch Composer executable
+  get_url:
+    url: "https://getcomposer.org/composer.phar"
+    dest: /usr/local/bin/composer
+    owner: root
+    group: root
+    mode: 0755

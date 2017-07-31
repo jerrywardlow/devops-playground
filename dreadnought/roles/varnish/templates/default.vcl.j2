@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
 backend default {
-    .host = "{{ backend.host }}";
-    .port = "{{ backend.port }}";
+    .host = "{{ varnish.backend.host }}";
+    .port = "{{ varnish.backend.port }}";
 }

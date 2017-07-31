@@ -17,6 +17,7 @@ targets:
       - "elk.example.com"
     port: 5601
 
-backend:
-  host: "web1"
-  port: 8080
+varnish:
+  backend:
+    host: "web1"
+    port: 8080

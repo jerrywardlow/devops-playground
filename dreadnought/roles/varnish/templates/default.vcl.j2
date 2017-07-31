@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
 backend default {
-    .host = "web1";
-    .port = "8080";
+    .host = "{{ backend.host }}";
+    .port = "{{ backend.port }}";
 }

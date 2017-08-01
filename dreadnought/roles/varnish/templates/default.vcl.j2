@@ -4,3 +4,10 @@ backend default {
     .host = "{{ varnish.backend.host }}";
     .port = "{{ varnish.backend.port }}";
 }
+
+# Skip static content
+sub dd_static {
+    if (req.url ~ "^/(pub/)?(media|static)/.*$") {
+         return (pass);
+    }
+}

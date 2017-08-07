@@ -1,3 +1,4 @@
 http:// {
     root /var/www/caddy
+    gzip
 }

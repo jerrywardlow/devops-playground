@@ -1,0 +1,3 @@
+http:// {
+    root /var/www/caddy
+}

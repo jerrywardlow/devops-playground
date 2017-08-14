@@ -24,6 +24,15 @@ data "aws_ami" "nat" {
     owners = ["amazon"]
 }
 
+data "aws_ami" "bastion" {
+    most_recent = true
+    filter {
+        name = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server*"]
+    }
+    owners = ["099720109477"]
+}
+
 variable "bastion-ami" {
     description = "AMI for SSH bastion"
     default = "ami-d732f0b7"

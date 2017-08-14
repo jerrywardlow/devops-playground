@@ -33,11 +33,6 @@ data "aws_ami" "bastion" {
     owners = ["099720109477"]
 }
 
-variable "bastion-ami" {
-    description = "AMI for SSH bastion"
-    default = "ami-d732f0b7"
-}
-
 variable "public_subnet_cidr" {
     description = "CIDR block for public subnet"
     default = "10.5.0.0/24"

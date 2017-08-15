@@ -10,6 +10,7 @@ resource "aws_instance" "web-staging" {
 
     tags = {
         Name = "wordpress-web-staging"
-        group = "twc-ec2"
+        resource_group = "twc-ec2"
+        group = "ec2-staging"
     }
 }

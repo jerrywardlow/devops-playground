@@ -13,7 +13,8 @@ resource "aws_instance" "nat" {
     key_name = "${aws_key_pair.wordpress.key_name}"
     tags = {
         Name = "wordpress-nat"
-        group = "twc-ec2"
+        resource_group = "twc-ec2"
+        group = "ec2-nat"
     }
 }
 

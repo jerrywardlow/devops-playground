@@ -87,7 +87,11 @@ Vagrant.configure(2) do |config|
       nodeconf.vm.synced_folder "path/to/#{node}", "/#{node}"
 
       # Use vagrant-nfs_guest to sync from guest to host
-      nodeconf.vm.synced_folder "logs", "/var/log", type: 'nfs_guest'
+      if Vagrant.has_plugin?("vagrant-nfs_guest")
+        nodeconf.vm.synced_folder "logs", "/var/log", type: 'nfs_guest'
+      else
+        puts("Vagrant plugin vagrant-nfs_guest not installed, guest to host shared folder not mounted!")
+      end
 
       # Run a shell provisioner named after the node
       nodeconf.vm.provision :shell, path: "path/#{node}.sh"

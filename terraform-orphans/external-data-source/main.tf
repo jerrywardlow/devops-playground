@@ -1,4 +1,7 @@
 data "external" "test" {
+    query = {
+        example = "example"
+    }
     program = ["bash", "${path.module}/external.sh"]
 }
 

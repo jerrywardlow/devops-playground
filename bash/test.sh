@@ -20,3 +20,4 @@ robo_reader() {
 	echo "Robo warmer is doing the only thing he knows how to do!"
 }
 
+robo_reader $?

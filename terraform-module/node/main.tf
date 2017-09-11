@@ -10,12 +10,3 @@ resource "digitalocean_droplet" "droplet" {
     user_data          = "${var.user_data}"
     private_networking = "${var.private_networking}"
 }
-
-#data "template_file" "user_data" {
-#    template = "${file("./user_data.tpl")}"
-#
-#    vars {
-#        chef_secret = "${var.chef_secret}"
-#        github_key = "${var.github_key}"
-#    }
-#}

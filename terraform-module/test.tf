@@ -1,10 +1,9 @@
-module "lpass_data" {
-    source = "./lpass_data"
+provider "digitalocean" {
+    token = "${module.lpass_data.lpass_do_token}"
 }
 
-module "do_provider" {
-    source = "./provider"
-    do_token = "5"
+module "lpass_data" {
+    source = "./lpass_data"
 }
 
 module "droplet_test" {

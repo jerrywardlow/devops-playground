@@ -15,4 +15,4 @@ fi
 DO_TOKEN=$(lpass show "$PROJECT/DigitalOcean API Token - Terraform" --notes)
 GITHUB_TOKEN=$(lpass show "$PROJECT/GitHub Deploy Token" --notes)
 
-jq -n --arg do_token "$DO_TOKEN" '{"do_token":$do_token}'
+jq -n --arg do_token "$DO_TOKEN" --arg github_token "$GITHUB_TOKEN" '{"do_token":$do_token, "github_token":$github_token}'

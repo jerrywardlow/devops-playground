@@ -1,0 +1,22 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "RedHat_64",
+            "iso_url": "http://mirrors.cat.pdx.edu/centos/7.4.1708/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso",
+            "iso_checksum_url": "http://mirrors.cat.pdx.edu/centos/7.4.1708/isos/x86_64/sha256sum.txt",
+            "iso_checksum_type": "sha256",
+            "ssh_username": "root",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "http_directory": "http",
+            "boot_wait": "10s",
+            "boot_command": [
+                "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+            ],
+            "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+            "output_directory": "builds/mage-base-centos",
+            "vm_name": "mage-base-centos"
+        }
+    ]
+}

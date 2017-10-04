@@ -3,3 +3,5 @@ lpass ls | awk '{print $NF}' | sed 's/.$//' | \
         echo "#------------------------------------------------#" >> lpassdump.txt
         lpass show $line >> output/lpassdump.txt
     done
+
+echo "LastPass dump complete."

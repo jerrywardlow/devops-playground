@@ -21,3 +21,6 @@ varnish:
   backend:
     host: "web1"
     port: 8080
+
+varnish_packages:
+  - varnish

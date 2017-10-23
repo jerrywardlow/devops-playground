@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-<VirtualHost *:8080>
+<VirtualHost *:80>
     ServerAdmin admin@{{ item.value.domain }}
     ServerName {{ item.value.domain }}
     DocumentRoot {{ item.value.docroot }}

@@ -4,4 +4,4 @@
   roles:
     - common
     - haproxy
-    - varnish
+    #- varnish

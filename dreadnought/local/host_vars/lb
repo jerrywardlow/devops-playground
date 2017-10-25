@@ -3,11 +3,11 @@
 stats: true
 
 targets:
-  lb:
+  web1:
     domains:
       - "blog.example.com"
       - "shop.example.com"
-    port: 6081
+    port: 80
   web2:
     domains:
       - "forum.example.com"

@@ -25,3 +25,7 @@
   with_dict: "{{ apache_vhosts }}"
   notify:
     - restart apache
+
+- name: Enable/start Apache service
+  systemd:
+    name: apache2

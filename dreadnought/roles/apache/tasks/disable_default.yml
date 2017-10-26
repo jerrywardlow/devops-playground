@@ -1,0 +1,13 @@
+---
+
+- name: Disable Apache 000-default.conf
+  file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+  notify:
+    - restart apache
+
+- name: Remove default site files
+  file:
+    path: /var/www/html/
+    state: absent

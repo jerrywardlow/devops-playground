@@ -13,12 +13,7 @@
   notify:
     - restart apache
 
-- name: Disable Apache 000-default.conf
-  file:
-    path: /etc/apache2/sites-enabled/000-default.conf
-    state: absent
-  notify:
-    - restart apache
+- include_tasks: disable_default.yml
 
 - name: Enable vhosts
   file:

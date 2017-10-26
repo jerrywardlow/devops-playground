@@ -8,3 +8,7 @@
     gpgcheck: yes
     gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled: yes
+
+- include_tasks: elasticsearch.yml
+- include_tasks: logstash.yml
+- include_tasks: kibana.yml

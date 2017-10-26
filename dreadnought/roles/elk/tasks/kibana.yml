@@ -8,7 +8,7 @@
 - name: Configure Kibana
   lineinfile:
     path: /etc/kibana/kibana.yml
-    line: "server.host: 0.0.0.0"
+    line: "server.host: localhost"
     state: present
 
 - name: Enable/start Kibana service

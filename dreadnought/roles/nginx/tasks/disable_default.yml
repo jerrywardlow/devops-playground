@@ -6,3 +6,8 @@
     state: absent
   notify:
     - restart nginx
+
+- name: Remove default site files
+  file:
+    path: /usr/share/nginx/html/
+    state: absent

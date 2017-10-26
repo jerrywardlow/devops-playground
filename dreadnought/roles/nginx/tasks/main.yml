@@ -1,0 +1,20 @@
+---
+
+- name: Add NGINX repository
+  yum_repository:
+    name: nginx
+    description: Official NGINX repository
+    baseurl: http://nginx.org/packages/centos/$releasever/$basearch/
+    gpgcheck: no
+
+- name: Install NGINX
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ nginx_packages }}"
+
+- name: Enable/start NGINX service
+  systemd:
+    name: nginx
+    enabled: yes
+    state: started

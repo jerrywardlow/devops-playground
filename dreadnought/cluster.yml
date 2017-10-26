@@ -1,7 +1,7 @@
 ---
 
-- include: data.yml
-- include: web1.yml
-- include: web2.yml
-- include: lb.yml
-- include: elk.yml
+- import_playbook: data.yml
+- import_playbook: web1.yml
+- import_playbook: web2.yml
+- import_playbook: lb.yml
+- import_playbook: elk.yml

@@ -15,7 +15,7 @@ targets:
   elk:
     domains:
       - "elk.example.com"
-    port: 5601
+    port: 80
 
 varnish:
   backend:

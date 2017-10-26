@@ -1,0 +1,11 @@
+---
+
+- name: Elk NGINX configuration template
+  template:
+    src: elk.conf.j2
+    dest: /etc/nginx/conf.d/elk.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart nginx

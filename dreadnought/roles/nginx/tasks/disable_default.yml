@@ -1,0 +1,8 @@
+---
+
+- name: Disable NGINX default.conf
+  file:
+    path: /etc/nginx/conf.d/default.conf
+    state: absent
+  notify:
+    - restart nginx

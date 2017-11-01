@@ -1,2 +1,3 @@
 .vagrant/
 *.log
+*/minion.d/_schedule.conf

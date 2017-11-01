@@ -1,9 +1,9 @@
 ubuntu_box = "ubuntu/xenial64"
 
 nodes = %w(
-    master
     node1
     node2
+    master
 )
 
 Vagrant.configure(2) do |config|

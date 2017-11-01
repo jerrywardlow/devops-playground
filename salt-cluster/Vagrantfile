@@ -1,0 +1,47 @@
+ubuntu_box = "ubuntu/xenial64"
+
+nodes = %w(
+    master
+    node1
+    node2
+)
+
+Vagrant.configure(2) do |config|
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  else
+      abort("Vagrant Hostmanager required, https://github.com/devopsgroup-io/vagrant-hostmanager")
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  nodes.each_with_index do |node, i|
+    config.vm.define node do |nodeconf|
+
+      nodeconf.vm.hostname = node
+
+      nodeconf.vm.box = ubuntu_box
+
+      nodeconf.vm.network :private_network, ip: "172.17.99.#{i+100}"
+
+      nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
+    
+      if node == 'master'
+          nodeconf.vm.provision :shell, inline: "curl -L https://bootstrap.saltstack.com | sudo sh -s -- -M -N"
+      else
+          nodeconf.vm.provision :shell, inline: "curl -L https://bootstrap.saltstack.com | sudo sh"
+      end
+
+      nodeconf.vm.provider :virtualbox do |vbox|
+        if node == 'master'
+            vbox.memory = 2048
+        end
+        vbox.name = "vagrant.#{node}"
+      end
+    end
+  end
+end

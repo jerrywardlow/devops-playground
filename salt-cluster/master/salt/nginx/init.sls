@@ -12,3 +12,10 @@ nginx:
     - user: root
     - group: root
     - mode: 644
+
+/etc/nginx/sites-available/default:
+  file.managed:
+    - source: salt://nginx/files/etc/nginx/sites-available/default
+    - user: root
+    - group: root
+    - mode: 644

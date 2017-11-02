@@ -19,3 +19,10 @@ nginx:
     - user: root
     - group: root
     - mode: 644
+
+/usr/share/nginx/html/index.html:
+  file.managed:
+    - source: salt://nginx/files/usr/share/nginx/html/index.html
+    - user: root
+    - group: root
+    - mode: 644

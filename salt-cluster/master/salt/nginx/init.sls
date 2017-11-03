@@ -8,27 +8,27 @@ nginx:
 
 /etc/nginx/nginx.conf:
   file.managed:
-    - source: salt://nginx/files/etc/nginx/nginx.conf
+    - source: salt://nginx/files/nginx.conf
     - user: root
     - group: root
     - mode: 644
 
-/etc/nginx/sites-available/default:
+/etc/nginx/sites-available/default-site:
   file.managed:
-    - source: salt://nginx/files/etc/nginx/sites-available/default
+    - source: salt://nginx/files/default-site
     - user: root
     - group: root
     - mode: 644
 
-/etc/nginx/sites-enabled/default:
+/etc/nginx/sites-enabled/default-site:
   file.symlink:
-    - target: /etc/nginx/sites-available/default
+    - target: /etc/nginx/sites-available/default-site
     - require:
-      - file: /etc/nginx/sites-available/default
+      - file: /etc/nginx/sites-available/default-site
 
 /var/www/html/index.html:
   file.managed:
-    - source: salt://nginx/files/var/www/html/index.html
+    - source: salt://nginx/files/index.html
     - user: root
     - group: root
     - mode: 644

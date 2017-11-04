@@ -3,3 +3,4 @@ TODO.txt
 terraform/ssh/wordpress-key*
 *.swp
 ami_log
+terraform/.terraform/

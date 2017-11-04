@@ -1,0 +1,6 @@
+{% set host = grains['host'] %}
+{% set os = grains['os'] %}
+{% set ip = grains['ip4_interfaces']['enp0s8'][0] %}
+Greetings from {{ host }}!
+This system is running {{ os }}.
+The public IP address is {{ ip }}

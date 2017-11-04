@@ -28,7 +28,8 @@ nginx:
 
 /var/www/html/index.html:
   file.managed:
-    - source: salt://nginx/files/index.html
+    - source: salt://nginx/files/index.html.j2
+    - template: jinja
     - user: root
     - group: root
     - mode: 644

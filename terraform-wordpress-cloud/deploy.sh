@@ -45,5 +45,7 @@ if [ "$AMI_ID" == "None" ]; then
     exit 1
 fi
 
+# Initialize Terraform
+(cd terraform/ && exec terraform init)
 # Run Terraform with new AMI ID
 (cd terraform/ && exec terraform apply)

@@ -3,6 +3,7 @@ ubuntu_box = "ubuntu/xenial64"
 nodes = %w(
     node1
     node2
+    lb
     master
 )
 

@@ -1,8 +1,10 @@
+centos_box = 'centos/7'
 ubuntu_box = "ubuntu/xenial64"
 
 nodes = %w(
-    node1
-    node2
+    db
+    web1
+    web2
     lb
     master
 )

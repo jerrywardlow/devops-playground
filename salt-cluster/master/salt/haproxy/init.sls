@@ -1,6 +1,6 @@
 haproxy:
-  pkg:
-    - installed
+  pkg.installed:
+    - version: 'latest'
   service.running:
     - enable: True
     - watch:

@@ -1,6 +1,7 @@
 nginx:
-  pkg:
-    - installed
+  pkg.installed:
+    - pkgs:
+      - nginx: 'latest'
   service.running:
     - watch:
       - pkg: nginx

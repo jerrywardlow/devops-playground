@@ -11,4 +11,4 @@ mysql_setup:
         'mysql-server/root_password': {'type': 'password', 'value': 'password'}
         'mysql-server/root_password_again': {'type': 'password', 'value': 'password'}
     - require:
-      - pkg: debconf-utils
+      - pkg: mysql_deps

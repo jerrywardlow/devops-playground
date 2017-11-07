@@ -1,5 +1,8 @@
-debconf-utils:
-  pkg.installed
+mysql_deps:
+  pkg.installed:
+    - pkgs:
+      - debconf-utils: 'latest'
+      - python-mysqldb: 'latest'
 
 mysql_setup:
   debconf.set:

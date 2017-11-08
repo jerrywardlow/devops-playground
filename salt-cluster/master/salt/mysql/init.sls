@@ -12,3 +12,11 @@ mysql_setup:
         'mysql-server/root_password_again': {'type': 'password', 'value': 'password'}
     - require:
       - pkg: mysql_deps
+
+mysql-server:
+  pkg.installed:
+    - pkgs:
+      - mysql-server: 'latest'
+    - require:
+      - pkg: mysql_deps
+      - debconf: mysql-server

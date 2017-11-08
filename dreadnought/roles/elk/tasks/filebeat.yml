@@ -1,0 +1,6 @@
+---
+
+- name: Install Filebeat
+  package:
+    name: filebeat
+    state: latest

@@ -1,4 +1,6 @@
 base:
+  '*':
+    - base
   'web*':
     - nginx
   'lb':

@@ -37,6 +37,7 @@ Vagrant.configure(2) do |config|
           nodeconf.vm.provision :shell, inline: "curl -L https://bootstrap.saltstack.com | sudo sh -s -- -M"
           nodeconf.vm.provision :shell, inline: "sudo salt-key -y -A"
           nodeconf.vm.provision :shell, inline: "sudo salt '*' mine.update"
+          nodeconf.vm.provision :shell, inline: "salt '*' state.apply"
           nodeconf.vm.synced_folder 'master/master.d/', '/etc/salt/master.d/', type: 'virtualbox', owner: 'root', group: 'root'
           nodeconf.vm.synced_folder 'master/minion.d/', '/etc/salt/minion.d/', type: 'virtualbox', owner: 'root', group: 'root'
           nodeconf.vm.synced_folder 'master/pillar/', '/srv/pillar/', type: 'virtualbox', owner: 'root', group: 'root'

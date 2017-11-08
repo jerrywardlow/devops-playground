@@ -20,3 +20,8 @@ mysql-server:
     - require:
       - pkg: mysql_deps
       - debconf: mysql-server
+
+mysql:
+  service.running:
+    - watch:
+      - pkg: mysql-server

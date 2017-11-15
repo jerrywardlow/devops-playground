@@ -30,12 +30,9 @@ Vagrant.configure(2) do |config|
       nodeconf.vm.network :private_network, ip: "172.37.17.#{i+100}"
 
       nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
+      nodeconf.vm.synced_folder "#{node}/", "/#{node}"
 
-      nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
-
-      # Optional shell provisioner
-      #nodeconf.vm.synced_folder "shell/#{node}", "/#{node}"
-      #nodeconf.vm.provision :shell, path: "shell/#{node}/#{node}.sh"
+      nodeconf.vm.provision :shell, path: "common/boot.sh"
 
       nodeconf.vm.provider :virtualbox do |vbox|
         vbox.name = "kube.#{node}"

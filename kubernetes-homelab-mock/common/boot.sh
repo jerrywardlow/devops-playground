@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-set -euo pipefail
+apt-get update
 
-apt update
-
-apt install -y python-minimal
+apt-get install -y python-minimal

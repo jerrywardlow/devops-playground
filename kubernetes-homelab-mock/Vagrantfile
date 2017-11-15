@@ -1,0 +1,45 @@
+ubuntu_box = "ubuntu/xenial64"
+
+nodes = %w(
+    burger    
+    pizza
+    sushi
+    tacos
+)
+
+Vagrant.configure(2) do |config|
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  else
+      abort("Vagrant Hostmanager required, https://github.com/devopsgroup-io/vagrant-hostmanager")
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  nodes.each_with_index do |node, i|
+    config.vm.define node do |nodeconf|
+
+      nodeconf.vm.hostname = node
+
+      nodeconf.vm.box = ubuntu_box
+
+      nodeconf.vm.network :private_network, ip: "172.37.17.#{i+100}"
+
+      nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
+
+      nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
+
+      # Optional shell provisioner
+      #nodeconf.vm.synced_folder "shell/#{node}", "/#{node}"
+      #nodeconf.vm.provision :shell, path: "shell/#{node}/#{node}.sh"
+
+      nodeconf.vm.provider :virtualbox do |vbox|
+        vbox.name = "kube.#{node}"
+      end
+    end
+  end
+end

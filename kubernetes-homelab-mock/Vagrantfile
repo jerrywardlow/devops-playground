@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
     config.hostmanager.enabled = true
     config.hostmanager.manage_host = true
   else
-      abort("Vagrant Hostmanager required, https://github.com/devopsgroup-io/vagrant-hostmanager")
+    abort("Vagrant Hostmanager required, https://github.com/devopsgroup-io/vagrant-hostmanager")
   end
 
   if Vagrant.has_plugin?("vagrant-vbguest")

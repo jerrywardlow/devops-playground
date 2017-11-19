@@ -16,7 +16,7 @@
             ],
             "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
             "output_directory": "builds/mage-base-centos",
-            "vm_name": "mage-base-centos"
+            "vm_name": "base-centos"
         }
     ]
 }

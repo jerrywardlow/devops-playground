@@ -14,3 +14,8 @@
     gpgcheck: yes
     gpgkey: https://packages.treasuredata.com/GPG-KEY-td-agent
     enabled: yes
+
+- name: Install fluentd via td-agent
+  package:
+    name: td-agent
+    state: latest

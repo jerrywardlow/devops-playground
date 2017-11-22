@@ -1,0 +1,35 @@
+ubuntu_box = "ubuntu/xenial64"
+
+nodes = %w(
+    elliot
+    tyson
+)
+
+Vagrant.configure(2) do |config|
+
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
+
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vbguest.auto_update = false
+  end
+
+  nodes.each_with_index do |node, i|
+    config.vm.define node do |nodeconf|
+
+      nodeconf.vm.hostname = node
+      nodeconf.vm.box = ubuntu_box
+      nodeconf.vm.network :private_network, ip: "172.19.93.#{i+100}"
+
+      nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
+
+      nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
+
+      nodeconf.vm.provider :virtualbox do |vbox|
+        vbox.name = "wire.#{node}"
+      end
+    end
+  end
+end

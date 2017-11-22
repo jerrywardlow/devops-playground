@@ -1,5 +1,7 @@
 ubuntu_box = "ubuntu/xenial64"
 
+local_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+
 nodes = %w(
     elliot
     tyson
@@ -26,6 +28,7 @@ Vagrant.configure(2) do |config|
       nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
 
       nodeconf.vm.provision :shell, inline: "apt update && apt install -y python-minimal"
+      nodeconf.vm.provision :shell, inline: "echo #{local_key} >> /home/ubuntu/.ssh/authorized_keys"
 
       nodeconf.vm.provider :virtualbox do |vbox|
         vbox.name = "wire.#{node}"

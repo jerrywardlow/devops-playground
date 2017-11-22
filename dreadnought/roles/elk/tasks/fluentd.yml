@@ -5,3 +5,12 @@
     state: present
     key: https://packages.treasuredata.com/GPG-KEY-td-agent
 
+
+- name: Install Treasure Data repo
+  yum_repository:
+    name: treasuredata
+    description: Treasure Data - Fluentd
+    baseurl: http://packages.treasuredata.com/2/redhat/$releasever/$basearch
+    gpgcheck: yes
+    gpgkey: https://packages.treasuredata.com/GPG-KEY-td-agent
+    enabled: yes

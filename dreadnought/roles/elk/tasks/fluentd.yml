@@ -1,6 +1,7 @@
 ---
 
-- rpm_key:
+- name: Import Treasure Data GPG Key 
+  rpm_key:
     state: present
     key: https://packages.treasuredata.com/GPG-KEY-td-agent
 

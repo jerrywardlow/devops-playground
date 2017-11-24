@@ -1,3 +1,3 @@
 [default]
-elliot
-tyson
+elliot vpn_ip="10.66.0.1"
+tyson vpn_ip="10.66.0.2"

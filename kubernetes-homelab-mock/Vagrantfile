@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
         vbox.name = "kube.#{node}"
         vbox.linked_clone = true
         if node == "sushi"
-          vbox.memory = 204
+          vbox.memory = 2048
         end
       end
     end

@@ -4,3 +4,7 @@
   hosts: 127.0.0.1
   connection: local
   tasks:
+    
+  - name: Register Magento public key
+    command: lpass show "{{ lastpass.magento.project }}/Magento Keys" --field=public_key
+    register: magento_public_key

@@ -2,7 +2,7 @@
 
 - name: Ensure Magento directory structure
   file:
-    path: /var/www/shop.example.com/magento/
+    path: /var/www/{{ apache_vhosts.shop.domain }}/magento/
     owner: www-data
     group: www-data
     state: directory
@@ -10,28 +10,28 @@
 - name: Fetch Magento 2 archive
   get_url:
     url: "https://github.com/magento-2/magento-2-community-sample-data/archive/master.tar.gz"
-    dest: /var/www/shop.example.com/magento.tar.gz
+    dest: /var/www/{{ apache_vhosts.shop.domain }}/magento.tar.gz
     owner: www-data
     group: www-data
 
 - name: Extract Magento archive
   unarchive:
     remote_src: true
-    src: /var/www/shop.example.com/magento.tar.gz
-    dest: /var/www/shop.example.com/magento/
+    src: /var/www/{{ apache_vhosts.shop.domain }}/magento.tar.gz
+    dest: /var/www/{{ apache_vhosts.shop.domain }}/magento/
     owner: www-data
     group: www-data
     extra_opts: ["--strip-components=1"]
-    creates: /var/www/shop.example.com/magento/index.php
+    creates: /var/www/{{ apache_vhosts.shop.domain }}/magento/index.php
 
 - name: Set permission on 'bin/magento'
   file:
-    path: /var/www/shop.example.com/magento/bin/magento
+    path: /var/www/{{ apache_vhosts.shop.domain }}/magento/bin/magento
     mode: a+x
 
 - name: Install Magento
   shell: |
-    /var/www/shop.example.com/magento/bin/magento setup:install \
+    /var/www/{{ apache_vhosts.shop.domain }}/magento/bin/magento setup:install \
     --admin-firstname admin \
     --admin-lastname lastname \
     --admin-email admin@example.com \
@@ -42,12 +42,12 @@
     --db-user magentouser \
     --db-password password
   args:
-    chdir: /var/www/shop.example.com/magento/
-    creates: /var/www/shop.example.com/magento/app/etc/env.php
+    chdir: /var/www/{{ apache_vhosts.shop.domain }}/magento/
+    creates: /var/www/{{ apache_vhosts.shop.domain }}/magento/app/etc/env.php
 
 - name: Set ownership of Magento docroot
   file:
-    path: /var/www/shop.example.com/
+    path: /var/www/{{ apache_vhosts.shop.domain }}/
     owner: www-data
     group: www-data
     recurse: yes

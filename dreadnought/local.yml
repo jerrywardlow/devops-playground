@@ -12,4 +12,6 @@
         - name: Private key
           command: lpass show "{{ lastpass.magento.project }}/Magento Keys" --field=private_key
           register: magento_private_key
+      rescue:
+        - debug: msg="Accessing LastPass failed, are you logged in?"
       become: false

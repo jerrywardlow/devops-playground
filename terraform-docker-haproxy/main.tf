@@ -3,9 +3,9 @@ provider "docker" {
 }
 
 resource "docker_image" "haproxy" {
-    name = "haproxy:latest"
+    name = "haproxy:alpine"
 } 
 
 resource "docker_image" "nginx" {
-    name = "nginx:latest"
+    name = "nginx:alpine"
 }

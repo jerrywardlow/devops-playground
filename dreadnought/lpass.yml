@@ -1,7 +1,7 @@
 ---
 
 - name: Pull data from LastPass
-  hosts: 127.0.0.1
+  hosts: localhost
   connection: local
   tasks:
     - name: Register Magento public and private keys

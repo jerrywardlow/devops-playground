@@ -3,6 +3,7 @@
 - name: Pull data from LastPass
   hosts: localhost
   connection: local
+  gather_facts: false
   tasks:
     - name: Register Magento public and private keys
       block:

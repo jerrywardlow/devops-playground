@@ -1,0 +1,8 @@
+{
+    "http-basic": {
+        "repo.magento.com": {
+            "username": "{{ hostvars.localhost.magento_public_key.stdout }},
+            "password": "{{ hostvars.localhost.magento_private_key.stdout }}
+        }
+    }
+}

@@ -7,5 +7,6 @@
     - common
     - apache
     - php
+    - composer
     - blog
     - shop

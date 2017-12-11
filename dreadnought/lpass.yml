@@ -6,11 +6,11 @@
   tasks:
     - name: Register Magento public and private keys
       block:
-        - name: Public key
+        - name: Magento public key
           command: lpass show "{{ lastpass.magento.project }}/Magento Keys" --field=public_key
           register: magento_public_key
           changed_when: false
-        - name: Private key
+        - name: Magento private key
           command: lpass show "{{ lastpass.magento.project }}/Magento Keys" --field=private_key
           register: magento_private_key
           changed_when: false

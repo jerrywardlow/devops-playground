@@ -15,5 +15,6 @@
           register: magento_private_key
           changed_when: false
       rescue:
-        - debug: msg="Accessing LastPass failed, are you logged in?"
+        - debug: 
+            msg: "Accessing LastPass failed, are you logged in?"
       become: false

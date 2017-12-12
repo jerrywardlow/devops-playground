@@ -17,7 +17,7 @@
     mode: 0600
 
 - name: Manage Magento 2 composer.json
-  tempalte:
+  template:
     src: composer.json.j2
     dest: /var/www/{{ apache_vhosts.shop.domain }}/magento/composer.json
     owner: "{{ project_user.stdout }}"

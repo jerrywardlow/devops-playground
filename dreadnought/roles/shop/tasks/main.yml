@@ -1,3 +1,11 @@
 ---
 
+- name: Ensure Magento directory structure
+  file:
+    path: /var/www/{{ apache_vhosts.shop.domain }}/magento/
+    owner: www-data
+    group: www-data
+    state: directory
+
 - include_tasks: basic_install.yml
+- include_tasks: install_magento.yml

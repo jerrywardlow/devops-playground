@@ -1,0 +1,30 @@
+---
+
+- name: Set permission on 'bin/magento'
+  file:
+    path: /var/www/{{ apache_vhosts.shop.domain }}/magento/bin/magento
+    mode: a+x
+
+- name: Install Magento
+  shell: |
+    /var/www/{{ apache_vhosts.shop.domain }}/magento/bin/magento setup:install \
+    --admin-firstname admin \
+    --admin-lastname lastname \
+    --admin-email admin@example.com \
+    --admin-user user \
+    --admin-password password123 \
+    --db-host data \
+    --db-name magento \
+    --db-user magentouser \
+    --db-password password
+  args:
+    chdir: /var/www/{{ apache_vhosts.shop.domain }}/magento/
+    creates: /var/www/{{ apache_vhosts.shop.domain }}/magento/app/etc/env.php
+
+- name: Set ownership of Magento docroot
+  file:
+    path: /var/www/{{ apache_vhosts.shop.domain }}/
+    owner: www-data
+    group: www-data
+    recurse: yes
+    state: directory

@@ -15,3 +15,11 @@
     owner: "{{ project_user.stdout }}"
     group: "{{ project_user.stdout }}"
     mode: 0600
+
+- name: Manage Magento 2 composer.json
+  tempalte:
+    src: composer.json.j2
+    dest: /var/www/{{ apache_vhosts.shop.domain }}/magento/composer.json
+    owner: "{{ project_user.stdout }}"
+    group: "{{ project_user.stdout }}"
+    mode: 0640

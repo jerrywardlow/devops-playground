@@ -11,11 +11,16 @@
     name: sudo
     state: present
 
+- name: Ensure group www-data is present
+  group:
+    name: www-data
+    state: present
+
 - name: Create user account
   user:
     name: "{{ project_user.stdout }}"
     comment: "Project User"
-    groups: sudo
+    groups: sudo,www-data
 
 - name: Fetch and set user authorized key
   authorized_key:

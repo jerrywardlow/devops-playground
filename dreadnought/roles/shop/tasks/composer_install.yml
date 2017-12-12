@@ -1,0 +1,17 @@
+---
+
+- name: Ensure Composer auth directory
+  file:
+    path: /home/{{ project_user.stdout }}/.composer/
+    owner: "{{ project_user.stdout }}"
+    group: "{{ project_user.stdout }}"
+    mode: 0700
+    state: directory
+
+- name: Manage Composer auth.json
+  template: 
+    src: auth.json.j2
+    dest: /home/{{ project_user.stdout }}/.composer/auth.json
+    owner: "{{ project_user.stdout }}"
+    group: "{{ project_user.stdout }}"
+    mode: 0600

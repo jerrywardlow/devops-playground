@@ -23,3 +23,10 @@
     owner: "{{ project_user.stdout }}"
     group: "{{ project_user.stdout }}"
     mode: 0640
+
+- name: Run Composer installation
+  become: true
+  become_user: "{{ project_user.stdout }}"
+  composer:
+    command: install
+    working_dir: /var/www/{{ apache_vhosts.shop.domain }}/magento/

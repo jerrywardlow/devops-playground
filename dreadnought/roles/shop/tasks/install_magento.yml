@@ -8,6 +8,7 @@
 - name: Install Magento
   shell: |
     /var/www/{{ apache_vhosts.shop.domain }}/magento/bin/magento setup:install \
+    --base-url="http://{{ apache_vhosts.shop.domain }}" \
     --admin-firstname admin \
     --admin-lastname lastname \
     --admin-email admin@example.com \

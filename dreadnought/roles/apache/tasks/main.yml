@@ -5,6 +5,11 @@
     name: apache2
     state: latest
 
+- name: Enable mod_rewrite
+  apache2_module:
+    name: rewrite
+    state: present
+
 - name: Configure Apache2
   template:
     src: vhost.conf.j2

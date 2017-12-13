@@ -20,8 +20,8 @@
   template:
     src: composer.json.j2
     dest: /var/www/{{ apache_vhosts.shop.domain }}/magento/composer.json
-    owner: "{{ project_user.stdout }}"
-    group: "{{ project_user.stdout }}"
+    owner: www-data
+    group: www-data
     mode: 0640
 
 - name: Run Composer installation

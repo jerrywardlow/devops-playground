@@ -24,9 +24,15 @@
     group: www-data
     mode: 0640
 
+- name: Check for bin/magento
+  stat:
+    path: /var/www/{{ apache_vhosts.shop.domain }}/magento/bin/magento
+  register: bin_magento
+
 - name: Run Composer installation
   become: true
   become_user: "{{ project_user.stdout }}"
   composer:
     command: install
     working_dir: /var/www/{{ apache_vhosts.shop.domain }}/magento/
+  when: bin_magento.stat.exists == False

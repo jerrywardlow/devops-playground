@@ -8,5 +8,5 @@
     mode: 0775
     state: directory
 
-- include_tasks: basic_install.yml
+- include_tasks: composer_install.yml
 - include_tasks: install_magento.yml

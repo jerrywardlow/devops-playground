@@ -16,3 +16,17 @@ The project consists of multiple virtual machines with the following structure:
 A `Vagrantfile` is included which automates the creation of these virtual machines, as well as the creation of host file entries assigning the `*.example.com` domain names to the `lb` machine.
 
 The project is provisioned using Ansible roles. After completion of provisioning, the user can navigate to any of the aforementioned web addresses and view the expected application. All routing is handled by HAProxy using host headers.
+
+## LastPass integration
+
+By default, this project attempts to source secrets from LastPass. This is done
+through the [LastPass CLI tool](https://github.com/lastpass/lastpass-cli).
+
+Expected structure of Magento credentials:
+```
+Folder: Example Magento Project
+Name: Magento Keys
+- Field: private_key (Magento 2 private key)
+- Field: public_key (Magento 2 public key)
+```
+The default LastPass folder name can be overriden via the Ansible variable `lastpass.magento.project`.

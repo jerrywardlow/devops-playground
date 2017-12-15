@@ -10,10 +10,13 @@
       block:
         - name: Magento public key
           command: lpass show "{{ lastpass.magento.folder }}/{{ lastpass.magento.name }}" --field={{ lastpass.magento.public_key_field }}
+          when: magento_public_key is not defined
           register: magento_public_key
           changed_when: false
+
         - name: Magento private key
           command: lpass show "{{ lastpass.magento.folder }}/{{ lastpass.magento.name }}" --field={{ lastpass.magento.private_key_field }}
+          when: magento_private_key is not defined
           register: magento_private_key
           changed_when: false
       rescue:

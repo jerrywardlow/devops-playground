@@ -21,6 +21,8 @@ The project is provisioned using Ansible roles. After completion of provisioning
 
 By default, this project attempts to source secrets from LastPass. This is done
 through the [LastPass CLI tool](https://github.com/lastpass/lastpass-cli).
+Overriding the Ansible variables `magento_public_key` and `magento_private_key`
+will preempt this functionality.
 
 Expected structure of Magento credentials:
 ```

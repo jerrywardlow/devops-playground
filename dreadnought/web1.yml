@@ -1,6 +1,8 @@
 ---
 
-- import_playbook: lpass.yml
+- name: Import LastPass credential scraper
+  import_playbook: lpass.yml
+  when: magento_private_key is not defined or magento_public_key is not defined
 
 - hosts: web1
   roles:

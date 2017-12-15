@@ -29,4 +29,4 @@ Name: Magento Keys
 - Field: private_key (Magento 2 private key)
 - Field: public_key (Magento 2 public key)
 ```
-The default LastPass folder name can be overriden via the Ansible variable `lastpass.magento.project`.
+The default LastPass names can be overriden via the Ansible variable `lastpass.magento.{folder,name,public_key_field,private_key_field}`.

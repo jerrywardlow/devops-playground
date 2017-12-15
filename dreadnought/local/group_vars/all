@@ -2,4 +2,7 @@
 
 lastpass:
   magento:
-    project: "Example Magento Project"
+    folder: "Example Magento Project"
+    name: "Magento Keys"
+    public_key_field: "public_key"
+    private_key_field: "private_key"

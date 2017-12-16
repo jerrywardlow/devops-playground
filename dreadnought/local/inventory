@@ -17,3 +17,10 @@ elk
 database
 webserver
 loadbalancer
+
+[nfs_server:children]
+database
+
+[nfs_client:children]
+webserver
+elasticsearch

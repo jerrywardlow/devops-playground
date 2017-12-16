@@ -1,0 +1,9 @@
+---
+
+- name: Include NFS client tasks
+  include_tasks: client.yml
+  when: "'nfs_client' in group_names"
+
+- name: Include NFS server tasks
+  include_tasks: server.yml
+  when: "'nfs_server' in group_names"

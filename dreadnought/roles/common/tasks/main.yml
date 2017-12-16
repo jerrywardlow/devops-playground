@@ -15,7 +15,8 @@
   user:
     name: "{{ project_user.stdout }}"
     comment: "Project User"
-    groups: sudo,www-data
+    groups: sudo
+    append: yes
 
 - name: Fetch and set user authorized key
   authorized_key:

@@ -34,3 +34,9 @@
 - name: Enable/start Apache service
   systemd:
     name: apache2
+
+- name: Add project user to www-data group
+  user:
+    name: "{{ project_user.stdout }}"
+    groups: www-data
+    append: yes

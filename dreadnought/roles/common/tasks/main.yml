@@ -11,11 +11,6 @@
     name: sudo
     state: present
 
-- name: Ensure group www-data is present
-  group:
-    name: www-data
-    state: present
-
 - name: Create user account
   user:
     name: "{{ project_user.stdout }}"

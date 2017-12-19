@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+
+# Config for {{ site }}
+
+frontend {{ site }}
+    bind {{ item.frontend.port|default(80, true) }} 

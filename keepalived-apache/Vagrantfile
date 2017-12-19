@@ -34,6 +34,7 @@ Vagrant.configure(2) do |config|
 
       nodeconf.vm.provider :virtualbox do |vbox|
         vbox.name = "ka.node#{i}"
+        vbox.linked_clone = true
       end
     end
   end

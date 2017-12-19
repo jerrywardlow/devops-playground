@@ -17,6 +17,30 @@ targets:
       - "elk.example.com"
     port: 5601
 
+sites:
+  blog:
+    frontend:
+      target_urls: 
+        - example.com
+        - blog.example.com
+    backend:
+      servers:
+        - web1
+  forum:
+    frontend:
+      target_urls:
+        - forum.example.com
+    backend:
+      servers:
+        - web2
+  shop:
+    frontend:
+      target_urls:
+        - shop.example.com
+    backend:
+      servers:
+        - web1
+
 varnish:
   backend:
     host: "web1"

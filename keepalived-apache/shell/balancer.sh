@@ -10,6 +10,8 @@ a2ensite site.conf
 
 a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests
 
+systemctl restart apache2
+
 
 # Keepalived shenanigans
 apt install -y keepalived

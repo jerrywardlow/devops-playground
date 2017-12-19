@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+
+# HAProxy defaults config
+
+EXTRAOPTS="\
+{% for site, value in sites.iteriterms() %}
+-f /etc/haproxy/sites/{{ user }}.cfg \
+{% endfor %}
+"

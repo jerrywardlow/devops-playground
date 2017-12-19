@@ -1,0 +1,40 @@
+ubuntu_box = 'ubuntu/xenial64'
+
+nodes = 5
+
+Vagrant.configure(2) do |config|
+
+  if Vagrant.has_plugin?('vagrant-hostmanager')
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
+
+  if Vagrant.has_plugin?('vagrant-vbguest')
+    config.vbguest.auto_update = false
+  end
+
+  1.upto(nodes) do |i|
+    config.vm.define "node#{i}" do |nodeconf|
+
+      nodeconf.vm.hostname = "node#{i}"
+      nodeconf.vm.box = ubuntu_box
+      nodeconf.vm.network :private_network, ip: "172.37.17.#{i+10}"
+
+      nodeconf.vm.synced_folder '.', '/vagrant', disabled: true
+
+      #nodeconf.vm.provision :shell, inline: 'apt update && apt install -y python-minimal'
+
+      if i == 1 or i == 2
+        nodeconf.vm.provision :file, source: 'files/site.conf', destination: '/tmp/site.conf'  
+        nodeconf.vm.provision :file, source: 'files/keepalived.conf', destination: '/tmp/keepalived.conf'  
+        nodeconf.vm.provision :shell, path: 'shell/balancer.sh'
+      else
+        nodeconf.vm.provision :shell, path: 'shell/app.sh'
+      end
+
+      nodeconf.vm.provider :virtualbox do |vbox|
+        vbox.name = "ka.node#{i}"
+      end
+    end
+  end
+end

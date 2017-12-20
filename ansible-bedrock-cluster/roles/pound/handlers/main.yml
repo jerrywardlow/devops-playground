@@ -1,0 +1,6 @@
+---
+
+- name: restart pound
+  systemd:
+    name: pound
+    state: restarted

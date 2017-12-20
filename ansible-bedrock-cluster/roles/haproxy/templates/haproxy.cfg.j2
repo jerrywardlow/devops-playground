@@ -21,7 +21,7 @@ defaults
 
 # Application routing
 listen http
-    bind *:80
+    bind {{ balancer.floating_ip }}:80
     balance leastconn
     server node3:80 check
     server node4:80 check
@@ -29,7 +29,7 @@ listen http
 
 # Database routing
 frontend db
-    bind *:8888
+    bind {{ balancer.floating_ip }}:8888
 
     acl src_node1 src node1
     acl src_node2 src node2

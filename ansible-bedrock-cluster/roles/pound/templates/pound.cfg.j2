@@ -19,7 +19,7 @@ ListenHTTP
       Port 8888
     End
     Emergency
-      Address haproxy_master
+      Address {{ balancer.floating_ip }}
       Port 8888
     End
   End

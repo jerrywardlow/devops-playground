@@ -1,0 +1,7 @@
+---
+
+- hosts: nodes
+  roles:
+    - common
+    - bedrock
+    - pound

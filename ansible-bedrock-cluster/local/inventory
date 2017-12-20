@@ -1,8 +1,8 @@
 [balancers]
-node1
-node2
+bedrock1
+bedrock2
 
 [nodes]
-node3
-node4
-node5
+bedrock3
+bedrock4
+bedrock5

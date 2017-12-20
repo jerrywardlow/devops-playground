@@ -14,9 +14,9 @@ Vagrant.configure(2) do |config|
   end
 
   1.upto(nodes) do |i|
-    config.vm.define "node#{i}" do |nodeconf|
+    config.vm.define "bedrock#{i}" do |nodeconf|
 
-      nodeconf.vm.hostname = "node#{i}"
+      nodeconf.vm.hostname = "bedrock#{i}"
       nodeconf.vm.box = ubuntu_box
       nodeconf.vm.network :private_network, ip: "172.37.17.#{i+20}"
 

@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+
+vrrp_instance test {
+    interface enp0s8
+    state BACKUP
+    virtual_router_id 42
+    priority 10
+    advert_int 1
+
+    nopreempt
+
+    virtual_ipaddress {
+        {{ balancer.floating_ip }}
+    }
+}

@@ -1,0 +1,61 @@
+# {{ ansible_managed }}
+
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    log global
+    mode http
+    option httplog
+    option dongnull
+    option forwardfor
+    option http-server-close
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+
+# Application routing
+listen http
+    bind *:80
+    balance leastconn
+    server node3:80 check
+    server node4:80 check
+    server node5:80 check
+
+# Database routing
+frontend db
+    bind *:8888
+
+    acl src_node1 src node1
+    acl src_node2 src node2
+    acl src_node3 src node3
+
+    use_backend db_node1 if src_node1
+    use_backend db_node2 if src_node2
+    use_backend db_node3 if src_node3
+
+    default_backend default
+
+# Node specific database backend
+backend db_node1
+    server node2 node2:8888 check
+    server node3 node3:8888 check backup
+
+backend db_node2
+    server node3 node3:8888 check
+    server node1 node1:8888 check backup
+
+backend db_node3
+    server node1 node1:8888 check
+    server node2 node2:8888 check backup
+
+# Default backend if no ACL match in database routing
+backend default
+    server node1 node1:8888 check
+    server node2 node2:8888 check
+    server node3 node3:8888 check

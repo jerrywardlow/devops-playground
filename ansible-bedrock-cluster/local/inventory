@@ -1,0 +1,8 @@
+[balancers]
+node1
+node2
+
+[nodes]
+node3
+node4
+node5

@@ -2,14 +2,16 @@
 
 - hosts: all
   tasks:
-    - name: Add wireguard PPA
-      apt_repository:
-        repo: 'ppa:wireguard/wireguard'
+    - name: Install WireGuard
+      block:
+        - name: Add WireGuard PPA
+          apt_repository:
+            repo: 'ppa:wireguard/wireguard'
 
-    - name: Install Wireguard and dependencies
-      package: 
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - wireguard-dkms
-        - wireguard-tools
+        - name: Install WireGuard and dependencies
+          package:
+            name: "{{ item }}"
+            state: present
+          with_items:
+            - wireguard-dkms
+            - wireguard-tools

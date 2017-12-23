@@ -3,4 +3,5 @@
 # Config for {{ site }}
 
 frontend {{ site }}
-    bind {{ item.frontend.port|default(80, true) }} 
+    bind *:{{ item.frontend.port|default(80, true) }}
+    mode {{ item.frontend.mode|default('http', true) }}

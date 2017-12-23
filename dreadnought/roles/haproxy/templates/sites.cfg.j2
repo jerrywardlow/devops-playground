@@ -5,3 +5,5 @@
 frontend {{ site }}
     bind *:{{ item.frontend.port|default(80, true) }}
     mode {{ item.frontend.mode|default('http', true) }}
+
+    acl host_{{ site }} hdr(host) -i {% for domain in item.frontend.domains %}{{ domain }} {% endfor %}

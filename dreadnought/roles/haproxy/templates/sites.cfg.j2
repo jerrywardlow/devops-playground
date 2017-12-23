@@ -7,3 +7,4 @@ frontend {{ site }}
     mode {{ item.frontend.mode|default('http', true) }}
 
     acl host_{{ site }} hdr(host) -i {% for domain in item.frontend.domains %}{{ domain }} {% endfor %}
+    use_backend {{ site }}_cluster if host_{{ site }}

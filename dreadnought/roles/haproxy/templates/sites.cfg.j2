@@ -11,5 +11,5 @@ frontend {{ site }}
 
 backend {{ site }}_cluster
 {% for server in item.backend.servers %}
-    server {{ server.id }} {{ server.address }}:{{ server.port }}
+    server {{ server.id }} {{ server.address }}:{{ server.port|default(80, true) }}
 {% endfor %}

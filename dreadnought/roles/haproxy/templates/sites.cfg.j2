@@ -8,3 +8,8 @@ frontend {{ site }}
 
     acl host_{{ site }} hdr(host) -i {% for domain in item.frontend.domains %}{{ domain }} {% endfor %}
     use_backend {{ site }}_cluster if host_{{ site }}
+
+backend {{ site }}_cluster
+{% for server in item.backend.servers %}
+    server {{ server.id }} {{ server.address }}:{{ server.port }}
+{% endfor %}

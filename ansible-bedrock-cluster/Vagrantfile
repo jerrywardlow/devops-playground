@@ -24,14 +24,12 @@ Vagrant.configure(2) do |config|
 
       nodeconf.vm.provision :shell, inline: 'apt update && apt install -y python-minimal'
 
-      nodeconf.vm.provision :ansible do |a|
-        if i == 1 or i == 2 
-          a.playbook = "balancer.yml"
-        else
-          a.playbook = "node.yml"
+      if i == nodes
+        nodeconf.vm.provision :ansible do |a|
+          a.limit = 'all'
+          a.playbook = 'cluster.yml'
+          a.inventory_path = 'local/inventory'
         end
-
-        a.inventory_path = "local/inventory"
       end
 
       nodeconf.vm.provider :virtualbox do |vbox|

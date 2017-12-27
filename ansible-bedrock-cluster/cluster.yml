@@ -1,4 +1,4 @@
 ---
 
-- import_playbook: balancer.yml
-- import_playbook: node.yml
+- import_playbook: balancers.yml
+- import_playbook: nodes.yml

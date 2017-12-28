@@ -23,9 +23,9 @@ defaults
 listen http
     bind {{ balancer.floating_ip }}:80
     balance leastconn
-    server bedrock3:80 check
-    server bedrock4:80 check
-    server bedrock5:80 check
+{% for server in groups['webservers'] %}
+    server {{ server }} {{ hostvars[server].ansible_host }}:80 check
+{% endfor %}
 
 # Database routing
 frontend db

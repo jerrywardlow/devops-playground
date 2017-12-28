@@ -57,5 +57,5 @@ backend db_bedrock3
 # Default backend if no ACL match in database routing
 backend default
 {% for server in groups['nodes'] %}
-    server {{ server }} {{ server }}:8888 check
+    server {{ server }} {{ hostvars[server].ansible_host }}:8888 check
 {% endfor %}

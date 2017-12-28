@@ -6,3 +6,9 @@ bedrock2 ansible_host="172.37.17.22"
 bedrock3 ansible_host="172.37.17.23"
 bedrock4 ansible_host="172.37.17.24"
 bedrock5 ansible_host="172.37.17.25"
+
+[webservers:children]
+nodes
+
+[databases:children]
+nodes

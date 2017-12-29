@@ -1,7 +1,7 @@
 # {{ ansible_managed }}
 
-User  "root"
-Group "root"
+User  "{{ pound.user }}"
+Group "{{ pound.group }}"
 
 LogLevel 1
 
@@ -10,17 +10,17 @@ Alive 30
 Control "/var/run/pound/poundctl.socket"
 
 ListenHTTP
-  Address 127.0.0.1
-  Port  9999
+  Address {{ pound.listen.address }}
+  Port {{ pound.listen.port }}
 
   Service
     BackEnd
-      Address localhost
-      Port 8888
+      Address {{ pound.backend.address }}
+      Port {{ pound.backend.port }}
     End
     Emergency
       Address {{ balancer.floating_ip }}
-      Port 8888
+      Port {{ balancer.frontend.port }}
     End
   End
 End

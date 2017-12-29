@@ -29,7 +29,7 @@ listen http
 
 # Database routing
 frontend db
-    bind {{ balancer.floating_ip }}:8888
+    bind {{ balancer.floating_ip }}:{{ balancer.frontend.port }}
 
     acl src_bedrock1 src bedrock1
     acl src_bedrock2 src bedrock2

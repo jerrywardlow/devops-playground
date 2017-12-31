@@ -23,6 +23,8 @@ Vagrant.configure(2) do |config|
       nodeconf.vm.synced_folder '.', '/vagrant', disabled: true
 
       nodeconf.vm.provision :shell, inline: 'apt update && apt install -y python-minimal'
+      # HACK: Override default random password with 'vagrant' per Vagrant spec, Launchpad bug #1569237
+      nodeconf.vm.provision :shell, inline: 'echo -e "vagrant\nvagrant" | passwd ubuntu'
 
       if i == nodes
         nodeconf.vm.provision :ansible do |a|

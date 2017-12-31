@@ -12,7 +12,7 @@ defaults
     log global
     mode http
     option httplog
-    option dongnull
+    option dontlog null
     option forwardfor
     option http-server-close
     timeout connect 5000
@@ -28,34 +28,12 @@ listen http
 {% endfor %}
 
 # Database routing
-frontend db
+listen db
     bind {{ balancer.floating_ip }}:{{ balancer.frontend.port }}
+    mode tcp
+    balance leastconn
+    stick-table type ip size 255 expire 30m
 
-    acl src_bedrock1 src bedrock1
-    acl src_bedrock2 src bedrock2
-    acl src_bedrock3 src bedrock3
-
-    use_backend db_bedrock1 if src_bedrock1
-    use_backend db_bedrock2 if src_bedrock2
-    use_backend db_bedrock3 if src_bedrock3
-
-    default_backend default
-
-# bedrock specific database backend
-backend db_bedrock1
-    server bedrock2 bedrock2:8888 check
-    server bedrock3 bedrock3:8888 check backup
-
-backend db_bedrock2
-    server bedrock3 bedrock3:8888 check
-    server bedrock1 bedrock1:8888 check backup
-
-backend db_bedrock3
-    server bedrock1 bedrock1:8888 check
-    server bedrock2 bedrock2:8888 check backup
-
-# Default backend if no ACL match in database routing
-backend default
 {% for server in groups['nodes'] %}
     server {{ server }} {{ hostvars[server].ansible_host }}:8888 check
 {% endfor %}

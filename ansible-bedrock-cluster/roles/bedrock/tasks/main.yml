@@ -1,0 +1,19 @@
+---
+
+- name: Add Bedrock apt key
+  apt_key:
+    url: https://apt.bedrockdb.com/bedrock.gpg
+    state: present
+
+- name: Add Bedrock apt source
+  apt_repository:
+    repo: deb https://apt.bedrockdb.com/ubuntu/ xenial main
+    state: present
+    filename: 'bedrockdb'
+
+- name: Install Bedrock
+  package:
+    name: bedrock
+    state: latest
+
+

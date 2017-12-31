@@ -1,11 +1,11 @@
 [balancers]
-bedrock1 ansible_host="172.37.17.21"
-bedrock2 ansible_host="172.37.17.22"
+bedrock1 ansible_host="172.17.17.21"
+bedrock2 ansible_host="172.17.17.22"
 
 [nodes]
-bedrock3 ansible_host="172.37.17.23"
-bedrock4 ansible_host="172.37.17.24"
-bedrock5 ansible_host="172.37.17.25"
+bedrock3 ansible_host="172.17.17.23"
+bedrock4 ansible_host="172.17.17.24"
+bedrock5 ansible_host="172.17.17.25"
 
 [webservers:children]
 nodes

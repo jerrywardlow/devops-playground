@@ -1,5 +1,8 @@
 ---
 
+ansible_user: ubuntu
+ansible_ssh_pass: vagrant
+
 balancer:
   floating_ip: 172.17.17.20
   frontend:

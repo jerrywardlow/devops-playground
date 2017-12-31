@@ -1,6 +1,6 @@
 ---
 
 balancer:
-  floating_ip: 172.37.17.20
+  floating_ip: 172.17.17.20
   frontend:
     port: 8888

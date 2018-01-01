@@ -11,6 +11,14 @@
     state: present
     filename: 'bedrockdb'
 
+- name: Configure Bedrock
+  template:
+    src: bedrock.init.j2
+    dest: /etc/init.d/bedrock
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Install Bedrock
   package:
     name: bedrock

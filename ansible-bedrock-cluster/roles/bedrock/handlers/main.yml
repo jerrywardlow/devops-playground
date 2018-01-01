@@ -1,0 +1,6 @@
+---
+
+- name: restart bedrock
+  systemd:
+    name: bedrock
+    state: restarted

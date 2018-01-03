@@ -19,6 +19,12 @@ defaults
     timeout client  50000
     timeout server  50000
 
+# HAProxy instance peers
+peers balancer-peers
+{% for balancer in groups['balancers'] %}
+    peer {{ balancer }} {{ hostvars[balancer].ansible_host }}:1024
+{% endfor %}
+
 # Application routing
 listen http
     bind {{ balancer.floating_ip }}:{{ balancer.http.port }}

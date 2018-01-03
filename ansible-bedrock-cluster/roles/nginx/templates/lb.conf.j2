@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+
+stream {
+    upstream bedrock {
+        server localhost:8888;
+        server {{ balancer.floating_ip }}:{{ balancer.db.port }} backup;
+    }
+
+    server {
+        listen 9999;
+        proxy_pass bedrock;
+    }
+}

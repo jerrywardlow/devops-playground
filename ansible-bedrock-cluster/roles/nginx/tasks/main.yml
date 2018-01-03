@@ -1,0 +1,29 @@
+---
+
+- name: Install NGINX
+  package:
+    name: nginx
+    state: latest
+
+- name: Remove NGINX conf.d includes
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    regexp: '\sinclude /etc/nginx/conf.d/\*.conf;'
+    state: absent
+
+- name: Relocate NGINX conf.d includes outside of HTTP block
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    line: 'include /etc/nginx/conf.d/*.conf;'
+  notify:
+    - restart nginx
+
+- name: Configure NGINX load balancer config
+  template:
+    src: lb.conf.j2
+    dest: /etc/nginx/conf.d/lb.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart nginx

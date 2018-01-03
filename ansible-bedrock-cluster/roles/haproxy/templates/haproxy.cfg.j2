@@ -21,7 +21,7 @@ defaults
 
 # Application routing
 listen http
-    bind {{ balancer.floating_ip }}:80
+    bind {{ balancer.floating_ip }}:{{ balancer.http.port }}
     balance leastconn
 {% for server in groups['webservers'] %}
     server {{ server }} {{ hostvars[server].ansible_host }}:80 check
@@ -29,7 +29,7 @@ listen http
 
 # Database routing
 listen db
-    bind {{ balancer.floating_ip }}:{{ balancer.frontend.port }}
+    bind {{ balancer.floating_ip }}:{{ balancer.db.port }}
     mode tcp
     balance leastconn
     stick-table type ip size 255 expire 30m

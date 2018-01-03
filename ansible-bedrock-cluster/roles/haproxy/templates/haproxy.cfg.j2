@@ -38,7 +38,7 @@ listen db
     bind {{ balancer.floating_ip }}:{{ balancer.db.port }}
     mode tcp
     balance leastconn
-    stick-table type ip size 255 expire 30m
+    stick-table type ip size 255 expire 30m peers balancer-peers
 
 {% for server in groups['nodes'] %}
     server {{ server }} {{ hostvars[server].ansible_host }}:8888 check

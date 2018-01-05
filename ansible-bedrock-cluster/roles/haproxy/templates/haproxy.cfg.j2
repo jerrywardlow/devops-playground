@@ -29,6 +29,7 @@ peers balancer-peers
 listen http
     bind {{ balancer.floating_ip }}:{{ balancer.http.port }}
     balance leastconn
+    option redispatch
 {% for server in groups['webservers'] %}
     server {{ server }} {{ hostvars[server].ansible_host }}:80 check
 {% endfor %}

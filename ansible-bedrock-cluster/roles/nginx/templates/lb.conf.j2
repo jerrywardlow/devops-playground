@@ -3,7 +3,7 @@
 stream {
     upstream bedrock {
         server localhost:8888;
-        server {{ balancer.floating_ip }}:{{ balancer.db.port }} backup;
+        server {{ balancer.floating_ip }}:{{ bedrock.port }} backup;
     }
 
     server {

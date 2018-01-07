@@ -27,7 +27,7 @@ peers balancer-peers
 
 # Application routing
 listen http
-    bind {{ balancer.floating_ip }}:{{ balancer.http.port }}
+    bind {{ balancer.floating_ip }}:{{ http.port }}
     balance leastconn
     option redispatch
 {% for server in groups['webservers'] %}
@@ -36,7 +36,7 @@ listen http
 
 # Database routing
 listen db
-    bind {{ balancer.floating_ip }}:{{ balancer.db.port }}
+    bind {{ balancer.floating_ip }}:{{ bedrock.port }}
     mode tcp
     balance leastconn
     stick-table type ip size 255 expire 30m peers balancer-peers

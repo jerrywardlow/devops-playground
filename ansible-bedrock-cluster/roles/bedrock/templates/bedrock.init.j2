@@ -44,7 +44,7 @@ DAEMON_OPTS="\
 -fork \
 -nodeName $THISNODE \
 -db $BEDROCK_DB_PATH \
--serverHost 0.0.0.0:8888 \
+-serverHost 0.0.0.0:{{ bedrock.port }} \
 -nodeHost 0.0.0.0:8889 \
 -priority $PRIORITY \
 -pidfile $PIDFILE \

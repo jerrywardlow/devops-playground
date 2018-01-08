@@ -36,7 +36,7 @@ listen http
 
 # Database routing
 listen db
-    bind {{ balancer.floating_ip }}:{{ bedrock.port }}
+    bind {{ balancer.floating_ip }}:{{ bedrock.server_port }}
     mode tcp
     balance leastconn
     stick-table type ip size 255 expire 30m peers balancer-peers

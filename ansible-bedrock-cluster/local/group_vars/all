@@ -10,4 +10,5 @@ http:
   port: 80
 
 bedrock:
-  port: 8888
+  server_port: 8888
+  node_port: 8889

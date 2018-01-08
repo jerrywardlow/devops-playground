@@ -30,6 +30,12 @@ THISNODE="bedrock"
 PRIORITY=200
 FLAGS="-v -cache 10001"
 
+OTHERNODES="\
+{% for host in groups['nodes'] if host != inventory_hostname %}
+{{ host }}:8889,\
+{% endfor %}
+"
+
 if [ -n "$OTHERNODES" ]; then
     FLAGS="-peerList $OTHERNODES"
 fi

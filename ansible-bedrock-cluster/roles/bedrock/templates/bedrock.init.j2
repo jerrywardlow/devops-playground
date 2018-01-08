@@ -32,7 +32,7 @@ FLAGS="-v -cache 10001"
 
 OTHERNODES="\
 {% for host in groups['nodes'] if host != inventory_hostname %}
-{{ host }}:8889,\
+{{ host }}:8889{% if not loop.last %},{% endif %}\
 {% endfor %}
 "
 

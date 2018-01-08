@@ -32,7 +32,7 @@ FLAGS="-v -cache 10001"
 
 OTHERNODES="\
 {% for host in groups['nodes'] if host != inventory_hostname %}
-{{ host }}:8889{% if not loop.last %},{% endif %}\
+{{ host }}:{{ bedrock.node_port }}{% if not loop.last %},{% endif %}\
 {% endfor %}
 "
 
@@ -45,7 +45,7 @@ DAEMON_OPTS="\
 -nodeName $THISNODE \
 -db $BEDROCK_DB_PATH \
 -serverHost 0.0.0.0:{{ bedrock.server_port }} \
--nodeHost 0.0.0.0:8889 \
+-nodeHost 0.0.0.0:{{ bedrock.node_port }} \
 -priority $PRIORITY \
 -pidfile $PIDFILE \
 -quorumCheckpoint 100 \

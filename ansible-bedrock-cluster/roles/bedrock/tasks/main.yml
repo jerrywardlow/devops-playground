@@ -19,6 +19,7 @@
     group: root
     mode: 0755
   notify:
+    - reload systemd
     - restart bedrock
 
 - name: Install Bedrock

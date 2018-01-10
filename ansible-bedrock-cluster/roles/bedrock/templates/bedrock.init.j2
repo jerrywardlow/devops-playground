@@ -30,11 +30,13 @@ THISNODE="bedrock"
 PRIORITY=200
 FLAGS="-v -cache 10001"
 
+{% if bedrock.multi_zone %}
 OTHERNODES="\
 {% for host in groups['nodes'] if host != inventory_hostname %}
 {{ host }}:{{ bedrock.node_port }}{% if not loop.last %},{% endif %}\
 {% endfor %}
 "
+{% endif %}
 
 if [ -n "$OTHERNODES" ]; then
     FLAGS="-peerList $OTHERNODES"

@@ -26,7 +26,7 @@ BEDROCK_DB_PATH="$BEDROCK_DB_DIR/bedrock.db"
 SCRIPTNAME="/etc/init.d/$NAME"
 
 # Single node, unknown environment
-THISNODE="bedrock"
+THISNODE="{{ inventory_hostname_short }}"
 PRIORITY=200
 FLAGS="-v -cache 10001"
 

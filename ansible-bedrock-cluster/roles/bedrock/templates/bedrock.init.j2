@@ -27,7 +27,7 @@ SCRIPTNAME="/etc/init.d/$NAME"
 
 # Single node, unknown environment
 THISNODE="{{ inventory_hostname_short }}"
-PRIORITY=200
+PRIORITY={{ 200 |random(seed=inventory_hostname) }}
 FLAGS="-v -cache 10001"
 
 {% if bedrock.multi_zone %}

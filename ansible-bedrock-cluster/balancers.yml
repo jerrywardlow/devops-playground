@@ -3,5 +3,5 @@
 - hosts: balancers
   roles:
     - common
-    - haproxy
     - keepalived
+    - haproxy

@@ -5,6 +5,16 @@
     name: keepalived
     state: latest
 
+- name: Manage keepalived transition script
+  copy:
+    src: transition.sh
+    dest: /etc/keepalived/transition.sh
+    owner: root
+    group: root
+    mode: 0744
+  notify:
+    - restart keepalived
+
 - name: Configure keepalived
   template:
     src: keepalived.conf.j2

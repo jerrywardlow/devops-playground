@@ -12,4 +12,6 @@ vrrp_instance lb {
     virtual_ipaddress {
         {{ balancer.floating_ip }}
     }
+
+    notify /etc/keepalived/transition.sh
 }

@@ -5,6 +5,11 @@ ansible_ssh_pass: vagrant
 
 balancer:
   floating_ip: 172.17.17.20
+  keepalived:
+    check:
+      interval: 2
+      fall: 2
+      rise: 2
 
 http:
   port: 80

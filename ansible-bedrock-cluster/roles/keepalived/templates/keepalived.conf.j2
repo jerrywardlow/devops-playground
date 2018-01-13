@@ -1,5 +1,12 @@
 # {{ ansible_managed }}
 
+vrrp_script check_script {
+    script "/etc/keepalived/check.sh"
+    interval {{ balancer.keepalived.check.interval }}
+    fall {{ balancer.keepalived.check.fall }}
+    rise {{ balancer.keepalived.check.rise }}
+}
+
 vrrp_instance lb {
     interface enp0s8
     state BACKUP

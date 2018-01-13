@@ -5,6 +5,16 @@
     name: keepalived
     state: latest
 
+- name: Manage keepalived check script
+  copy:
+    src: check.sh
+    dest: /etc/keepalived/check.sh
+    owner: root
+    group: root
+    mode: 0744
+  notify:
+    - restart keepalived
+
 - name: Manage keepalived transition script
   copy:
     src: transition.sh

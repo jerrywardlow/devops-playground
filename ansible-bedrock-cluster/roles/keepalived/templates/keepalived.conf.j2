@@ -20,5 +20,9 @@ vrrp_instance lb {
         {{ balancer.floating_ip }}
     }
 
+    track_script {
+        check_script
+    }
+
     notify /etc/keepalived/transition.sh
 }

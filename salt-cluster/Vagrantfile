@@ -34,11 +34,18 @@ Vagrant.configure(2) do |config|
       nodeconf.vm.synced_folder ".", "/vagrant", disabled: true
     
       if node == 'master'
-          nodeconf.vm.provision :shell, path: "master/shell/boot.sh"
-          nodeconf.vm.synced_folder 'master/master.d/', '/etc/salt/master.d/', type: 'virtualbox', owner: 'root', group: 'root'
-          nodeconf.vm.synced_folder 'master/minion.d/', '/etc/salt/minion.d/', type: 'virtualbox', owner: 'root', group: 'root'
-          nodeconf.vm.synced_folder 'master/pillar/', '/srv/pillar/', type: 'virtualbox', owner: 'root', group: 'root'
-          nodeconf.vm.synced_folder 'master/salt/', '/srv/salt/', type: 'virtualbox', owner: 'root', group: 'root'
+        nodeconf.vm.provision :shell, path: "master/shell/boot.sh"
+
+        sync_folders = [
+          { host: 'master/master.d/', node: '/etc/salt/master.d' },
+          { host: 'master/minion.d/', node: '/etc/salt/minion.d' },
+          { host: 'master/pillar/',   node: '/srv/pillar/' },
+          { host: 'master/salt/',     node: '/srv/salt/' }
+        ]
+
+        sync_folders.each do |folder|
+          nodeconf.vm.synced_folder folder[:host], folder[:node], type: 'virtualbox', owner: 'root', group: 'root'
+        end
       else
           nodeconf.vm.provision :shell, path: "minion/shell/boot.sh"
           nodeconf.vm.synced_folder 'minion/minion.d/', '/etc/salt/minion.d/', type: 'virtualbox', owner: 'root', group: 'root'

@@ -8,7 +8,12 @@
 set -u
 set -e
 
-# Make sure Packer and Terraform are installed
+# Make sure AWS CLI, Packer and Terraform are installed
+if ! hash aws 2>/dev/null; then
+    echo "Missing dependency: AWS CLI tool"
+    exit 1
+fi
+
 if ! hash packer 2>/dev/null; then
     echo "Missing dependency: Packer"
     exit 1

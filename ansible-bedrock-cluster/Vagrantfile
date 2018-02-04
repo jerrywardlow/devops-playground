@@ -35,7 +35,7 @@ Vagrant.configure(2) do |config|
       end
 
       nodeconf.vm.provider :virtualbox do |vbox|
-        vbox.name = "bed.node#{i}"
+        vbox.name = "vm.bedrock#{i}"
         vbox.linked_clone = true
       end
     end

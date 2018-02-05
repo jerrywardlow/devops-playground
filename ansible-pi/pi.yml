@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  tasks:
+    - name: Bootstrap Pi
+      block:
+        - name: Create user
+          user:
+            name: jerry
+            groups: sudo
+            append: yes
+            password: $6$EezNoev5Ie/kn$nA2qR3.imJWkpB1dL.RBLbU7mns0v9tQYTeFNYbi3uOgt2eEOvjsbX5zugPY5/DB2bB1y.MEAhHIg8QZgg9m9.
+            state: present

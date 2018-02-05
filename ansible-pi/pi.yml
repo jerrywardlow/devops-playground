@@ -10,4 +10,5 @@
             groups: sudo
             append: yes
             password: $6$EezNoev5Ie/kn$nA2qR3.imJWkpB1dL.RBLbU7mns0v9tQYTeFNYbi3uOgt2eEOvjsbX5zugPY5/DB2bB1y.MEAhHIg8QZgg9m9.
+            update_password: on_create
             state: present

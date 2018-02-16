@@ -2,7 +2,10 @@
 
 start=$SECONDS
 
-API_KEY=''
+if [ -z $MP_API_KEY ]; then
+    echo -n "Mountain Project API Key: "
+    read MP_API_KEY
+fi
 
 GRADES=(
         5.0
@@ -36,7 +39,7 @@ MAX_RESULTS=500
 echo -e "\n$(date)" >> stats.txt
 
 for grade in ${GRADES[@]}; do
-    URL="https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=$LAT&lon=$LON&maxResults=$MAX_RESULTS&maxDistance=$MAX_DIST&minDiff=$grade&maxDiff=$grade&key=$API_KEY"
+    URL="https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=$LAT&lon=$LON&maxResults=$MAX_RESULTS&maxDistance=$MAX_DIST&minDiff=$grade&maxDiff=$grade&key=$MP_API_KEY"
     curl -s $URL > $grade.json
     echo "$grade routes returned: $(jq '.routes | length' $grade.json)" | tee -a stats.txt
 done

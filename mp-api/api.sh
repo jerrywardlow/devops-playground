@@ -18,7 +18,7 @@ GRADES=(
         5.7
         5.8
         5.9
-        5.10a 5.10b 5.10c 5.10d 5.10- 5.10+
+        5.10a 5.10b 5.10c 5.10d
         5.11a 5.11b 5.11c 5.11d
         5.12a 5.12b 5.12c 5.12d
         5.13a 5.13b 5.13c 5.13d
@@ -36,12 +36,17 @@ MAX_DIST=5
 # Maximum results returned
 MAX_RESULTS=500
 
-echo -e "\n$(date)" >> stats.txt
+# Total routes returned
+TOTAL_ROUTES=0
+
+echo -e "\n$(date)" >> data/stats.txt
 
 for grade in ${GRADES[@]}; do
     URL="https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=$LAT&lon=$LON&maxResults=$MAX_RESULTS&maxDistance=$MAX_DIST&minDiff=$grade&maxDiff=$grade&key=$MP_API_KEY"
-    curl -s $URL > $grade.json
-    echo "$grade routes returned: $(jq '.routes | length' $grade.json)" | tee -a stats.txt
+    curl -s $URL > data/$grade.json
+    count=$(jq '.routes | length' data/$grade.json)
+    echo "$grade routes returned: $count" | tee -a data/stats.txt
+    TOTAL_ROUTES=$((TOTAL_ROUTES + count))
 done
 
-echo "Query completed in $(( SECONDS - start )) seconds." | tee -a stats.txt
+echo "Query completed in $(( SECONDS - start )) seconds. $TOTAL_ROUTES routes returned." | tee -a data/stats.txt

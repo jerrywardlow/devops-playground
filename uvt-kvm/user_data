@@ -1,0 +1,14 @@
+#cloud-config
+hostname: %HOSTNAME%
+
+users:
+  - name: jerry
+    groups: sudo
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+    ssh-import-id: gh:jerrywardlow
+
+runcmd:
+  # Release and renew DHCP lease to register hostname
+  - dhclient -r
+  - dhclient

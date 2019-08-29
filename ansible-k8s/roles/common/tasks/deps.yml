@@ -1,0 +1,12 @@
+---
+
+- name: Install Docker
+  package:
+    name: docker.io
+    state: present
+
+
+- name: Install APT Transport HTTPS
+  package:
+    name: apt-transport-https
+    state: present

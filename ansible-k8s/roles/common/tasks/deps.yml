@@ -20,3 +20,13 @@
   apt_repository:
     repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
     state: present
+
+- name: Install kubelet
+  package:
+    name: kubelet
+    state: present
+
+- name: Install kubeadm
+  package:
+    name: kubeadm
+    state: present

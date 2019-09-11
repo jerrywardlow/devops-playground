@@ -1,8 +1,8 @@
 [nodes]
-k1
-k2
-k3
-k4
+kb1
+kb2
+kb3
+kb4
 
 [master]
-k1
+kb1

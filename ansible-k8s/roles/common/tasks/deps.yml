@@ -4,7 +4,7 @@
   package:
     name: docker.io
     state: present
-
+    update_cache: yes
 
 - name: Install APT Transport HTTPS
   package:

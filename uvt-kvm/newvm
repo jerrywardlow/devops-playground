@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -u
+set -e
+
+if ! hash uvt-kvm 2>/dev/null; then
+    echo "Please install 'uvtool'"
+    exit 1
+fi
+
+USER_DATA=/tmp/user_data_$1
+
+echo "Generating user-data file..."
+echo -e "#cloud-config\nhostname: $1" >> $USER_DATA 
+
+cat <<'EOF' >> $USER_DATA
+
+users:
+  - name: jerry
+    gecos: Jerry Wardlow
+    groups: sudo
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+    lock-passwd: false
+    passwd: $6$rounds=666666$hypertension$LxNM/PPbjauIBoXp0XPgOdYmr/jXvPwei133CZfbUxWoPR6U.JLAKyCFCln33ikGUWIQBEOPVCvLm.7hoHT.f1
+    ssh-import-id: 
+      - gh:jerrywardlow 
+EOF
+
+echo "Launching VM $1"
+sudo uvt-kvm create \
+    --memory 4096 \
+    --cpu 4 \
+    --disk 20 \
+    --bridge br0 \
+    --backing-image-file /var/lib/libvirt/qemu/images/focal.img \
+    --user-data $USER_DATA \
+    $1
+
+if test -f "$USER_DATA"; then
+    echo "Cleaning up user-data file..."
+    rm -v $USER_DATA 
+    echo "Done!"
+    echo "Launch virtual console with 'virsh console $1'"
+fi
